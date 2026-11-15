@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "6gqGnqRY/hg=",
+  "success": true,
+  "projectFilePath": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.13\\microsoft.aspnetcore.openapi.10.0.13.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\10.0.13\\microsoft.dotnet.ilcompiler.10.0.13.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.net.illink.tasks\\10.0.13\\microsoft.net.illink.tasks.10.0.13.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.openapi\\2.12.2\\microsoft.openapi.2.12.2.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\10.0.13\\runtime.win-x64.microsoft.dotnet.ilcompiler.10.0.13.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\10.0.13\\runtime.win-x64.microsoft.dotnet.ilcompiler.10.0.13.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.13\\microsoft.aspnetcore.app.runtime.win-x64.10.0.13.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.13\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.13.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.13\\microsoft.netcore.app.runtime.win-x64.10.0.13.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.netcore.app.runtime.nativeaot.win-x64\\10.0.13\\microsoft.netcore.app.runtime.nativeaot.win-x64.10.0.13.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "O pacote 'Microsoft.DotNet.ILCompiler' 10.0.13 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-p3jp-9v83-76w9",
+      "projectPath": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj",
+      "libraryId": "Microsoft.DotNet.ILCompiler",
+      "targetGraphs": [
+        "net10.0",
+        "net10.0/win-x64"
+      ]
+    }
+  ]
+}
