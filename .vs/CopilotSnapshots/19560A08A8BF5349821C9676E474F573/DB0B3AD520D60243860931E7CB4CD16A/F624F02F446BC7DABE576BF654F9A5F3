@@ -1,0 +1,13 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Ajudante_Familiar_Global.Infrastruture.Data
+{
+    public class AppDbContext : DbContext
+    {
+        public DbSet<Alimentacao> alimentacaos { get; set; }
+    }
+}

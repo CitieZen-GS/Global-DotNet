@@ -1,3 +1,8 @@
 <Solution>
+  <Project Path="Ajudante_Familiar_Global.Application/Ajudante_Familiar_Global.Application.csproj" Id="90465d14-ba33-417f-b89d-690eedaab8d1" />
+  <Project Path="Ajudante_Familiar_Global.Domain/Ajudante_Familiar_Global.Domain.csproj" Id="022e2b18-a1f6-4432-a684-7e41e42a01ee" />
+  <Project Path="Ajudante_Familiar_Global.Infrastruture/Ajudante_Familiar_Global.Infrastruture.csproj" Id="4ee59ceb-e251-4113-9e74-cb965e928b27" />
+  <Project Path="Ajudante_Familiar_Global.IntegrationTest/Ajudante_Familiar_Global.IntegrationTests.csproj" Id="3e5c6360-98e4-41af-bb66-4b2b40cab0e7" />
   <Project Path="Ajudante_Familiar_Global/Ajudante_Familiar_Global.csproj" />
+  <Project Path="Ajudante_Familiar_GlobalUnitTests/Ajudante_Familiar_Global.UnitTests.csproj" Id="895a7434-f9cc-4e54-a62e-8bbe06409024" />
 </Solution>

@@ -1,0 +1,56 @@
+﻿using Ajudante_Familiar_Global.Domain.Enums;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
+using System.Text.Json.Serialization;
+
+namespace Ajudante_Familiar_Global.Domain.Entities
+{
+    [Table("T_Ajudante_familiar_Alimentacao")]
+    public class Alimentacao
+    {
+        [Key]
+        [Column("Id_alimentacao")]
+        public int Id_alimentacao { get; set; }
+
+        [Required]
+        [Column("nm_alimentacao")]
+        public string Nm_alimentacao { get; set; }
+        [Required]
+        [Column("tp_alimentacao")]
+        public TipoAlimentacao tp_alimentacao { get; set; }
+        [Required]
+        [Column("dt_consumo")]
+        public DateOnly Dt_consumo { get; set; }
+        [Required]
+        [Column("hr_consumo")]
+        public TimeOnly Hr_consumo { get; set; }
+        [Column("vlr_caloria")]
+        public Decimal Vlr_caloria { get; set; }
+        [Column("ds_preparacao")]
+        public string Ds_preparacao { get; set; }
+        [Required]
+        [Column("id_idoso")]
+        public int Id_idoso { get; set; }
+        [JsonIgnore]
+        [ForeignKey("Id_idoso")]
+        public Idoso? Idoso { get; set; }
+
+        public Alimentacao() { }
+
+        public Alimentacao(int id_alimentacao, string nm_alimentacao, TipoAlimentacao tp_alimentacao, DateOnly dt_consumo, TimeOnly hr_consumo, decimal vlr_caloria, string ds_preparacao, int id_idoso, Idoso? idoso)
+        {
+            Id_alimentacao = id_alimentacao;
+            Nm_alimentacao = nm_alimentacao;
+            this.tp_alimentacao = tp_alimentacao;
+            Dt_consumo = dt_consumo;
+            Hr_consumo = hr_consumo;
+            Vlr_caloria = vlr_caloria;
+            Ds_preparacao = ds_preparacao;
+            Id_idoso = id_idoso;
+            Idoso = idoso;
+        }
+    }
+}

@@ -1,0 +1,6 @@
+﻿namespace Ajudante_Familiar_Global.Domain.Interfaces
+{
+    public interface IConsulta_MedicamentoRepository
+    {
+    }
+}

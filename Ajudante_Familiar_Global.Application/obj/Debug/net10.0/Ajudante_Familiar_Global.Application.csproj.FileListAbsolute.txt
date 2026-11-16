@@ -1,0 +1,13 @@
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\bin\Debug\net10.0\Ajudante_Familiar_Global.Application.deps.json
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\bin\Debug\net10.0\Ajudante_Familiar_Global.Application.dll
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\bin\Debug\net10.0\Ajudante_Familiar_Global.Application.pdb
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\Ajudante_Familiar_Global.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\Ajudante_Familiar_Global.Application.AssemblyInfoInputs.cache
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\Ajudante_Familiar_Global.Application.AssemblyInfo.cs
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\Ajudante_Familiar_Global.Application.csproj.CoreCompileInputs.cache
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\Ajudante_Familiar_Global.Application.sourcelink.json
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\Ajudante_Familiar_Global.Application.dll
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\refint\Ajudante_Familiar_Global.Application.dll
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\Ajudante_Familiar_Global.Application.pdb
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\ref\Ajudante_Familiar_Global.Application.dll
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.Application\obj\Debug\net10.0\Ajudante.4697B60F.Up2Date

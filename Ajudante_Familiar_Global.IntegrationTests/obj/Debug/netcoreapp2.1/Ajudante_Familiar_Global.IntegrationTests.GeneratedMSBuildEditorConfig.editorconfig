@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = Ajudante_Familiar_Global.IntegrationTests
+build_property.ProjectDir = D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global.IntegrationTests\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

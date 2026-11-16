@@ -1,7 +1,363 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Ajudante_Familiar_Global\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\atividadesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\atividadesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\atividades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\atividades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\cargorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\cargorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\consulta_medicamentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\consulta_medicamentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\alimentacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\alimentacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\medicamentosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\medicamentosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\parenterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\parenterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\perfilrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\perfilrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Pichau\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1819942287\\PerfilControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\lembrete_consultarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\lembrete_consultarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\idosorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\idosorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\doencasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\doencasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\repository\\cuidadorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\repository\\cuidadorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\cargo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\cargo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\idoso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\idoso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\lembrete_consulta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\lembrete_consulta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\medicamentos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\medicamentos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\parente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\parente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\iparenterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\iparenterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\ilembrete_consultarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\ilembrete_consultarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\idoencasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\idoencasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\iconsulta_medicamentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\iconsulta_medicamentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\iatividadesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\iatividadesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\ialimentacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\ialimentacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\iperfilrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\iperfilrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\imedicamentosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\imedicamentosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\iidosorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\iidosorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\icuidadorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\icuidadorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\interfaces\\icargorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\interfaces\\icargorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\consulta_medicamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\consulta_medicamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\alimentacaocontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\alimentacaocontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\consulta_medicamentocontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\consulta_medicamentocontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\cargocontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\cargocontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\idosocontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\idosocontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\atividadescontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\atividadescontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\doencascontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\doencascontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\lembrete_consultacontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\lembrete_consultacontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\cuidadorcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\cuidadorcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\perfilcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\perfilcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\medicamentoscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\medicamentoscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_globalunittests\\controllers\\parentecontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{895A7434-F9CC-4E54-A62E-8BBE06409024}|Ajudante_Familiar_GlobalUnitTests\\Ajudante_Familiar_Global.UnitTests.csproj|solutionrelative:ajudante_familiar_globalunittests\\controllers\\parentecontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\idosocontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\idosocontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\cargocontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\cargocontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\medicamentoscontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\medicamentoscontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\cuidadorcontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\cuidadorcontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\atividadescontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\atividadescontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\consulta_medicamentocontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\consulta_medicamentocontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\doencascontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\doencascontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\parentecontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\parentecontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\perfilcontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\perfilcontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\lembrete_consultacontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\lembrete_consultacontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\integration\\alimentacaocontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\integration\\alimentacaocontrollerintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.integrationtest\\factoryfixture\\apifactoryfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E5C6360-98E4-41AF-BB66-4B2B40CAB0E7}|Ajudante_Familiar_Global.IntegrationTest\\Ajudante_Familiar_Global.IntegrationTests.csproj|solutionrelative:ajudante_familiar_global.integrationtest\\factoryfixture\\apifactoryfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\enums\\permissao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\enums\\permissao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\enums\\tipoalimentacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\enums\\tipoalimentacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\ajudante_familiar_global.csproj.backup.tmp||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\ajudante_familiar_global.csproj.backup.tmp||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\enums\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\enums\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\ajudante_familiar_global.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\ajudante_familiar_global.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.infrastruture\\ajudante_familiar_global.infrastruture.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4EE59CEB-E251-4113-9E74-CB965E928B27}|Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj|solutionrelative:ajudante_familiar_global.infrastruture\\ajudante_familiar_global.infrastruture.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\ajudante_familiar_global.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\ajudante_familiar_global.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\cuidador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\cuidador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\ajudante_familiar_global.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\ajudante_familiar_global.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.domain\\entities\\doencas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{022E2B18-A1F6-4432-A684-7E41E42A01EE}|Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj|solutionrelative:ajudante_familiar_global.domain\\entities\\doencas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\perfilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\perfilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\medicamentoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\medicamentoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\lembrete_consultacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\lembrete_consultacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\parentecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\parentecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\consulta_medicamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\consulta_medicamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\atividadescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\atividadescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\idosocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\idosocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\cuidadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\cuidadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\alimentacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\alimentacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\perfilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\perfilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\cargoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\cargoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\parenteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\parenteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\lembrete_consultaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\lembrete_consultaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\idososervice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\idososervice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\cuidadorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\cuidadorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global\\controllers\\doencascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D13FB49E-525D-AD71-957E-8CC56DF7DCED}|Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj|solutionrelative:ajudante_familiar_global\\controllers\\doencascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\medicamentosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\medicamentosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\consulta_medicamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\consulta_medicamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\alimentacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\alimentacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\atividadesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\atividadesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|d:\\ajudante_familiar_global\\ajudante_familiar_global.application\\services\\doencasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90465D14-BA33-417F-B89D-690EEDAAB8D1}|Ajudante_Familiar_Global.Application\\Ajudante_Familiar_Global.Application.csproj|solutionrelative:ajudante_familiar_global.application\\services\\doencasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +365,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +374,1162 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Program.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Program.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Program.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T02:00:16.833Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\appsettings.json",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\appsettings.json",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\appsettings.json",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-11-16T10:19:52.672Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AtividadesRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\AtividadesRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\AtividadesRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\AtividadesRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\AtividadesRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.139Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Atividades.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Atividades.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Atividades.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Atividades.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Atividades.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAhwCQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:10:24.108Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CargoRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\CargoRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\CargoRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\CargoRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\CargoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.872Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Consulta_MedicamentoRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\Consulta_MedicamentoRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\Consulta_MedicamentoRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\Consulta_MedicamentoRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\Consulta_MedicamentoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.231Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AlimentacaoRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\AlimentacaoRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\AlimentacaoRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\AlimentacaoRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\AlimentacaoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.185Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MedicamentosRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\MedicamentosRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\MedicamentosRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\MedicamentosRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\MedicamentosRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.915Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ParenteRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\ParenteRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\ParenteRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\ParenteRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\ParenteRepository.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAIwEcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.828Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PerfilRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\PerfilRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\PerfilRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\PerfilRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\PerfilRepository.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAIwEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.78Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PerfilControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Pichau\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1819942287\\PerfilControllerTests.cs",
+              "ToolTip": "C:\\Users\\Pichau\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1819942287\\PerfilControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T11:01:16.511Z",
+              "OwnerCaption": "%3"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Lembrete_ConsultaRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\Lembrete_ConsultaRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\Lembrete_ConsultaRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\Lembrete_ConsultaRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\Lembrete_ConsultaRepository.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA6wEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.006Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IdosoRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\IdosoRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\IdosoRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\IdosoRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\IdosoRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.051Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DoencasRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\DoencasRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\DoencasRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\DoencasRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\DoencasRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.961Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CuidadorRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\CuidadorRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Repository\\CuidadorRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Repository\\CuidadorRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Repository\\CuidadorRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.095Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Data\\AppDbContext.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHwAAACeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T02:06:02.748Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Cargo.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Cargo.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Cargo.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Cargo.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Cargo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:08:24.023Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Idoso.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Idoso.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Idoso.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Idoso.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Idoso.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAiwCUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:09:37.055Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Lembrete_Consulta.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Lembrete_Consulta.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Lembrete_Consulta.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Lembrete_Consulta.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Lembrete_Consulta.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAiwCwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:11:11.263Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Medicamentos.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Medicamentos.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Medicamentos.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Medicamentos.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Medicamentos.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwCUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:11:29.558Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Parente.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Parente.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Parente.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Parente.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Parente.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAUwCEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:09:57.265Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Perfil.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Perfil.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Perfil.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Perfil.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Perfil.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:09:09.056Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IParenteRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IParenteRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\IParenteRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IParenteRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\IParenteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.299Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ILembrete_ConsultaRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\ILembrete_ConsultaRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\ILembrete_ConsultaRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\ILembrete_ConsultaRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\ILembrete_ConsultaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.604Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IDoencasRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IDoencasRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\IDoencasRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IDoencasRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\IDoencasRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.427Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IConsulta_MedicamentoRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IConsulta_MedicamentoRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\IConsulta_MedicamentoRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IConsulta_MedicamentoRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\IConsulta_MedicamentoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.515Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IAtividadesRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IAtividadesRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\IAtividadesRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IAtividadesRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\IAtividadesRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.558Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IAlimentacaoRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IAlimentacaoRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\IAlimentacaoRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IAlimentacaoRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\IAlimentacaoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.737Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IPerfilRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IPerfilRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\IPerfilRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IPerfilRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\IPerfilRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.21Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "IMedicamentosRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IMedicamentosRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\IMedicamentosRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IMedicamentosRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\IMedicamentosRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.342Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IIdosoRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IIdosoRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\IIdosoRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\IIdosoRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\IIdosoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.385Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ICuidadorRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\ICuidadorRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\ICuidadorRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\ICuidadorRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\ICuidadorRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.471Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ICargoRepository.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\ICargoRepository.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Interfaces\\ICargoRepository.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Interfaces\\ICargoRepository.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Interfaces\\ICargoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.256Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Consulta_Medicamento.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Consulta_Medicamento.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Consulta_Medicamento.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Consulta_Medicamento.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Consulta_Medicamento.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAqwCkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:11:45.299Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Consulta_MedicamentoControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\Consulta_MedicamentoControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\Consulta_MedicamentoControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\Consulta_MedicamentoControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\Consulta_MedicamentoControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:21.608Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "AlimentacaoControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\AlimentacaoControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\AlimentacaoControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\AlimentacaoControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\AlimentacaoControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:21.691Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "CargoControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\CargoControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\CargoControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\CargoControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\CargoControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:21.526Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "IdosoControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\IdosoControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\IdosoControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\IdosoControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\IdosoControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:21.441Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "AtividadesControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\AtividadesControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\AtividadesControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\AtividadesControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\AtividadesControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:21.358Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "DoencasControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\DoencasControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\DoencasControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\DoencasControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\DoencasControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:21.28Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Lembrete_ConsultaControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\Lembrete_ConsultaControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\Lembrete_ConsultaControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\Lembrete_ConsultaControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\Lembrete_ConsultaControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:21.178Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "CuidadorControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\CuidadorControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\CuidadorControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\CuidadorControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\CuidadorControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:21.085Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "PerfilControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\PerfilControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\PerfilControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\PerfilControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\PerfilControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:21.006Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "MedicamentosControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\MedicamentosControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\MedicamentosControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\MedicamentosControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\MedicamentosControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:20.908Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "ParenteControllerTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\ParenteControllerTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\ParenteControllerTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests\\Controllers\\ParenteControllerTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_GlobalUnitTests\\Controllers\\ParenteControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:50:20.824Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "IdosoControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\IdosoControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\IdosoControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\IdosoControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\IdosoControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.756Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "CargoControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\CargoControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\CargoControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\CargoControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\CargoControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.606Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "MedicamentosControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\MedicamentosControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\MedicamentosControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\MedicamentosControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\MedicamentosControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.524Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "CuidadorControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\CuidadorControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\CuidadorControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\CuidadorControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\CuidadorControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.444Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "AtividadesControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\AtividadesControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\AtividadesControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\AtividadesControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\AtividadesControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.376Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "Consulta_MedicamentoControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\Consulta_MedicamentoControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\Consulta_MedicamentoControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\Consulta_MedicamentoControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\Consulta_MedicamentoControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.298Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "DoencasControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\DoencasControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\DoencasControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\DoencasControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\DoencasControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.216Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "ParenteControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\ParenteControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\ParenteControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\ParenteControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\ParenteControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.141Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "PerfilControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\PerfilControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\PerfilControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\PerfilControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\PerfilControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.055Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "Lembrete_ConsultaControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\Lembrete_ConsultaControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\Lembrete_ConsultaControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\Lembrete_ConsultaControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\Lembrete_ConsultaControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:41.985Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "AlimentacaoControllerIntegrationTests.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\AlimentacaoControllerIntegrationTests.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\AlimentacaoControllerIntegrationTests.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\Integration\\AlimentacaoControllerIntegrationTests.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\Integration\\AlimentacaoControllerIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:51:42.68Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "ApiFactoryFixture.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\FactoryFixture\\ApiFactoryFixture.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.IntegrationTest\\FactoryFixture\\ApiFactoryFixture.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest\\FactoryFixture\\ApiFactoryFixture.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.IntegrationTest\\FactoryFixture\\ApiFactoryFixture.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAYwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T10:44:24.278Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "TipoAlimentacao.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Enums\\TipoAlimentacao.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Enums\\TipoAlimentacao.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Enums\\TipoAlimentacao.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Enums\\TipoAlimentacao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T23:35:10.156Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "Permissao.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Enums\\Permissao.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Enums\\Permissao.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Enums\\Permissao.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Enums\\Permissao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T00:14:07.95Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "Ajudante_Familiar_Global.csproj.Backup.tmp",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj.Backup.tmp",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj.Backup.tmp",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj.Backup.tmp",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj.Backup.tmp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-11-16T02:21:33.137Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "Status.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Enums\\Status.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Enums\\Status.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Enums\\Status.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Enums\\Status.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T09:56:25.129Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "Ajudante_Familiar_Global.http",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.http",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Ajudante_Familiar_Global.http",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.http",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Ajudante_Familiar_Global.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-11-16T10:19:48.967Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "Ajudante_Familiar_Global.Infrastruture",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Infrastruture\\Ajudante_Familiar_Global.Infrastruture.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-11-16T02:39:49.694Z",
+              "OwnerCaption": "Ajudante_Familiar_Global.Infrastruture"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "Ajudante_Familiar_Global",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Ajudante_Familiar_Global.csproj",
+              "ViewState": "AgIAABUAAAAAAAAAAABBwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-11-16T02:05:10.479Z",
+              "OwnerCaption": "Ajudante_Familiar_Global"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 88,
+              "Title": "DoencasService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\DoencasService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\DoencasService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\DoencasService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\DoencasService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.795Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
+              "Title": "AtividadesService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\AtividadesService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\AtividadesService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\AtividadesService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\AtividadesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.749Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "AlimentacaoService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\AlimentacaoService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\AlimentacaoService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\AlimentacaoService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\AlimentacaoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.701Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "Consulta_MedicamentoService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\Consulta_MedicamentoService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\Consulta_MedicamentoService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\Consulta_MedicamentoService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\Consulta_MedicamentoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.652Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "MedicamentosService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\MedicamentosService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\MedicamentosService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\MedicamentosService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\MedicamentosService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.604Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "DoencasController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\DoencasController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\DoencasController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\DoencasController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\DoencasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.557Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "CuidadorService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\CuidadorService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\CuidadorService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\CuidadorService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\CuidadorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.509Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "IdosoService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\IdosoService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\IdosoService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\IdosoService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\IdosoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.463Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "Lembrete_ConsultaService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\Lembrete_ConsultaService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\Lembrete_ConsultaService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\Lembrete_ConsultaService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\Lembrete_ConsultaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.416Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "ParenteService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\ParenteService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\ParenteService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\ParenteService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\ParenteService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.371Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "CargoService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\CargoService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\CargoService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\CargoService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\CargoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.325Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "PerfilService.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\PerfilService.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Application\\Services\\PerfilService.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application\\Services\\PerfilService.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Application\\Services\\PerfilService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:21.277Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "AlimentacaoController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\AlimentacaoController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\AlimentacaoController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\AlimentacaoController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\AlimentacaoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.164Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "CuidadorController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\CuidadorController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\CuidadorController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\CuidadorController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\CuidadorController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.122Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "IdosoController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\IdosoController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\IdosoController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\IdosoController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\IdosoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.08Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "AtividadesController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\AtividadesController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\AtividadesController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\AtividadesController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\AtividadesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:20.037Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "Consulta_MedicamentoController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\Consulta_MedicamentoController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\Consulta_MedicamentoController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\Consulta_MedicamentoController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\Consulta_MedicamentoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:19.992Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "ParenteController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\ParenteController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\ParenteController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\ParenteController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\ParenteController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:19.952Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "Lembrete_ConsultaController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\Lembrete_ConsultaController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\Lembrete_ConsultaController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\Lembrete_ConsultaController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\Lembrete_ConsultaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:19.911Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "MedicamentosController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\MedicamentosController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\MedicamentosController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\MedicamentosController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\MedicamentosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:19.867Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "PerfilController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\PerfilController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\PerfilController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\PerfilController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\PerfilController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:19.823Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "CargoController.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\CargoController.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global\\Controllers\\CargoController.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global\\Controllers\\CargoController.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global\\Controllers\\CargoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T01:56:19.778Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "Ajudante_Familiar_Global.Domain",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Ajudante_Familiar_Global.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-11-16T01:47:40.218Z",
+              "OwnerCaption": "Ajudante_Familiar_Global.Domain"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "Cuidador.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Cuidador.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Cuidador.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Cuidador.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Cuidador.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAABQwBsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:09:22.785Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "Doencas.cs",
+              "DocumentMoniker": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Doencas.cs",
+              "RelativeDocumentMoniker": "Ajudante_Familiar_Global.Domain\\Entities\\Doencas.cs",
+              "ToolTip": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain\\Entities\\Doencas.cs",
+              "RelativeToolTip": "Ajudante_Familiar_Global.Domain\\Entities\\Doencas.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAIBHwBsAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T22:10:10.537Z",
+              "OwnerCaption": "%2"
             }
           ]
         },

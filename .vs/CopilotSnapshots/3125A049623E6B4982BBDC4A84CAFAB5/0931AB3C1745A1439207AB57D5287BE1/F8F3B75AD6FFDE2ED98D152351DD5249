@@ -1,0 +1,5 @@
+﻿namespace Ajudante_Familiar_Global.IntegrationTests.Controllers;
+
+public class CargoControllerTests
+{
+}

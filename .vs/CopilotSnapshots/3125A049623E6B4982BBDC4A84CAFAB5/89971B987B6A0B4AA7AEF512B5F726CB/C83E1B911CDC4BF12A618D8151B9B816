@@ -1,0 +1,6 @@
+﻿namespace Ajudante_Familiar_Global.Infrastruture.Repository
+{
+    public class AtividadesRepository
+    {
+    }
+}

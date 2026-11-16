@@ -1,0 +1,161 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Ajudante_Familiar_Global.Infrastruture.Data
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+
+        }
+
+        public DbSet<Alimentacao> Alimentacoes { get; set; } = null!;
+        public DbSet<Atividades> Atividades { get; set; } = null!;
+        public DbSet<Perfil> Perfis { get; set; } = null!;
+        public DbSet<Idoso> Idosos { get; set; } = null!;
+        public DbSet<Lembrete_Consulta> LembretesConsulta { get; set; } = null!;
+        public DbSet<Medicamentos> Medicamentos { get; set; } = null!;
+        public DbSet<Cargo> Cargos { get; set; } = null!;
+        public DbSet<Consulta_Medicamento> ConsultasMedicamento { get; set; } = null!;
+        public DbSet<Parente> Parentes { get; set; } = null!;
+        public DbSet<Cuidador> Cuidadores { get; set; } = null!;
+        public DbSet<Doencas> Doencas { get; set; } = null!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Cargo>().ToTable("T_Ajudante_familiar_Cargo");
+            modelBuilder.Entity<Cargo>()
+                .Property(cargo => cargo.Fg_permissao)
+                .HasConversion<string>()
+                .HasColumnType("CHAR(2)");
+
+            modelBuilder.Entity<Perfil>().ToTable("T_Ajudante_familiar_Perfil");
+            modelBuilder.Entity<Cuidador>().ToTable("T_Ajudante_familiar_Cuidador");
+            modelBuilder.Entity<Idoso>().ToTable("T_Ajudante_familiar_Idoso");
+
+            modelBuilder.Entity<Parente>().ToTable("T_Ajudante_familiar_Parente");
+            modelBuilder.Entity<Parente>().HasKey(parente => parente.Id_parente);
+            modelBuilder.Entity<Parente>()
+                .Property(parente => parente.Id_parente)
+                .HasColumnName("id_parente");
+
+            modelBuilder.Entity<Doencas>().ToTable("T_Ajudante_familiar_Doencas");
+            modelBuilder.Entity<Doencas>().HasKey(doenca => doenca.id_doenca);
+            modelBuilder.Entity<Doencas>()
+                .Property(doenca => doenca.id_doenca)
+                .HasColumnName("id_doenca");
+
+            modelBuilder.Entity<Atividades>().ToTable("T_Ajudante_familiar_atividades");
+            modelBuilder.Entity<Atividades>()
+                .HasKey(atividade => new { atividade.Id_atividade, atividade.id_idoso });
+            modelBuilder.Entity<Atividades>()
+                .Property(atividade => atividade.Id_atividade)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Alimentacao>().ToTable("T_Ajudante_familiar_Alimentacao");
+            modelBuilder.Entity<Alimentacao>()
+                .Property(alimentacao => alimentacao.tp_alimentacao)
+                .HasConversion(
+                    valor => ParaValorBanco(valor),
+                    valor => DeValorBanco(valor))
+                .HasColumnType("CHAR(20)");
+
+            modelBuilder.Entity<Lembrete_Consulta>()
+                .ToTable("T_Ajudante_familiar_Lembrete_Consulta");
+            modelBuilder.Entity<Medicamentos>().ToTable("T_Ajudante_familiar_Medicamentos");
+            modelBuilder.Entity<Consulta_Medicamento>()
+                .ToTable("T_Ajudante_familiar_Consulta_Medicamento");
+
+            modelBuilder.Entity<Perfil>()
+                .HasOne(perfil => perfil.cargo)
+                .WithMany()
+                .HasForeignKey(perfil => perfil.id_cargo)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Cuidador>()
+                .HasOne(cuidador => cuidador.Perfil)
+                .WithMany()
+                .HasForeignKey(cuidador => cuidador.Id_perfil)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Idoso>()
+                .HasOne(idoso => idoso.cuidador)
+                .WithMany()
+                .HasForeignKey(idoso => idoso.id_cuidador)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Parente>()
+                .HasOne(parente => parente.Idoso)
+                .WithMany()
+                .HasForeignKey(parente => parente.Id_idoso)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Parente>()
+                .HasOne(parente => parente.Perfil)
+                .WithMany()
+                .HasForeignKey(parente => parente.Id_perfil)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Doencas>()
+                .HasOne(doenca => doenca.Idoso)
+                .WithMany()
+                .HasForeignKey(doenca => doenca.Id_idoso)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Atividades>()
+                .HasOne(atividade => atividade.idoso)
+                .WithMany()
+                .HasForeignKey(atividade => atividade.id_idoso)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Alimentacao>()
+                .HasOne(alimentacao => alimentacao.Idoso)
+                .WithMany()
+                .HasForeignKey(alimentacao => alimentacao.Id_idoso)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Lembrete_Consulta>()
+                .HasOne(lembrete => lembrete.Idoso)
+                .WithMany()
+                .HasForeignKey(lembrete => lembrete.Id_idoso)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Medicamentos>()
+                .HasOne(medicamento => medicamento.Idoso)
+                .WithMany()
+                .HasForeignKey(medicamento => medicamento.Id_idoso)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Consulta_Medicamento>()
+                .HasOne(consulta => consulta.lembrete_Consulta)
+                .WithMany()
+                .HasForeignKey(consulta => consulta.id_lembrete_consulta)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Consulta_Medicamento>()
+                .HasOne(consulta => consulta.medicamentos)
+                .WithMany()
+                .HasForeignKey(consulta => consulta.id_Medicamentos)
+                .OnDelete(DeleteBehavior.NoAction);
+        }
+
+        private static string ParaValorBanco(TipoAlimentacao tipo) => tipo switch
+        {
+            TipoAlimentacao.cafe_da_manha => "Cafe da manha",
+            TipoAlimentacao.almoco => "Almoco",
+            TipoAlimentacao.lache_da_tarde => "Lanche de tarde",
+            TipoAlimentacao.jantar => "Jantar",
+            _ => throw new ArgumentOutOfRangeException(nameof(tipo), tipo, null)
+        };
+
+        private static TipoAlimentacao DeValorBanco(string valor) => valor switch
+        {
+            "Cafe da manha" => TipoAlimentacao.cafe_da_manha,
+            "Almoco" => TipoAlimentacao.almoco,
+            "Lanche de tarde" => TipoAlimentacao.lache_da_tarde,
+            "Jantar" => TipoAlimentacao.jantar,
+            _ => throw new ArgumentOutOfRangeException(nameof(valor), valor, null)
+        };
+    }
+}

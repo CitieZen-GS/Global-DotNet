@@ -1,0 +1,23 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Ajudante_Familiar_Global.Infrastruture.Data
+{
+    public class AppDbContext : DbContext
+    {
+        public DbSet<Alimentacao> Alimentacoes { get; set; } = null!;
+        public DbSet<Atividades> Atividades { get; set; } = null!;
+        public DbSet<Perfil> Perfis { get; set; } = null!;
+        public DbSet<Idoso> Idosos { get; set; } = null!;
+        public DbSet<Lembrete_Consulta> LembretesConsulta { get; set; } = null!;
+        public DbSet<Medicamentos> Medicamentos { get; set; } = null!;
+        public DbSet<Cargo> Cargos { get; set; } = null!;
+        public DbSet<Consulta_Medicamento> ConsultasMedicamento { get; set; } = null!;
+        public DbSet<Parente> Parentes { get; set; } = null!;
+        public DbSet<Cuidador> Cuidadores { get; set; } = null!;
+        public DbSet<Doencas> Doencas { get; set; } = null!;
+    }
+}

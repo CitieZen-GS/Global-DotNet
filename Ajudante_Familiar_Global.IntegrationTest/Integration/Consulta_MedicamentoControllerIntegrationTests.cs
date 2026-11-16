@@ -1,0 +1,5 @@
+namespace Ajudante_Familiar_Global.IntegrationTests.Integration;
+
+public class Consulta_MedicamentoControllerIntegrationTests
+{
+}
