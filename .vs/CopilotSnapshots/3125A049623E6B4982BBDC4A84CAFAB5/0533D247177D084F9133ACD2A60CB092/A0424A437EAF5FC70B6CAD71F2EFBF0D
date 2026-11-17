@@ -1,0 +1,70 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace Ajudante_Familiar_Global.Infrastruture.Repository
+{
+    public class AtividadesRepository : IAtividadesRepository
+    {
+        private readonly AppDbContext _context;
+
+        public AtividadesRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Atividades> CreateAtividadesAsync(Atividades atividades)
+        {
+            await _context.Atividades.AddAsync(atividades);
+            await _context.SaveChangesAsync();
+            return atividades;
+        }
+
+        public async Task<Atividades> DeleteAtividadesAsync(int id_atividade)
+        {
+            var atividades = await _context.Atividades.SingleOrDefaultAsync(item => item.Id_atividade == id_atividade);
+            if (atividades == null)
+            {
+                throw new KeyNotFoundException($"Id atividade com id {id_atividade} não foi encontrado");
+            }
+            _context.Atividades.Remove(atividades);
+            await _context.SaveChangesAsync();
+            return atividades;
+        }
+
+        public async Task<Atividades> GetAtividadesAsync(int id_atividade)
+        {
+            var existeAtividades = await _context.Atividades.SingleOrDefaultAsync(item => item.Id_atividade == id_atividade);
+            if (existeAtividades == null)
+            {
+                throw new KeyNotFoundException($"Atividade com id {id_atividade} não encontrado.");
+            }
+            return existeAtividades;
+        }
+
+        public async Task<IEnumerable<Atividades>> GetAllAtividadesAsync()
+        {
+            return await _context.Atividades.ToListAsync();
+        }
+
+        public async Task<Atividades> UpdateAtividadesAsync(int id_atividade, Atividades atividades)
+        {
+            var existeAtividades = await _context.Atividades.SingleOrDefaultAsync(item => item.Id_atividade == id_atividade);
+            if (existeAtividades == null)
+            {
+                throw new KeyNotFoundException($"Atividade com id {id_atividade} não foi encontrada.");
+            }
+
+            existeAtividades.Nm_atividade = atividades.Nm_atividade;
+            existeAtividades.Ds_atividade = atividades.Ds_atividade;
+            existeAtividades.Dt_atividade = atividades.Dt_atividade;
+            existeAtividades.Hr_atividade_inicio = atividades.Hr_atividade_inicio;
+            existeAtividades.Hr_atividade_fim = atividades.Hr_atividade_fim;
+
+            await _context.SaveChangesAsync();
+
+            return existeAtividades;
+        }
+    }
+}

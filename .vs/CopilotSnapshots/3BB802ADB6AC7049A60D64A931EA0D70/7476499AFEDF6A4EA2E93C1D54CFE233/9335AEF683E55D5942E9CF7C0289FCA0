@@ -1,0 +1,146 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Ajudante_Familiar_Global.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Produces("application/json")]
+    public class Lembrete_ConsultaController : ControllerBase
+    {
+        private readonly ILembrete_ConsultaService _Lembrete_ConsultaService;
+        private readonly ILogger<Lembrete_ConsultaController> _logger;
+
+        public Lembrete_ConsultaController(ILembrete_ConsultaService lembrete_ConsultaService, ILogger<Lembrete_ConsultaController> logger)
+        {
+            _Lembrete_ConsultaService = lembrete_ConsultaService;
+            _logger = logger;
+        }
+
+        /// <summary>
+        /// Carregar todos os lembretes de consulta presentes no banco
+        /// </summary>
+        /// <response code="200">Busca feita com sucesso</response>
+        /// <response code="500">Erro interno do servidor</response>
+        /// <returns>Lista de lembretes de consulta</returns>
+        [HttpGet]
+        [Route("[controller]/lembrete_consulta")]
+        [ProducesResponseType(typeof(IEnumerable<Lembrete_Consulta>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IEnumerable<Lembrete_Consulta>>> GetAllLembrete_Consulta()
+        {
+            try
+            {
+                var relatorioLembrete_Consulta = await _Lembrete_ConsultaService.GetAllLembrete_ConsultaAsync();
+                return Ok(relatorioLembrete_Consulta);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao buscar todos os lembretes de consulta");
+                return StatusCode(500, new { mensagem = "Erro interno do servidor" });
+            }
+        }
+
+        /// <summary>
+        /// Carregar o lembrete de consulta por meio do id
+        /// </summary>
+        /// <response code="200">Busca feita com sucesso</response>
+        /// <response code="404">Id não encontrado</response>
+        /// <param name="id_lembrete_consulta">Id do lembrete</param>
+        /// <returns>Lembrete encontrado</returns>
+        [HttpGet]
+        [Route("[controller]/lembrete_consulta/{id_lembrete_consulta:int}")]
+        [ProducesResponseType(typeof(Lembrete_Consulta), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Lembrete_Consulta>> GetLembrete_Consulta(int id_lembrete_consulta)
+        {
+            try
+            {
+                var lembrete_Consulta = await _Lembrete_ConsultaService.GetLembrete_ConsultaAsync(id_lembrete_consulta);
+                return Ok(lembrete_Consulta);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                _logger.LogWarning("Lembrete de consulta {Id} não encontrado", id_lembrete_consulta);
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Criação de lembrete de consulta
+        /// </summary>
+        /// <param name="lembrete_Consulta">Dados do novo lembrete</param>
+        /// <response code="201">Lembrete criado com sucesso</response>
+        /// <response code="400">Erro na validação</response>
+        /// <response code="404">Idoso não encontrado</response>
+        /// <returns>Lembrete criado</returns>
+        [HttpPost]
+        [Route("[controller]/lembrete_consulta/criar")]
+        [ProducesResponseType(typeof(Lembrete_Consulta), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Lembrete_Consulta>> PostLembrete_Consulta([FromBody] Lembrete_Consulta lembrete_Consulta)
+        {
+            try
+            {
+                var criado = await _Lembrete_ConsultaService.CreateLembrete_ConsultaAsync(lembrete_Consulta);
+                return CreatedAtAction(nameof(GetLembrete_Consulta), new { id_lembrete_consulta = criado.id_lembrete_consulta }, criado);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Atualizar dados do lembrete de consulta
+        /// </summary>
+        /// <param name="id_lembrete_consulta">Id do lembrete na URL</param>
+        /// <param name="lembrete_Consulta">Novos dados do lembrete</param>
+        /// <response code="200">Lembrete atualizado</response>
+        /// <response code="400">Erro na requisição</response>
+        /// <response code="404">Lembrete ou idoso não encontrado</response>
+        /// <returns>Lembrete atualizado</returns>
+        [HttpPut]
+        [Route("[controller]/lembrete_consulta/atualiza/{id_lembrete_consulta:int}")]
+        [ProducesResponseType(typeof(Lembrete_Consulta), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Lembrete_Consulta>> PutLembrete_Consulta(int id_lembrete_consulta, [FromBody] Lembrete_Consulta lembrete_Consulta)
+        {
+            try
+            {
+                var atualizada = await _Lembrete_ConsultaService.UpdateLembrete_ConsultaAsync(id_lembrete_consulta, lembrete_Consulta);
+                return Ok(atualizada);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Remove um lembrete de consulta do sistema pelo seu id
+        /// </summary>
+        /// <param name="id_lembrete_consulta">Id do lembrete a ser deletado</param>
+        /// <response code="204">Lembrete removido com sucesso</response>
+        /// <response code="404">Lembrete não encontrado</response>
+        [HttpDelete]
+        [Route("[controller]/lembrete_consulta/deleta/{id_lembrete_consulta:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteLembrete_Consulta(int id_lembrete_consulta)
+        {
+            try
+            {
+                await _Lembrete_ConsultaService.DeleteLembrete_ConsultaAsync(id_lembrete_consulta);
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+    }
+}

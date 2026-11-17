@@ -1,5 +1,5 @@
 using Ajudante_Familiar_Global.Domain.Entities;
-using Ajudante_Familiar_Global.Domain.Interfaces;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
 using Ajudante_Familiar_Global.Infrastruture.Data;
 using Microsoft.EntityFrameworkCore;
 

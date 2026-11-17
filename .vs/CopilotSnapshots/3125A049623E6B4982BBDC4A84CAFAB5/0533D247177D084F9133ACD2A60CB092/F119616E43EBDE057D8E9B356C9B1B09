@@ -1,0 +1,72 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace Ajudante_Familiar_Global.Infrastruture.Repository
+{
+    public class MedicamentosRepository : IMedicamentosRepository
+    {
+        private readonly AppDbContext _context;
+
+        public MedicamentosRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Medicamentos> CreateMedicamentosAsync(Medicamentos medicamentos)
+        {
+            await _context.Medicamentos.AddAsync(medicamentos);
+            await _context.SaveChangesAsync();
+            return medicamentos;
+        }
+
+        public async Task<Medicamentos> DeleteMedicamentosAsync(int id_medicamentos)
+        {
+            var medicamentos = await _context.Medicamentos.FindAsync(id_medicamentos);
+            if (medicamentos == null)
+            {
+                throw new KeyNotFoundException($"Id medicamentos com id {id_medicamentos} não foi encontrado");
+            }
+            _context.Medicamentos.Remove(medicamentos);
+            await _context.SaveChangesAsync();
+            return medicamentos;
+        }
+
+        public async Task<Medicamentos> GetMedicamentosAsync(int id_medicamentos)
+        {
+            var existeMedicamentos = await _context.Medicamentos.FindAsync(id_medicamentos);
+            if (existeMedicamentos == null)
+            {
+                throw new KeyNotFoundException($"Medicamento com id {id_medicamentos} não encontrado.");
+            }
+            return existeMedicamentos;
+        }
+
+        public async Task<IEnumerable<Medicamentos>> GetAllMedicamentosAsync()
+        {
+            return await _context.Medicamentos.ToListAsync();
+        }
+
+        public async Task<Medicamentos> UpdateMedicamentosAsync(int id_medicamentos, Medicamentos medicamentos)
+        {
+            var existeMedicamentos = await _context.Medicamentos.FindAsync(id_medicamentos);
+            if (existeMedicamentos == null)
+            {
+                throw new KeyNotFoundException($"Medicamento com id {id_medicamentos} não foi encontrado.");
+            }
+
+            existeMedicamentos.Nm_medicamentos = medicamentos.Nm_medicamentos;
+            existeMedicamentos.Via_administracao = medicamentos.Via_administracao;
+            existeMedicamentos.Vl_frquencia = medicamentos.Vl_frquencia;
+            existeMedicamentos.Ds_instrucao_uso = medicamentos.Ds_instrucao_uso;
+            existeMedicamentos.Dt_medicamento = medicamentos.Dt_medicamento;
+            existeMedicamentos.Hr_medicamento = medicamentos.Hr_medicamento;
+            existeMedicamentos.Id_idoso = medicamentos.Id_idoso;
+
+            await _context.SaveChangesAsync();
+
+            return existeMedicamentos;
+        }
+    }
+}

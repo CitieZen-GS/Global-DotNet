@@ -1,0 +1,70 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.Extensions.Logging;
+
+namespace Ajudante_Familiar_Global.Application.Services
+{
+    public class PerfilService : IPerfilService
+    {
+        private readonly IPerfilRepository _perfil;
+        private readonly ICargoRepository _cargo;
+        private readonly ILogger<PerfilService> _logger;
+
+        public PerfilService(IPerfilRepository perfil, ICargoRepository cargo, ILogger<PerfilService> logger)
+        {
+            _perfil = perfil;
+            _logger = logger;
+            _cargo = cargo;
+        }
+
+        public async Task<Perfil> CreatePerfilAsync(Perfil perfil)
+        {
+            _logger.LogInformation("Perfil iniciado");
+            var existeCargo = await _cargo.GetCargoAsync(perfil.id_cargo);
+
+            if (existeCargo == null)
+            {
+                _logger.LogWarning("Sem o id cargo");
+                throw new KeyNotFoundException("Cargo não encontrado para fazer a conexao");
+            }
+
+            return await _perfil.CreatePerfilAsync(perfil);
+        }
+
+        public async Task<Perfil> DeletePerfilAsync(int id_perfil)
+        {
+            _logger.LogInformation("Excluido perfil");
+
+            var deletado = await _perfil.DeletePerfilAsync(id_perfil);
+            return deletado;
+        }
+
+        public async Task<Perfil> GetPerfilAsync(int id_perfil)
+        {
+            _logger.LogInformation("Buscar perfil");
+            return await _perfil.GetPerfilAsync(id_perfil);
+        }
+
+        public async Task<IEnumerable<Perfil>> GetAllPerfilAsync()
+        {
+            _logger.LogInformation("Listando perfis");
+
+            return await _perfil.GetAllPerfilAsync();
+        }
+
+        public async Task<Perfil> UpdatePerfilAsync(int id_perfil, Perfil perfil)
+        {
+            _logger.LogInformation("Atualizando perfil");
+
+            var existeCargo = await _cargo.GetCargoAsync(perfil.id_cargo);
+
+            if (existeCargo == null)
+            {
+                _logger.LogWarning("Sem o id cargo");
+                throw new KeyNotFoundException("Cargo não encontrado para fazer a conexao");
+            }
+            return await _perfil.UpdatePerfilAsync(id_perfil, perfil);
+        }
+    }
+}

@@ -1,0 +1,67 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace Ajudante_Familiar_Global.Infrastruture.Repository
+{
+    public class Consulta_MedicamentoRepository : IConsulta_MedicamentoRepository
+    {
+        private readonly AppDbContext _context;
+
+        public Consulta_MedicamentoRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Consulta_Medicamento> CreateConsulta_MedicamentoAsync(Consulta_Medicamento consulta_Medicamento)
+        {
+            await _context.ConsultasMedicamento.AddAsync(consulta_Medicamento);
+            await _context.SaveChangesAsync();
+            return consulta_Medicamento;
+        }
+
+        public async Task<Consulta_Medicamento> DeleteConsulta_MedicamentoAsync(int id_consulta_medicamento)
+        {
+            var consulta_Medicamento = await _context.ConsultasMedicamento.FindAsync(id_consulta_medicamento);
+            if (consulta_Medicamento == null)
+            {
+                throw new KeyNotFoundException($"Id consulta medicamento com id {id_consulta_medicamento} não foi encontrado");
+            }
+            _context.ConsultasMedicamento.Remove(consulta_Medicamento);
+            await _context.SaveChangesAsync();
+            return consulta_Medicamento;
+        }
+
+        public async Task<Consulta_Medicamento> GetConsulta_MedicamentoAsync(int id_consulta_medicamento)
+        {
+            var existeConsulta_Medicamento = await _context.ConsultasMedicamento.FindAsync(id_consulta_medicamento);
+            if (existeConsulta_Medicamento == null)
+            {
+                throw new KeyNotFoundException($"Consulta medicamento com id {id_consulta_medicamento} não encontrado.");
+            }
+            return existeConsulta_Medicamento;
+        }
+
+        public async Task<IEnumerable<Consulta_Medicamento>> GetAllConsulta_MedicamentoAsync()
+        {
+            return await _context.ConsultasMedicamento.ToListAsync();
+        }
+
+        public async Task<Consulta_Medicamento> UpdateConsulta_MedicamentoAsync(int id_consulta_medicamento, Consulta_Medicamento consulta_Medicamento)
+        {
+            var existeConsulta_Medicamento = await _context.ConsultasMedicamento.FindAsync(id_consulta_medicamento);
+            if (existeConsulta_Medicamento == null)
+            {
+                throw new KeyNotFoundException($"Consulta medicamento com id {id_consulta_medicamento} não foi encontrado.");
+            }
+
+            existeConsulta_Medicamento.id_lembrete_consulta = consulta_Medicamento.id_lembrete_consulta;
+            existeConsulta_Medicamento.id_Medicamentos = consulta_Medicamento.id_Medicamentos;
+
+            await _context.SaveChangesAsync();
+
+            return existeConsulta_Medicamento;
+        }
+    }
+}

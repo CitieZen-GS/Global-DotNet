@@ -1,0 +1,70 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.Extensions.Logging;
+
+namespace Ajudante_Familiar_Global.Application.Services
+{
+    public class CuidadorService : ICuidadorService
+    {
+        private readonly ICuidadorRepository _cuidador;
+        private readonly IPerfilRepository _perfil;
+        private readonly ILogger<CuidadorService> _logger;
+
+        public CuidadorService(ICuidadorRepository cuidador, IPerfilRepository perfil, ILogger<CuidadorService> logger)
+        {
+            _cuidador = cuidador;
+            _logger = logger;
+            _perfil = perfil;
+        }
+
+        public async Task<Cuidador> CreateCuidadorAsync(Cuidador cuidador)
+        {
+            _logger.LogInformation("Cuidador iniciado");
+            var existePerfil = await _perfil.GetPerfilAsync(cuidador.Id_perfil);
+
+            if (existePerfil == null)
+            {
+                _logger.LogWarning("Sem o id perfil");
+                throw new KeyNotFoundException("Perfil não encontrado para fazer a conexao");
+            }
+
+            return await _cuidador.CreateCuidadorAsync(cuidador);
+        }
+
+        public async Task<Cuidador> DeleteCuidadorAsync(int id_cuidador)
+        {
+            _logger.LogInformation("Excluido cuidador");
+
+            var deletado = await _cuidador.DeleteCuidadorAsync(id_cuidador);
+            return deletado;
+        }
+
+        public async Task<Cuidador> GetCuidadorAsync(int id_cuidador)
+        {
+            _logger.LogInformation("Buscar cuidador");
+            return await _cuidador.GetCuidadorAsync(id_cuidador);
+        }
+
+        public async Task<IEnumerable<Cuidador>> GetAllCuidadorAsync()
+        {
+            _logger.LogInformation("Listando cuidadores");
+
+            return await _cuidador.GetAllCuidadorAsync();
+        }
+
+        public async Task<Cuidador> UpdateCuidadorAsync(int id_cuidador, Cuidador cuidador)
+        {
+            _logger.LogInformation("Atualizando cuidador");
+
+            var existePerfil = await _perfil.GetPerfilAsync(cuidador.Id_perfil);
+
+            if (existePerfil == null)
+            {
+                _logger.LogWarning("Sem o id perfil");
+                throw new KeyNotFoundException("Perfil não encontrado para fazer a conexao");
+            }
+            return await _cuidador.UpdateCuidadorAsync(id_cuidador, cuidador);
+        }
+    }
+}

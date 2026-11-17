@@ -1,0 +1,29 @@
+﻿
+using Ajudante_Familiar_Global.Application;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateSlimBuilder(args);
+
+// Conexão com Oracle
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseOracle(
+        builder.Configuration.GetConnectionString("OracleConnection")
+    ));
+
+builder.Services.AddApplicationServices();
+builder.Services.AddControllers();
+
+// Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Documentação Swagger
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.MapGet("/", () => "Ajudante Familiar Global - API funcionando!");
+
+app.Run();

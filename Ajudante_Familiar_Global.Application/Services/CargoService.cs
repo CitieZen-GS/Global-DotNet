@@ -1,6 +1,52 @@
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.Extensions.Logging;
+
 namespace Ajudante_Familiar_Global.Application.Services
 {
-    public class CargoService
+    public class CargoService : ICargoService
     {
+        private readonly ICargoRepository _cargo;
+        private readonly ILogger<CargoService> _logger;
+
+        public CargoService(ICargoRepository cargo, ILogger<CargoService> logger)
+        {
+            _cargo = cargo;
+            _logger = logger;
+        }
+
+        public async Task<Cargo> CreateCargoAsync(Cargo cargo)
+        {
+            _logger.LogInformation("Cargo iniciado");
+            return await _cargo.CreateCargoAsync(cargo);
+        }
+
+        public async Task<Cargo> DeleteCargoAsync(int id_cargo)
+        {
+            _logger.LogInformation("Excluido cargo");
+
+            var deletado = await _cargo.DeleteCargoAsync(id_cargo);
+            return deletado;
+        }
+
+        public async Task<Cargo> GetCargoAsync(int id_cargo)
+        {
+            _logger.LogInformation("Buscar cargo");
+            return await _cargo.GetCargoAsync(id_cargo);
+        }
+
+        public async Task<IEnumerable<Cargo>> GetAllCargoAsync()
+        {
+            _logger.LogInformation("Listando cargos");
+
+            return await _cargo.GetAllCargoAsync();
+        }
+
+        public async Task<Cargo> UpdateCargoAsync(int id_cargo, Cargo cargo)
+        {
+            _logger.LogInformation("Atualizando cargo");
+            return await _cargo.UpdateCargoAsync(id_cargo, cargo);
+        }
     }
 }

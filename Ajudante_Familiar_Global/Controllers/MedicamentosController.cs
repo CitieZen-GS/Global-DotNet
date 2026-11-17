@@ -1,6 +1,146 @@
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.AspNetCore.Mvc;
+
 namespace Ajudante_Familiar_Global.Controllers
 {
-    public class MedicamentosController
+    [ApiController]
+    [Route("api")]
+    [Produces("application/json")]
+    public class MedicamentosController : ControllerBase
     {
+        private readonly IMedicamentosService _MedicamentosService;
+        private readonly ILogger<MedicamentosController> _logger;
+
+        public MedicamentosController(IMedicamentosService medicamentosService, ILogger<MedicamentosController> logger)
+        {
+            _MedicamentosService = medicamentosService;
+            _logger = logger;
+        }
+
+        /// <summary>
+        /// Carregar todos os medicamentos presentes no banco
+        /// </summary>
+        /// <response code="200">Busca feita com sucesso</response>
+        /// <response code="500">Erro interno do servidor</response>
+        /// <returns>Lista de medicamentos</returns>
+        [HttpGet]
+        [Route("[controller]/medicamentos")]
+        [ProducesResponseType(typeof(IEnumerable<Medicamentos>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IEnumerable<Medicamentos>>> GetAllMedicamentos()
+        {
+            try
+            {
+                var relatorioMedicamentos = await _MedicamentosService.GetAllMedicamentosAsync();
+                return Ok(relatorioMedicamentos);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao buscar todos os medicamentos");
+                return StatusCode(500, new { mensagem = "Erro interno do servidor" });
+            }
+        }
+
+        /// <summary>
+        /// Carregar o medicamento por meio do id
+        /// </summary>
+        /// <response code="200">Busca feita com sucesso</response>
+        /// <response code="404">Id não encontrado</response>
+        /// <param name="id_medicamentos">Id do medicamento</param>
+        /// <returns>Medicamento encontrado</returns>
+        [HttpGet]
+        [Route("[controller]/medicamentos/{id_medicamentos:int}")]
+        [ProducesResponseType(typeof(Medicamentos), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Medicamentos>> GetMedicamentos(int id_medicamentos)
+        {
+            try
+            {
+                var medicamentos = await _MedicamentosService.GetMedicamentosAsync(id_medicamentos);
+                return Ok(medicamentos);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                _logger.LogWarning("Medicamento {Id} não encontrado", id_medicamentos);
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Criação de medicamento
+        /// </summary>
+        /// <param name="medicamentos">Dados do novo medicamento</param>
+        /// <response code="201">Medicamento criado com sucesso</response>
+        /// <response code="400">Erro na validação</response>
+        /// <response code="404">Idoso não encontrado</response>
+        /// <returns>Medicamento criado</returns>
+        [HttpPost]
+        [Route("[controller]/medicamentos/criar")]
+        [ProducesResponseType(typeof(Medicamentos), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Medicamentos>> PostMedicamentos([FromBody] Medicamentos medicamentos)
+        {
+            try
+            {
+                var criado = await _MedicamentosService.CreateMedicamentosAsync(medicamentos);
+                return CreatedAtAction(nameof(GetMedicamentos), new { id_medicamentos = criado.id_medicamentos }, criado);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Atualizar dados do medicamento
+        /// </summary>
+        /// <param name="id_medicamentos">Id do medicamento na URL</param>
+        /// <param name="medicamentos">Novos dados do medicamento</param>
+        /// <response code="200">Medicamento atualizado</response>
+        /// <response code="400">Erro na requisição</response>
+        /// <response code="404">Medicamento ou idoso não encontrado</response>
+        /// <returns>Medicamento atualizado</returns>
+        [HttpPut]
+        [Route("[controller]/medicamentos/atualiza/{id_medicamentos:int}")]
+        [ProducesResponseType(typeof(Medicamentos), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Medicamentos>> PutMedicamentos(int id_medicamentos, [FromBody] Medicamentos medicamentos)
+        {
+            try
+            {
+                var atualizada = await _MedicamentosService.UpdateMedicamentosAsync(id_medicamentos, medicamentos);
+                return Ok(atualizada);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Remove um medicamento do sistema pelo seu id
+        /// </summary>
+        /// <param name="id_medicamentos">Id do medicamento a ser deletado</param>
+        /// <response code="204">Medicamento removido com sucesso</response>
+        /// <response code="404">Medicamento não encontrado</response>
+        [HttpDelete]
+        [Route("[controller]/medicamentos/deleta/{id_medicamentos:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteMedicamentos(int id_medicamentos)
+        {
+            try
+            {
+                await _MedicamentosService.DeleteMedicamentosAsync(id_medicamentos);
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
     }
 }

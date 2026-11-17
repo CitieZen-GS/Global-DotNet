@@ -1,0 +1,89 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.Extensions.Logging;
+
+namespace Ajudante_Familiar_Global.Application.Services
+{
+    public class Consulta_MedicamentoService : IConsulta_MedicamentoService
+    {
+        private readonly IConsulta_MedicamentoRepository _consulta_Medicamento;
+        private readonly ILembrete_ConsultaRepository _lembrete_Consulta;
+        private readonly IMedicamentosRepository _medicamentos;
+        private readonly ILogger<Consulta_MedicamentoService> _logger;
+
+        public Consulta_MedicamentoService(IConsulta_MedicamentoRepository consulta_Medicamento, ILembrete_ConsultaRepository lembreteConsulta, IMedicamentosRepository medicamentos, ILogger<Consulta_MedicamentoService> logger)
+        {
+            _consulta_Medicamento = consulta_Medicamento;
+            _lembrete_Consulta = lembreteConsulta;
+            _medicamentos = medicamentos;
+            _logger = logger;
+        }
+
+        public async Task<Consulta_Medicamento> CreateConsulta_MedicamentoAsync(Consulta_Medicamento consulta_Medicamento)
+        {
+            _logger.LogInformation("Consulta medicamento iniciado");
+            var existeLembreteConsulta = await _lembrete_Consulta.GetLembrete_ConsultaAsync(consulta_Medicamento.id_lembrete_consulta);
+
+            if (existeLembreteConsulta == null)
+            {
+                _logger.LogWarning("Sem o id lembrete consulta");
+                throw new KeyNotFoundException("Lembrete de consulta não encontrado para fazer a conexao");
+            }
+
+            var existeMedicamento = await _medicamentosRepository.GetMedicamentosAsync(consulta_Medicamento.id_Medicamentos);
+
+            if (existeMedicamento == null)
+            {
+                _logger.LogWarning("Sem o id medicamentos");
+                throw new KeyNotFoundException("Medicamento não encontrado para fazer a conexao");
+            }
+
+            return await _consulta_Medicamento.CreateConsulta_MedicamentoAsync(consulta_Medicamento);
+        }
+
+        public async Task<Consulta_Medicamento> DeleteConsulta_MedicamentoAsync(int id_consulta_medicamento)
+        {
+            _logger.LogInformation("Excluido consulta medicamento");
+
+            var deletado = await _consulta_Medicamento.DeleteConsulta_MedicamentoAsync(id_consulta_medicamento);
+            return deletado;
+        }
+
+        public async Task<Consulta_Medicamento> GetConsulta_MedicamentoAsync(int id_consulta_medicamento)
+        {
+            _logger.LogInformation("Buscar consulta medicamento");
+            return await _consulta_Medicamento.GetConsulta_MedicamentoAsync(id_consulta_medicamento);
+        }
+
+        public async Task<IEnumerable<Consulta_Medicamento>> GetAllConsulta_MedicamentoAsync()
+        {
+            _logger.LogInformation("Listando consultas medicamento");
+
+            return await _consulta_Medicamento.GetAllConsulta_MedicamentoAsync();
+        }
+
+        public async Task<Consulta_Medicamento> UpdateConsulta_MedicamentoAsync(int id_consulta_medicamento, Consulta_Medicamento consulta_Medicamento)
+        {
+            _logger.LogInformation("Atualizando consulta medicamento");
+
+            var existeLembreteConsulta = await _lembrete_Consulta.GetLembrete_ConsultaAsync(consulta_Medicamento.id_lembrete_consulta);
+
+            if (existeLembreteConsulta == null)
+            {
+                _logger.LogWarning("Sem o id lembrete consulta");
+                throw new KeyNotFoundException("Lembrete de consulta não encontrado para fazer a conexao");
+            }
+
+            var existeMedicamento = await _medicamentos.GetMedicamentosAsync(consulta_Medicamento.id_Medicamentos);
+
+            if (existeMedicamento == null)
+            {
+                _logger.LogWarning("Sem o id medicamentos");
+                throw new KeyNotFoundException("Medicamento não encontrado para fazer a conexao");
+            }
+
+            return await _consulta_Medicamento.UpdateConsulta_MedicamentoAsync(id_consulta_medicamento, consulta_Medicamento);
+        }
+    }
+}

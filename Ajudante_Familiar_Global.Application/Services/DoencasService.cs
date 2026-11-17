@@ -1,6 +1,70 @@
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.Extensions.Logging;
+
 namespace Ajudante_Familiar_Global.Application.Services
 {
-    public class DoencasService
+    public class DoencasService : IDoencasService
     {
+        private readonly IDoencasRepository _doencas;
+        private readonly IIdosoRepository _idoso;
+        private readonly ILogger<DoencasService> _logger;
+
+        public DoencasService(IDoencasRepository doencas, IIdosoRepository idoso, ILogger<DoencasService> logger)
+        {
+            _doencas = doencas;
+            _logger = logger;
+            _idoso = idoso;
+        }
+
+        public async Task<Doencas> CreateDoencasAsync(Doencas doencas)
+        {
+            _logger.LogInformation("Doencas iniciado");
+            var existeIdoso = await _idoso.GetIdosoAsync(doencas.Id_idoso);
+
+            if (existeIdoso == null)
+            {
+                _logger.LogWarning("Sem o id idoso");
+                throw new KeyNotFoundException("Idoso não encontrado para fazer a conexao");
+            }
+
+            return await _doencas.CreateDoencasAsync(doencas);
+        }
+
+        public async Task<Doencas> DeleteDoencasAsync(int id_doenca)
+        {
+            _logger.LogInformation("Excluido doencas");
+
+            var deletado = await _doencas.DeleteDoencasAsync(id_doenca);
+            return deletado;
+        }
+
+        public async Task<Doencas> GetDoencasAsync(int id_doenca)
+        {
+            _logger.LogInformation("Buscar doencas");
+            return await _doencas.GetDoencasAsync(id_doenca);
+        }
+
+        public async Task<IEnumerable<Doencas>> GetAllDoencasAsync()
+        {
+            _logger.LogInformation("Listando doencas");
+
+            return await _doencas.GetAllDoencasAsync();
+        }
+
+        public async Task<Doencas> UpdateDoencasAsync(int id_doenca, Doencas doencas)
+        {
+            _logger.LogInformation("Atualizando doencas");
+
+            var existeIdoso = await _idoso.GetIdosoAsync(doencas.Id_idoso);
+
+            if (existeIdoso == null)
+            {
+                _logger.LogWarning("Sem o id idoso");
+                throw new KeyNotFoundException("Idoso não encontrado para fazer a conexao");
+            }
+            return await _doencas.UpdateDoencasAsync(id_doenca, doencas);
+        }
     }
 }

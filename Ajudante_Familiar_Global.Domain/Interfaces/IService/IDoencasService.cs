@@ -1,0 +1,15 @@
+using Ajudante_Familiar_Global.Domain.Entities;
+
+namespace Ajudante_Familiar_Global.Domain.Interfaces.IService
+{
+    public interface IDoencasService
+    {
+        Task<Doencas> CreateDoencasAsync(Doencas doencas);
+
+        Task<Doencas> GetDoencasAsync(int id_doenca);
+        Task<IEnumerable<Doencas>> GetAllDoencasAsync();
+
+        Task<Doencas> DeleteDoencasAsync(int id_doenca);
+        Task<Doencas> UpdateDoencasAsync(int id_doenca, Doencas doencas);
+    }
+}

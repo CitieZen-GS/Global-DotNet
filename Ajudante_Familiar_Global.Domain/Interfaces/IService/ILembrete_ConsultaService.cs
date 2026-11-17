@@ -1,0 +1,15 @@
+using Ajudante_Familiar_Global.Domain.Entities;
+
+namespace Ajudante_Familiar_Global.Domain.Interfaces.IService
+{
+    public interface ILembrete_ConsultaService
+    {
+        Task<Lembrete_Consulta> CreateLembrete_ConsultaAsync(Lembrete_Consulta lembrete_Consulta);
+
+        Task<Lembrete_Consulta> GetLembrete_ConsultaAsync(int id_lembrete_consulta);
+        Task<IEnumerable<Lembrete_Consulta>> GetAllLembrete_ConsultaAsync();
+
+        Task<Lembrete_Consulta> DeleteLembrete_ConsultaAsync(int id_lembrete_consulta);
+        Task<Lembrete_Consulta> UpdateLembrete_ConsultaAsync(int id_lembrete_consulta, Lembrete_Consulta lembrete_Consulta);
+    }
+}

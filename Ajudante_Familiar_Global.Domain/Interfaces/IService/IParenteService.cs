@@ -1,0 +1,15 @@
+using Ajudante_Familiar_Global.Domain.Entities;
+
+namespace Ajudante_Familiar_Global.Domain.Interfaces.IService
+{
+    public interface IParenteService
+    {
+        Task<Parente> CreateParenteAsync(Parente parente);
+
+        Task<Parente> GetParenteAsync(int id_parente);
+        Task<IEnumerable<Parente>> GetAllParenteAsync();
+
+        Task<Parente> DeleteParenteAsync(int id_parente);
+        Task<Parente> UpdateParenteAsync(int id_parente, Parente parente);
+    }
+}

@@ -1,0 +1,20 @@
+﻿using Ajudante_Familiar_Global.Application.Services;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Text;
+
+namespace Ajudante_Familiar_Global.Application
+{
+    public static class DependencyInjection
+    {
+        public static IServiceCollection IServiceCollection(this IServiceCollection services)
+        {
+            services.AddScoped<IAlimentacaoService, AlimentacaoService>();
+            services.AddScoped<IAtividadesService, AtividadesService>();
+
+        }
+    }
+}

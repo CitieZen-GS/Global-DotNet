@@ -1,0 +1,198 @@
+﻿
+using Ajudante_Familiar_Global.Application;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using IdempotentAPI.Cache.DistributedCache.Extensions.DependencyInjection;
+using IdempotentAPI.Extensions.DependencyInjection;
+using IdempotentAPI.Filters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
+using System.Text;
+using System.Threading.RateLimiting;
+
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .Enrich.FromLogContext()
+    .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {SourceContext} - {Message:lj}{NewLine}{Exception}")
+    .CreateLogger();
+try
+{
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    // Banco de dados Oracle
+    var connectionString = builder.Configuration.GetConnectionString("OracleConnection");
+    if (string.IsNullOrWhiteSpace(connectionString))
+    {
+        throw new InvalidOperationException("A connection string OracleConnection não está configurada.");
+    }
+
+    builder.Services.AddDbContext<AppDbContext>(
+        options => options.UseOracle(connectionString));
+
+    // Serviços da aplicação
+    builder.Services.AddApplicationServices();
+
+    // Controllers e idempotência
+    builder.Services.AddDistributedMemoryCache();
+    builder.Services.AddIdempotentAPIUsingDistributedCache();
+    builder.Services.AddIdempotentAPI();
+    builder.Services.AddControllers();
+
+    // Autenticação JWT
+    var jwtKey = builder.Configuration["Jwt:Key"];
+    var jwtIssuer = builder.Configuration["Jwt:Issuer"];
+    var jwtAudience = builder.Configuration["Jwt:Audience"];
+
+    builder.Services
+        .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+                ValidateIssuer = true,
+                ValidIssuer = jwtIssuer,
+                ValidateAudience = true,
+                ValidAudience = jwtAudience,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
+        });
+
+    builder.Services.AddAuthorization(options =>
+    {
+        options.FallbackPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
+            .RequireAuthenticatedUser()
+            .Build();
+    });
+
+    // Até 100 requisições por minuto por endereço IP. Excedido o limite, retorna HTTP 429.
+    builder.Services.AddRateLimiter(options =>
+    {
+        options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+        options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+            RateLimitPartition.GetFixedWindowLimiter(
+                partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "ip-desconhecido",
+                factory: _ => new FixedWindowRateLimiterOptions
+                {
+                    PermitLimit = 100,
+                    Window = TimeSpan.FromMinutes(1),
+                    QueueLimit = 0,
+                    AutoReplenishment = true
+                }));
+    });
+
+    // Health checks da API e do banco Oracle
+    builder.Services.AddHealthChecks()
+        .AddCheck("self", () => Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult.Healthy(), tags: new[] { "live" })
+        .AddOracle(connectionString, name: "oracle", tags: new[] { "ready" });
+
+    // Swagger
+    builder.Services.AddEndpointsApiExplorer();
+
+    builder.Services.AddOpenApi(options =>
+    {
+        options.AddDocumentTransformer((document, context, cancellationToken) =>
+        {
+            document.Components ??= new OpenApiComponents();
+
+            document.Components.SecuritySchemes ??=
+                new Dictionary<string, IOpenApiSecurityScheme>();
+
+            document.Components.SecuritySchemes.Add("Bearer",
+                new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT",
+                    Description = "Insira o token JWT gerado pela rota de login."
+                });
+
+            document.Security ??= [];
+
+            document.Security.Add(
+                new OpenApiSecurityRequirement
+                {
+                    [new OpenApiSecuritySchemeReference("Bearer")] = []
+                });
+
+            return Task.CompletedTask;
+        });
+    });
+
+
+    builder.Services.AddSwaggerGen(options =>
+    {
+        var xmlFile = $"{typeof(Program).Assembly.GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        if (File.Exists(xmlPath))
+        {
+            options.IncludeXmlComments(xmlPath);
+        }
+
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            Scheme = "bearer",
+            BearerFormat = "JWT",
+            In = ParameterLocation.Header,
+            Description = "Informe o token JWT no formato Bearer {token}."
+        });
+
+        options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+        {
+            [new OpenApiSecuritySchemeReference("Bearer", document)] = []
+        });
+    });
+
+    var app = builder.Build();
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Challenge CYLVO");
+            options.RoutePrefix = "swagger";
+        });
+        app.MapOpenApi();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseRouting();
+    app.UseRateLimiter();
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.MapHealthChecks("/health/live", new HealthCheckOptions
+    {
+        Predicate = check => check.Tags.Contains("live")
+    });
+
+    app.MapHealthChecks("/health/ready", new HealthCheckOptions
+    {
+        Predicate = check => check.Tags.Contains("ready"),
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+
+    });
+
+    app.MapControllers();
+    app.Run();
+}
+catch(Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
+public partial class Program { }

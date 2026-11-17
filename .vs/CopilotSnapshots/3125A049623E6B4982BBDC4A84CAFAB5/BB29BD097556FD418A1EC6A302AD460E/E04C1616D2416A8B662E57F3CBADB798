@@ -1,0 +1,66 @@
+﻿using Ajudante_Familiar_Global.Application.Services;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Ajudante_Familiar_Global.Infrastruture.Repository;
+using Microsoft.Bot.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Resources;
+
+namespace Ajudante_Familiar_Global.Application
+{
+    public static class DependencyInjection
+    {
+        public static IServiceCollection IServiceCollection(this IServiceCollection services)
+        {
+            services.AddScoped<IAlimentacaoRepository, AlimentacaoRepository>();
+            services.AddScoped<IAtividadesRepository, AtividadesRepository>();
+            services.AddScoped<ICargoRepository, CargoRepository>();
+            services.AddScoped<IConsulta_MedicamentoRepository, Consulta_MedicamentoRepository>();
+            services.AddScoped<ICuidadorRepository, CuidadorRepository>();
+            services.AddScoped<IDoencasRepository, DoencasRepository>();
+            services.AddScoped<IIdosoRepository, IdosoRepository>();
+            services.AddScoped<ILembrete_ConsultaRepository, Lembrete_ConsultaRepository>();
+            services.AddScoped<IMedicamentosRepository, MedicamentosRepository>();
+            services.AddScoped<IParenteRepository, ParenteRepository>();
+            services.AddScoped<IPerfilRepository, PerfilRepository>();
+
+            services.AddScoped<IAlimentacaoService, AlimentacaoService>();
+            services.AddScoped<IAtividadesService, AtividadesService>();
+            services.AddScoped<ICargoService, CargoService>();
+            services.AddScoped<IConsulta_MedicamentoService, Consulta_MedicamentoService>();
+            services.AddScoped<ICuidadorService, CuidadorService>();
+            services.AddScoped<IDoencasService, DoencasService>();
+            services.AddScoped<IIdosoService, IdosoService>();
+            services.AddScoped<ILembrete_ConsultaService, Lembrete_ConsultaService>();
+            services.AddScoped<IMedicamentosService, MedicamentosService>();
+            services.AddScoped<IParenteService, ParenteService>();
+            services.AddScoped<IPerfilService, PerfilService>();
+
+
+            var resourceBuilder = ResourceBuilder.CreateDefault()
+                .AddService(TelemetryConstants.ServiceName);
+
+            services.AddOpenTelemetry()
+                .WithTracing(tracerProviderBuilder =>
+                {
+                    tracerProviderBuilder
+                        .SetResourceBuilder(resourceBuilder)
+                        .AddAspNetCoreInstrumentation()
+                        .AddHttpClientInstrumentation()
+                        .AddSource(TelemetryConstants.ServiceName)
+                        .AddConsoleExporter();
+                })
+                .WithMetrics(meterProviderBuilder =>
+                {
+                    meterProviderBuilder
+                        .SetResourceBuilder(resourceBuilder)
+                        .AddAspNetCoreInstrumentation()
+                        .AddHttpClientInstrumentation()
+                        .AddMeter(TelemetryConstants.MeterName)
+                        .AddConsoleExporter();
+                });
+
+            return services;
+        }
+    }
+}

@@ -7,14 +7,475 @@
   "targets": {
     ".NETCoreApp,Version=v10.0": {
       "Ajudante_Familiar_Global.Application/1.0.0": {
+        "dependencies": {
+          "Ajudante_Familiar_Global.Domain": "1.0.0",
+          "Ajudante_Familiar_Global.Infrastruture": "1.0.0",
+          "Microsoft.IdentityModel.Tokens": "8.0.1",
+          "OpenTelemetry": "1.20.1",
+          "OpenTelemetry.Exporter.Console": "1.20.1",
+          "OpenTelemetry.Extensions.Hosting": "1.20.1",
+          "OpenTelemetry.Instrumentation.AspNetCore": "1.20.1",
+          "OpenTelemetry.Instrumentation.Http": "1.20.1",
+          "System.IdentityModel.Tokens.Jwt": "8.0.1"
+        },
         "runtime": {
           "Ajudante_Familiar_Global.Application.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore/10.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Abstractions": "10.0.0"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.EntityFrameworkCore.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411",
+            "localPath": "Microsoft.EntityFrameworkCore.dll"
+          }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Abstractions/10.0.0": {
+        "runtime": {
+          "lib/net10.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411",
+            "localPath": "Microsoft.EntityFrameworkCore.Abstractions.dll"
+          }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Relational/10.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "10.0.0"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.EntityFrameworkCore.Relational.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411",
+            "localPath": "Microsoft.EntityFrameworkCore.Relational.dll"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Abstractions/8.0.1": {
+        "runtime": {
+          "lib/net9.0/Microsoft.IdentityModel.Abstractions.dll": {
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.1.50722",
+            "localPath": "Microsoft.IdentityModel.Abstractions.dll"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.JsonWebTokens/8.0.1": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "8.0.1"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.1.50722",
+            "localPath": "Microsoft.IdentityModel.JsonWebTokens.dll"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/8.0.1": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "8.0.1"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.IdentityModel.Logging.dll": {
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.1.50722",
+            "localPath": "Microsoft.IdentityModel.Logging.dll"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/8.0.1": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Logging": "8.0.1"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.IdentityModel.Tokens.dll": {
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.1.50722",
+            "localPath": "Microsoft.IdentityModel.Tokens.dll"
+          }
+        }
+      },
+      "OpenTelemetry/1.20.1": {
+        "dependencies": {
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "1.20.1"
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.20.1.2236",
+            "localPath": "OpenTelemetry.dll"
+          }
+        }
+      },
+      "OpenTelemetry.Api/1.20.1": {
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Api.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.20.1.2236",
+            "localPath": "OpenTelemetry.Api.dll"
+          }
+        }
+      },
+      "OpenTelemetry.Api.ProviderBuilderExtensions/1.20.1": {
+        "dependencies": {
+          "OpenTelemetry.Api": "1.20.1"
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.20.1.2236",
+            "localPath": "OpenTelemetry.Api.ProviderBuilderExtensions.dll"
+          }
+        }
+      },
+      "OpenTelemetry.Exporter.Console/1.20.1": {
+        "dependencies": {
+          "OpenTelemetry": "1.20.1"
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Exporter.Console.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.20.1.2236",
+            "localPath": "OpenTelemetry.Exporter.Console.dll"
+          }
+        }
+      },
+      "OpenTelemetry.Extensions.Hosting/1.20.1": {
+        "dependencies": {
+          "OpenTelemetry": "1.20.1"
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Extensions.Hosting.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.20.1.2236",
+            "localPath": "OpenTelemetry.Extensions.Hosting.dll"
+          }
+        }
+      },
+      "OpenTelemetry.Instrumentation.AspNetCore/1.20.1": {
+        "dependencies": {
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "1.20.1"
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Instrumentation.AspNetCore.dll": {
+            "assemblyVersion": "1.20.1.1505",
+            "fileVersion": "1.20.1.1505",
+            "localPath": "OpenTelemetry.Instrumentation.AspNetCore.dll"
+          }
+        }
+      },
+      "OpenTelemetry.Instrumentation.Http/1.20.1": {
+        "dependencies": {
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "1.20.1"
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Instrumentation.Http.dll": {
+            "assemblyVersion": "1.20.1.1498",
+            "fileVersion": "1.20.1.1498",
+            "localPath": "OpenTelemetry.Instrumentation.Http.dll"
+          }
+        }
+      },
+      "Oracle.EntityFrameworkCore/10.23.26400": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "10.0.0",
+          "Oracle.ManagedDataAccess.Core": "23.26.400"
+        },
+        "runtime": {
+          "lib/net10.0/Oracle.EntityFrameworkCore.dll": {
+            "assemblyVersion": "10.0.23.1",
+            "fileVersion": "10.0.23.1",
+            "localPath": "Oracle.EntityFrameworkCore.dll"
+          }
+        }
+      },
+      "Oracle.ManagedDataAccess.Core/23.26.400": {
+        "dependencies": {
+          "System.Diagnostics.PerformanceCounter": "8.0.0",
+          "System.DirectoryServices.Protocols": "8.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/Oracle.ManagedDataAccess.dll": {
+            "assemblyVersion": "23.1.0.0",
+            "fileVersion": "23.1.0.0",
+            "localPath": "Oracle.ManagedDataAccess.dll"
+          }
+        }
+      },
+      "System.Configuration.ConfigurationManager/8.0.0": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103",
+            "localPath": "System.Configuration.ConfigurationManager.dll"
+          }
+        }
+      },
+      "System.Diagnostics.PerformanceCounter/8.0.0": {
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/System.Diagnostics.PerformanceCounter.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103",
+            "localPath": "System.Diagnostics.PerformanceCounter.dll"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103",
+            "localPath": "runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.dll"
+          }
+        }
+      },
+      "System.DirectoryServices.Protocols/8.0.2": {
+        "runtime": {
+          "lib/net8.0/System.DirectoryServices.Protocols.dll": {
+            "assemblyVersion": "8.0.0.2",
+            "fileVersion": "8.0.1725.26602",
+            "localPath": "System.DirectoryServices.Protocols.dll"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux/lib/net8.0/System.DirectoryServices.Protocols.dll": {
+            "rid": "linux",
+            "assetType": "runtime",
+            "assemblyVersion": "8.0.0.2",
+            "fileVersion": "8.0.1725.26602",
+            "localPath": "runtimes/linux/lib/net8.0/System.DirectoryServices.Protocols.dll"
+          },
+          "runtimes/osx/lib/net8.0/System.DirectoryServices.Protocols.dll": {
+            "rid": "osx",
+            "assetType": "runtime",
+            "assemblyVersion": "8.0.0.2",
+            "fileVersion": "8.0.1725.26602",
+            "localPath": "runtimes/osx/lib/net8.0/System.DirectoryServices.Protocols.dll"
+          },
+          "runtimes/win/lib/net8.0/System.DirectoryServices.Protocols.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "8.0.0.2",
+            "fileVersion": "8.0.1725.26602",
+            "localPath": "runtimes/win/lib/net8.0/System.DirectoryServices.Protocols.dll"
+          }
+        }
+      },
+      "System.IdentityModel.Tokens.Jwt/8.0.1": {
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "8.0.1",
+          "Microsoft.IdentityModel.Tokens": "8.0.1"
+        },
+        "runtime": {
+          "lib/net9.0/System.IdentityModel.Tokens.Jwt.dll": {
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.1.50722",
+            "localPath": "System.IdentityModel.Tokens.Jwt.dll"
+          }
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/8.0.0": {
+        "runtime": {
+          "lib/net8.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103",
+            "localPath": "System.Security.Cryptography.ProtectedData.dll"
+          }
+        }
+      },
+      "Ajudante_Familiar_Global.Domain/1.0.0": {
+        "runtime": {
+          "Ajudante_Familiar_Global.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Ajudante_Familiar_Global.Infrastruture/1.0.0": {
+        "dependencies": {
+          "Ajudante_Familiar_Global.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "10.0.0",
+          "Oracle.EntityFrameworkCore": "10.23.26400"
+        },
+        "runtime": {
+          "Ajudante_Familiar_Global.Infrastruture.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "Ajudante_Familiar_Global.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.EntityFrameworkCore/10.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hHa2amRjMyBLUH/KTML6FgIAhZ0VFYkhCKwWEax0rO6iNeM1P5MflyeQLE5dniSIOZHc3Oqyv5UIyTFO4e1Auw==",
+      "path": "microsoft.entityframeworkcore/10.0.0",
+      "hashPath": "microsoft.entityframeworkcore.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Abstractions/10.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C+TT9k7f1GQ8agOfV512K9iwrzi76RXVSDiLx+iWC9pz3QhEpSF1Dyk+FpVvd8ULQ+rqymfM8KQ7g48ttQVyMg==",
+      "path": "microsoft.entityframeworkcore.abstractions/10.0.0",
+      "hashPath": "microsoft.entityframeworkcore.abstractions.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Relational/10.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A3MX1ee7RDxWCUdx/KqP+74fbksz0UIhkVZh56YHvbPkEKsffCXgHU3LGkRDwqR/MrBNWLCWC/IVX79tzM30ZA==",
+      "path": "microsoft.entityframeworkcore.relational/10.0.0",
+      "hashPath": "microsoft.entityframeworkcore.relational.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Abstractions/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OtlIWcyX01olfdevPKZdIPfBEvbcioDyBiE/Z2lHsopsMD7twcKtlN9kMevHmI5IIPhFpfwCIiR6qHQz1WHUIw==",
+      "path": "microsoft.identitymodel.abstractions/8.0.1",
+      "hashPath": "microsoft.identitymodel.abstractions.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.JsonWebTokens/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-s6++gF9x0rQApQzOBbSyp4jUaAlwm+DroKfL8gdOHxs83k8SJfUXhuc46rDB3rNXBQ1MVRxqKUrqFhO/M0E97g==",
+      "path": "microsoft.identitymodel.jsonwebtokens/8.0.1",
+      "hashPath": "microsoft.identitymodel.jsonwebtokens.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Logging/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UCPF2exZqBXe7v/6sGNiM6zCQOUXXQ9+v5VTb9gPB8ZSUPnX53BxlN78v2jsbIvK9Dq4GovQxo23x8JgWvm/Qg==",
+      "path": "microsoft.identitymodel.logging/8.0.1",
+      "hashPath": "microsoft.identitymodel.logging.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Tokens/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kDimB6Dkd3nkW2oZPDkMkVHfQt3IDqO5gL0oa8WVy3OP4uE8Ij+8TXnqg9TOd9ufjsY3IDiGz7pCUbnfL18tjg==",
+      "path": "microsoft.identitymodel.tokens/8.0.1",
+      "hashPath": "microsoft.identitymodel.tokens.8.0.1.nupkg.sha512"
+    },
+    "OpenTelemetry/1.20.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+XDw3fYbiv1a40aFnDJSQleeuUJciXuhoIA19XmcGhT47Hy/xZRqk8NCjHUDKrg72Ixjthicecp8ygBDNeH/Jw==",
+      "path": "opentelemetry/1.20.1",
+      "hashPath": "opentelemetry.1.20.1.nupkg.sha512"
+    },
+    "OpenTelemetry.Api/1.20.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QO9hlwadOdJGR4vDpJyDnl9B62v7epIBSTIHUA4C+bCtrRaB4TWmYSnu3QVOIe7caH8dt7NaHRei6zebESJJyw==",
+      "path": "opentelemetry.api/1.20.1",
+      "hashPath": "opentelemetry.api.1.20.1.nupkg.sha512"
+    },
+    "OpenTelemetry.Api.ProviderBuilderExtensions/1.20.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eDzDY/jTBqRytkYECmVKF7ZP5sKmCIqv1SSnA5BSWltIIvc3931TOMRyCW1qCGNIgmtldtJhISnsmFNxOCfauQ==",
+      "path": "opentelemetry.api.providerbuilderextensions/1.20.1",
+      "hashPath": "opentelemetry.api.providerbuilderextensions.1.20.1.nupkg.sha512"
+    },
+    "OpenTelemetry.Exporter.Console/1.20.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KXZZmngI/MXMhskf/BZYi30e3hq6HOVhUhAtT5axe8gGlpP2htD48Gf4yUTHX+ofh56KQTLd2y8OrAYCkRNDMA==",
+      "path": "opentelemetry.exporter.console/1.20.1",
+      "hashPath": "opentelemetry.exporter.console.1.20.1.nupkg.sha512"
+    },
+    "OpenTelemetry.Extensions.Hosting/1.20.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wnoK07COxyQBR47QwP80SIO4cpD2xeF4PrBDYFXDMnhDLmOP4nN0Szy1wCBLo5UABU1I4xwWRGzZM0bFdCbRog==",
+      "path": "opentelemetry.extensions.hosting/1.20.1",
+      "hashPath": "opentelemetry.extensions.hosting.1.20.1.nupkg.sha512"
+    },
+    "OpenTelemetry.Instrumentation.AspNetCore/1.20.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pDO+Ed5iblMTvSVGcXzoLp8q20XHhXmK0wD/H3PGNHwDFlwZpV+bDWd/Euo6hNB4E0ruqzTFD76Btm+m0uCYNw==",
+      "path": "opentelemetry.instrumentation.aspnetcore/1.20.1",
+      "hashPath": "opentelemetry.instrumentation.aspnetcore.1.20.1.nupkg.sha512"
+    },
+    "OpenTelemetry.Instrumentation.Http/1.20.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XJTM6imVztxLraOrzsdlZf5shdH9TVeEWNBxpyepB5e3Gy+KNeQf2hyic398210UxqlPtt4iOkBELtjfIFTzug==",
+      "path": "opentelemetry.instrumentation.http/1.20.1",
+      "hashPath": "opentelemetry.instrumentation.http.1.20.1.nupkg.sha512"
+    },
+    "Oracle.EntityFrameworkCore/10.23.26400": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+z9CM9suO5B2t88nysbW3Ge3f8xx+rpLycH6p0DgvUKq0c9qITc8lQsLjOqVoGGyH+R2wok1nxiAFN0qYANp4w==",
+      "path": "oracle.entityframeworkcore/10.23.26400",
+      "hashPath": "oracle.entityframeworkcore.10.23.26400.nupkg.sha512"
+    },
+    "Oracle.ManagedDataAccess.Core/23.26.400": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PWVJunbl2LVcdFBluW5R3678MvrTLlTrQBdXe9wR4YCauISa4zCceJ7fLHVFFiGog8/ZPxo2cY4adpVQCJf+YQ==",
+      "path": "oracle.manageddataaccess.core/23.26.400",
+      "hashPath": "oracle.manageddataaccess.core.23.26.400.nupkg.sha512"
+    },
+    "System.Configuration.ConfigurationManager/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JlYi9XVvIREURRUlGMr1F6vOFLk7YSY4p1vHo4kX3tQ0AGrjqlRWHDi66ImHhy6qwXBG3BJ6Y1QlYQ+Qz6Xgww==",
+      "path": "system.configuration.configurationmanager/8.0.0",
+      "hashPath": "system.configuration.configurationmanager.8.0.0.nupkg.sha512"
+    },
+    "System.Diagnostics.PerformanceCounter/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lX6DXxtJqVGWw7N/QmVoiCyVQ+Q/Xp+jVXPr3gLK1jJExSn1qmAjJQeb8gnOYeeBTG3E3PmG1nu92eYj/TEjpg==",
+      "path": "system.diagnostics.performancecounter/8.0.0",
+      "hashPath": "system.diagnostics.performancecounter.8.0.0.nupkg.sha512"
+    },
+    "System.DirectoryServices.Protocols/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7pSU+qkmdkwbikAvn4kpvClfyffaR7dYJw7ucBtO5d6m/7wgKZIULOZAGFLMIMOFFmg7xC67TYKptHxcbqQm+Q==",
+      "path": "system.directoryservices.protocols/8.0.2",
+      "hashPath": "system.directoryservices.protocols.8.0.2.nupkg.sha512"
+    },
+    "System.IdentityModel.Tokens.Jwt/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GJw3bYkWpOgvN3tJo5X4lYUeIFA2HD293FPUhKmp7qxS+g5ywAb34Dnd3cDAFLkcMohy5XTpoaZ4uAHuw0uSPQ==",
+      "path": "system.identitymodel.tokens.jwt/8.0.1",
+      "hashPath": "system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+TUFINV2q2ifyXauQXRwy4CiBhqvDEDZeVJU7qfxya4aRYOKzVBpN+4acx25VcPB9ywUN6C0n8drWl110PhZEg==",
+      "path": "system.security.cryptography.protecteddata/8.0.0",
+      "hashPath": "system.security.cryptography.protecteddata.8.0.0.nupkg.sha512"
+    },
+    "Ajudante_Familiar_Global.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Ajudante_Familiar_Global.Infrastruture/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

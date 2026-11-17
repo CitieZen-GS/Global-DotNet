@@ -1,0 +1,72 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace Ajudante_Familiar_Global.Infrastruture.Repository
+{
+    public class Lembrete_ConsultaRepository : ILembrete_ConsultaRepository
+    {
+        private readonly AppDbContext _context;
+
+        public Lembrete_ConsultaRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Lembrete_Consulta> CreateLembrete_ConsultaAsync(Lembrete_Consulta lembrete_Consulta)
+        {
+            await _context.LembretesConsulta.AddAsync(lembrete_Consulta);
+            await _context.SaveChangesAsync();
+            return lembrete_Consulta;
+        }
+
+        public async Task<Lembrete_Consulta> DeleteLembrete_ConsultaAsync(int id_lembrete_consulta)
+        {
+            var lembrete_Consulta = await _context.LembretesConsulta.FindAsync(id_lembrete_consulta);
+            if (lembrete_Consulta == null)
+            {
+                throw new KeyNotFoundException($"Id lembrete consulta com id {id_lembrete_consulta} não foi encontrado");
+            }
+            _context.LembretesConsulta.Remove(lembrete_Consulta);
+            await _context.SaveChangesAsync();
+            return lembrete_Consulta;
+        }
+
+        public async Task<Lembrete_Consulta> GetLembrete_ConsultaAsync(int id_lembrete_consulta)
+        {
+            var existeLembrete_Consulta = await _context.LembretesConsulta.FindAsync(id_lembrete_consulta);
+            if (existeLembrete_Consulta == null)
+            {
+                throw new KeyNotFoundException($"Lembrete consulta com id {id_lembrete_consulta} não encontrado.");
+            }
+            return existeLembrete_Consulta;
+        }
+
+        public async Task<IEnumerable<Lembrete_Consulta>> GetAllLembrete_ConsultaAsync()
+        {
+            return await _context.LembretesConsulta.ToListAsync();
+        }
+
+        public async Task<Lembrete_Consulta> UpdateLembrete_ConsultaAsync(int id_lembrete_consulta, Lembrete_Consulta lembrete_Consulta)
+        {
+            var existeLembrete_Consulta = await _context.LembretesConsulta.FindAsync(id_lembrete_consulta);
+            if (existeLembrete_Consulta == null)
+            {
+                throw new KeyNotFoundException($"Lembrete consulta com id {id_lembrete_consulta} não foi encontrado.");
+            }
+
+            existeLembrete_Consulta.Ds_titulo_lembrente_consulta = lembrete_Consulta.Ds_titulo_lembrente_consulta;
+            existeLembrete_Consulta.Nm_consulta_medico = lembrete_Consulta.Nm_consulta_medico;
+            existeLembrete_Consulta.Dt_consulta = lembrete_Consulta.Dt_consulta;
+            existeLembrete_Consulta.Hr_consulta = lembrete_Consulta.Hr_consulta;
+            existeLembrete_Consulta.Ds_consulta = lembrete_Consulta.Ds_consulta;
+            existeLembrete_Consulta.St_consulta = lembrete_Consulta.St_consulta;
+            existeLembrete_Consulta.Id_idoso = lembrete_Consulta.Id_idoso;
+
+            await _context.SaveChangesAsync();
+
+            return existeLembrete_Consulta;
+        }
+    }
+}

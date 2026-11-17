@@ -1,0 +1,15 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+
+namespace Ajudante_Familiar_Global.Domain.Interfaces.IService
+{
+    public interface ICuidadorService
+    {
+        Task<Cuidador> CreateCuidadorAsync(Cuidador cuidador);
+
+        Task<Cuidador> GetCuidadorAsync(int id_cuidador);
+        Task<IEnumerable<Cuidador>> GetAllCuidadorAsync();
+
+        Task<Cuidador> DeleteCuidadorAsync(int id_cuidador);
+        Task<Cuidador> UpdateCuidadorAsync(int id_cuidador, Cuidador cuidador);
+    }
+}

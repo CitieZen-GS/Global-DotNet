@@ -1,0 +1,146 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Ajudante_Familiar_Global.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Produces("application/json")]
+    public class CuidadorController : ControllerBase
+    {
+        private readonly ICuidadorService _CuidadorService;
+        private readonly ILogger<CuidadorController> _logger;
+
+        public CuidadorController(ICuidadorService cuidadorService, ILogger<CuidadorController> logger)
+        {
+            _CuidadorService = cuidadorService;
+            _logger = logger;
+        }
+
+        /// <summary>
+        /// Carregar todos os cuidadores presentes no banco
+        /// </summary>
+        /// <response code="200">Busca feita com sucesso</response>
+        /// <response code="500">Erro interno do servidor</response>
+        /// <returns>Lista de cuidadores</returns>
+        [HttpGet]
+        [Route("[controller]/cuidador")]
+        [ProducesResponseType(typeof(IEnumerable<Cuidador>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IEnumerable<Cuidador>>> GetAllCuidador()
+        {
+            try
+            {
+                var relatorioCuidador = await _CuidadorService.GetAllCuidadorAsync();
+                return Ok(relatorioCuidador);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao buscar todos os cuidadores");
+                return StatusCode(500, new { mensagem = "Erro interno do servidor" });
+            }
+        }
+
+        /// <summary>
+        /// Carregar o cuidador por meio do id
+        /// </summary>
+        /// <response code="200">Busca feita com sucesso</response>
+        /// <response code="404">Id não encontrado</response>
+        /// <param name="id_cuidador">Id do cuidador</param>
+        /// <returns>Cuidador encontrado</returns>
+        [HttpGet]
+        [Route("[controller]/cuidador/{id_cuidador:int}")]
+        [ProducesResponseType(typeof(Cuidador), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Cuidador>> GetCuidador(int id_cuidador)
+        {
+            try
+            {
+                var cuidador = await _CuidadorService.GetCuidadorAsync(id_cuidador);
+                return Ok(cuidador);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                _logger.LogWarning("Cuidador {Id} não encontrado", id_cuidador);
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Criação de cuidador
+        /// </summary>
+        /// <param name="cuidador">Dados do novo cuidador</param>
+        /// <response code="201">Cuidador criado com sucesso</response>
+        /// <response code="400">Erro na validação</response>
+        /// <response code="404">Perfil não encontrado</response>
+        /// <returns>Cuidador criado</returns>
+        [HttpPost]
+        [Route("[controller]/cuidador/criar")]
+        [ProducesResponseType(typeof(Cuidador), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Cuidador>> PostCuidador([FromBody] Cuidador cuidador)
+        {
+            try
+            {
+                var criado = await _CuidadorService.CreateCuidadorAsync(cuidador);
+                return CreatedAtAction(nameof(GetCuidador), new { id_cuidador = criado.Id_cuidador }, criado);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Atualizar dados do cuidador
+        /// </summary>
+        /// <param name="id_cuidador">Id do cuidador na URL</param>
+        /// <param name="cuidador">Novos dados do cuidador</param>
+        /// <response code="200">Cuidador atualizado</response>
+        /// <response code="400">Erro na requisição</response>
+        /// <response code="404">Cuidador ou perfil não encontrado</response>
+        /// <returns>Cuidador atualizado</returns>
+        [HttpPut]
+        [Route("[controller]/cuidador/atualiza/{id_cuidador:int}")]
+        [ProducesResponseType(typeof(Cuidador), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Cuidador>> PutCuidador(int id_cuidador, [FromBody] Cuidador cuidador)
+        {
+            try
+            {
+                var atualizada = await _CuidadorService.UpdateCuidadorAsync(id_cuidador, cuidador);
+                return Ok(atualizada);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Remove um cuidador do sistema pelo seu id
+        /// </summary>
+        /// <param name="id_cuidador">Id do cuidador a ser deletado</param>
+        /// <response code="204">Cuidador removido com sucesso</response>
+        /// <response code="404">Cuidador não encontrado</response>
+        [HttpDelete]
+        [Route("[controller]/cuidador/deleta/{id_cuidador:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteCuidador(int id_cuidador)
+        {
+            try
+            {
+                await _CuidadorService.DeleteCuidadorAsync(id_cuidador);
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+    }
+}

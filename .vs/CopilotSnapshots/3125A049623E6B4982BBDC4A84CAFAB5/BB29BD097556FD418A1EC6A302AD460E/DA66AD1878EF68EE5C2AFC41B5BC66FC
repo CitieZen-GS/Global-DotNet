@@ -1,0 +1,89 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.Extensions.Logging;
+
+namespace Ajudante_Familiar_Global.Application.Services
+{
+    public class ParenteService : IParenteService
+    {
+        private readonly IParenteRepository _parente;
+        private readonly IIdosoRepository _idoso;
+        private readonly IPerfilRepository _perfil;
+        private readonly ILogger<ParenteService> _logger;
+
+        public ParenteService(IParenteRepository parente, IIdosoRepository idoso, IPerfilRepository perfil, ILogger<ParenteService> logger)
+        {
+            _parente = parente;
+            _logger = logger;
+            _idoso = idoso;
+            _perfil = perfil;
+        }
+
+        public async Task<Parente> CreateParenteAsync(Parente parente)
+        {
+            _logger.LogInformation("Parente iniciado");
+            var existeIdoso = await _idoso.GetIdosoAsync(parente.Id_idoso);
+
+            if (existeIdoso == null)
+            {
+                _logger.LogWarning("Sem o id idoso");
+                throw new KeyNotFoundException("Idoso não encontrado para fazer a conexao");
+            }
+
+            var existePerfil = await _perfilRepository.GetPerfilAsync(parente.Id_perfil);
+
+            if (existePerfil == null)
+            {
+                _logger.LogWarning("Sem o id perfil");
+                throw new KeyNotFoundException("Perfil não encontrado para fazer a conexao");
+            }
+
+            return await _parente.CreateParenteAsync(parente);
+        }
+
+        public async Task<Parente> DeleteParenteAsync(int id_parente)
+        {
+            _logger.LogInformation("Excluido parente");
+
+            var deletado = await _parente.DeleteParenteAsync(id_parente);
+            return deletado;
+        }
+
+        public async Task<Parente> GetParenteAsync(int id_parente)
+        {
+            _logger.LogInformation("Buscar parente");
+            return await _parente.GetParenteAsync(id_parente);
+        }
+
+        public async Task<IEnumerable<Parente>> GetAllParenteAsync()
+        {
+            _logger.LogInformation("Listando parentes");
+
+            return await _parente.GetAllParenteAsync();
+        }
+
+        public async Task<Parente> UpdateParenteAsync(int id_parente, Parente parente)
+        {
+            _logger.LogInformation("Atualizando parente");
+
+            var existeIdoso = await _idoso.GetIdosoAsync(parente.Id_idoso);
+
+            if (existeIdoso == null)
+            {
+                _logger.LogWarning("Sem o id idoso");
+                throw new KeyNotFoundException("Idoso não encontrado para fazer a conexao");
+            }
+
+            var existePerfil = await _perfilRepository.GetPerfilAsync(parente.Id_perfil);
+
+            if (existePerfil == null)
+            {
+                _logger.LogWarning("Sem o id perfil");
+                throw new KeyNotFoundException("Perfil não encontrado para fazer a conexao");
+            }
+
+            return await _parente.UpdateParenteAsync(id_parente, parente);
+        }
+    }
+}

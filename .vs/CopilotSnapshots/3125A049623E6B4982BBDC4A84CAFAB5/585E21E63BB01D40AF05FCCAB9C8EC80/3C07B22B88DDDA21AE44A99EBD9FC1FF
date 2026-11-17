@@ -1,0 +1,154 @@
+﻿
+using Ajudante_Familiar_Global.Application;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using IdempotentAPI.Cache.DistributedCache.Extensions.DependencyInjection;
+using IdempotentAPI.Extensions.DependencyInjection;
+using IdempotentAPI.Filters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Threading.RateLimiting;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Banco de dados Oracle
+var connectionString = builder.Configuration.GetConnectionString("OracleConnection");
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    throw new InvalidOperationException("A connection string OracleConnection não está configurada.");
+}
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseOracle(connectionString));
+
+// Serviços da aplicação
+builder.Services.AddApplicationServices();
+
+// Idempotência para operações POST/PATCH
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddIdempotentAPIUsingDistributedCache();
+builder.Services.AddIdempotentAPI();
+builder.Services.AddControllers(options => options.Filters.Add(new IdempotentAttribute()));
+
+// JWT e autorização: por padrão, os endpoints exigem autenticação.
+var jwtKey = builder.Configuration["Jwt:Key"];
+var jwtIssuer = builder.Configuration["Jwt:Issuer"];
+var jwtAudience = builder.Configuration["Jwt:Audience"];
+
+if (string.IsNullOrWhiteSpace(jwtKey) || Encoding.UTF8.GetByteCount(jwtKey) < 32)
+{
+    throw new InvalidOperationException("Jwt:Key deve estar configurada com pelo menos 32 bytes.");
+}
+
+if (string.IsNullOrWhiteSpace(jwtIssuer) || string.IsNullOrWhiteSpace(jwtAudience))
+{
+    throw new InvalidOperationException("Jwt:Issuer e Jwt:Audience devem estar configurados.");
+}
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+            ValidateIssuer = true,
+            ValidIssuer = jwtIssuer,
+            ValidateAudience = true,
+            ValidAudience = jwtAudience,
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});
+
+// Limite global: até 100 requisições por minuto por endereço IP.
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.OnRejected = async (context, cancellationToken) =>
+    {
+        context.HttpContext.Response.ContentType = "application/json";
+        await context.HttpContext.Response.WriteAsJsonAsync(
+            new { mensagem = "Limite de requisições excedido. Tente novamente em instantes." },
+            cancellationToken);
+    };
+
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "ip-desconhecido",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 100,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 0,
+                AutoReplenishment = true
+            }));
+});
+
+// Health checks: processo da API e banco Oracle.
+builder.Services.AddHealthChecks()
+    .AddCheck(
+        "self",
+        () => Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult.Healthy(),
+        tags: new[] { "live" })
+    .AddOracle(connectionString, name: "oracle", tags: new[] { "ready" });
+
+// Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+app.UseRouting();
+app.UseRateLimiter();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapHealthChecks("/health/live", new HealthCheckOptions
+{
+    Predicate = check => check.Tags.Contains("live")
+}).AllowAnonymous();
+
+app.MapHealthChecks("/health/ready", new HealthCheckOptions
+{
+    Predicate = check => check.Tags.Contains("ready"),
+    ResponseWriter = async (context, report) =>
+    {
+        context.Response.ContentType = "application/json";
+        await context.Response.WriteAsJsonAsync(new
+        {
+            status = report.Status.ToString(),
+            checks = report.Entries.Select(check => new
+            {
+                name = check.Key,
+                status = check.Value.Status.ToString(),
+                description = check.Value.Description
+            })
+        }, context.RequestAborted);
+    }
+}).AllowAnonymous();
+
+app.MapControllers();
+app.MapGet("/", () => Results.Ok(new { mensagem = "Ajudante Familiar Global - API funcionando!" }))
+    .AllowAnonymous();
+
+app.Run();
+
+public partial class Program { }

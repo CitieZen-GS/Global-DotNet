@@ -1,0 +1,3159 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Ajudante Familiar API",
+    "description": "API para organização de cuidados com idosos",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Alimentacao/alimentacao": {
+      "get": {
+        "tags": [
+          "Alimentacao"
+        ],
+        "summary": "Carregar todas as alimentações presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Alimentacao"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Alimentacao/alimentacao/{id_alimentacao}": {
+      "get": {
+        "tags": [
+          "Alimentacao"
+        ],
+        "summary": "Carregar a alimentação por meio do id",
+        "parameters": [
+          {
+            "name": "id_alimentacao",
+            "in": "path",
+            "description": "Id da alimentação",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alimentacao"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Alimentacao/alimentacao/criar": {
+      "post": {
+        "tags": [
+          "Alimentacao"
+        ],
+        "summary": "Criação de alimentação",
+        "requestBody": {
+          "description": "Dados da nova alimentação",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alimentacao"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alimentacao"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alimentacao"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Alimentação criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alimentacao"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Alimentacao/alimentacao/atualiza/{id_alimentacao}": {
+      "put": {
+        "tags": [
+          "Alimentacao"
+        ],
+        "summary": "Atualizar dados de alimentação",
+        "parameters": [
+          {
+            "name": "id_alimentacao",
+            "in": "path",
+            "description": "Id da alimentação na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados da alimentação",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alimentacao"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alimentacao"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alimentacao"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Alimentação atualizada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alimentacao"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Alimentação ou idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Alimentacao/alimentacao/deleta/{id_alimentacao}": {
+      "delete": {
+        "tags": [
+          "Alimentacao"
+        ],
+        "summary": "Remove uma alimentação do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_alimentacao",
+            "in": "path",
+            "description": "Id da alimentação a ser deletada",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Alimentação removida com sucesso"
+          },
+          "404": {
+            "description": "Alimentação não encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Atividades/atividades": {
+      "get": {
+        "tags": [
+          "Atividades"
+        ],
+        "summary": "Carregar todas as atividades presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Atividades"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Atividades/atividades/{id_atividade}": {
+      "get": {
+        "tags": [
+          "Atividades"
+        ],
+        "summary": "Carregar a atividade por meio do id",
+        "parameters": [
+          {
+            "name": "id_atividade",
+            "in": "path",
+            "description": "Id da atividade",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Atividades"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Atividades/atividades/criar": {
+      "post": {
+        "tags": [
+          "Atividades"
+        ],
+        "summary": "Criação de atividade",
+        "requestBody": {
+          "description": "Dados da nova atividade",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Atividades"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Atividades"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Atividades"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Atividade criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Atividades"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Atividades/atividades/atualiza/{id_atividade}": {
+      "put": {
+        "tags": [
+          "Atividades"
+        ],
+        "summary": "Atualizar dados da atividade",
+        "parameters": [
+          {
+            "name": "id_atividade",
+            "in": "path",
+            "description": "Id da atividade na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados da atividade",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Atividades"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Atividades"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Atividades"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Atividade atualizada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Atividades"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Atividade ou idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Atividades/atividades/deleta/{id_atividade}": {
+      "delete": {
+        "tags": [
+          "Atividades"
+        ],
+        "summary": "Remove uma atividade do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_atividade",
+            "in": "path",
+            "description": "Id da atividade a ser deletada",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Atividade removida com sucesso"
+          },
+          "404": {
+            "description": "Atividade não encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Realiza o login e gera o token JWT",
+        "requestBody": {
+          "description": "Usuário e senha",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginAux"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginAux"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginAux"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token gerado com sucesso"
+          },
+          "401": {
+            "description": "Usuário ou senha inválidos",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/dados-protegidos": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Rota protegida: só acessa com token válido",
+        "responses": {
+          "200": {
+            "description": "Usuário autenticado"
+          },
+          "401": {
+            "description": "Token ausente ou inválido",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cargo/cargo": {
+      "get": {
+        "tags": [
+          "Cargo"
+        ],
+        "summary": "Carregar todos os cargos presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cargo"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Cargo/cargo/{id_cargo}": {
+      "get": {
+        "tags": [
+          "Cargo"
+        ],
+        "summary": "Carregar o cargo por meio do id",
+        "parameters": [
+          {
+            "name": "id_cargo",
+            "in": "path",
+            "description": "Id do cargo",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cargo"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cargo/cargo/criar": {
+      "post": {
+        "tags": [
+          "Cargo"
+        ],
+        "summary": "Criação de cargo",
+        "requestBody": {
+          "description": "Dados do novo cargo",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cargo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cargo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cargo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cargo criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cargo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cargo/cargo/atualiza/{id_cargo}": {
+      "put": {
+        "tags": [
+          "Cargo"
+        ],
+        "summary": "Atualizar dados do cargo",
+        "parameters": [
+          {
+            "name": "id_cargo",
+            "in": "path",
+            "description": "Id do cargo na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados do cargo",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cargo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cargo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cargo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cargo atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cargo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cargo não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cargo/cargo/deleta/{id_cargo}": {
+      "delete": {
+        "tags": [
+          "Cargo"
+        ],
+        "summary": "Remove um cargo do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_cargo",
+            "in": "path",
+            "description": "Id do cargo a ser deletado",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Cargo removido com sucesso"
+          },
+          "404": {
+            "description": "Cargo não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Consulta_Medicamento/consulta_medicamento": {
+      "get": {
+        "tags": [
+          "Consulta_Medicamento"
+        ],
+        "summary": "Carregar todas as relações consulta-medicamento presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Consulta_Medicamento"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Consulta_Medicamento/consulta_medicamento/{id_consulta_medicamento}": {
+      "get": {
+        "tags": [
+          "Consulta_Medicamento"
+        ],
+        "summary": "Carregar a relação consulta-medicamento por meio do id",
+        "parameters": [
+          {
+            "name": "id_consulta_medicamento",
+            "in": "path",
+            "description": "Id da relação",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Consulta_Medicamento"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Consulta_Medicamento/consulta_medicamento/criar": {
+      "post": {
+        "tags": [
+          "Consulta_Medicamento"
+        ],
+        "summary": "Criação de relação entre consulta e medicamento",
+        "requestBody": {
+          "description": "Dados da nova relação",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consulta_Medicamento"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consulta_Medicamento"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consulta_Medicamento"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Relação criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Consulta_Medicamento"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Consulta ou medicamento não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Consulta_Medicamento/consulta_medicamento/atualiza/{id_consulta_medicamento}": {
+      "put": {
+        "tags": [
+          "Consulta_Medicamento"
+        ],
+        "summary": "Atualizar a relação entre consulta e medicamento",
+        "parameters": [
+          {
+            "name": "id_consulta_medicamento",
+            "in": "path",
+            "description": "Id da relação na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados da relação",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consulta_Medicamento"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consulta_Medicamento"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consulta_Medicamento"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Relação atualizada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Consulta_Medicamento"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Relação, consulta ou medicamento não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Consulta_Medicamento/consulta_medicamento/deleta/{id_consulta_medicamento}": {
+      "delete": {
+        "tags": [
+          "Consulta_Medicamento"
+        ],
+        "summary": "Remove uma relação consulta-medicamento pelo seu id",
+        "parameters": [
+          {
+            "name": "id_consulta_medicamento",
+            "in": "path",
+            "description": "Id da relação a ser deletada",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Relação removida com sucesso"
+          },
+          "404": {
+            "description": "Relação não encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cuidador/cuidador": {
+      "get": {
+        "tags": [
+          "Cuidador"
+        ],
+        "summary": "Carregar todos os cuidadores presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cuidador"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Cuidador/cuidador/{id_cuidador}": {
+      "get": {
+        "tags": [
+          "Cuidador"
+        ],
+        "summary": "Carregar o cuidador por meio do id",
+        "parameters": [
+          {
+            "name": "id_cuidador",
+            "in": "path",
+            "description": "Id do cuidador",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cuidador"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cuidador/cuidador/criar": {
+      "post": {
+        "tags": [
+          "Cuidador"
+        ],
+        "summary": "Criação de cuidador",
+        "requestBody": {
+          "description": "Dados do novo cuidador",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cuidador"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cuidador"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cuidador"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cuidador criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cuidador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Perfil não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cuidador/cuidador/atualiza/{id_cuidador}": {
+      "put": {
+        "tags": [
+          "Cuidador"
+        ],
+        "summary": "Atualizar dados do cuidador",
+        "parameters": [
+          {
+            "name": "id_cuidador",
+            "in": "path",
+            "description": "Id do cuidador na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados do cuidador",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cuidador"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cuidador"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cuidador"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cuidador atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cuidador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cuidador ou perfil não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cuidador/cuidador/deleta/{id_cuidador}": {
+      "delete": {
+        "tags": [
+          "Cuidador"
+        ],
+        "summary": "Remove um cuidador do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_cuidador",
+            "in": "path",
+            "description": "Id do cuidador a ser deletado",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Cuidador removido com sucesso"
+          },
+          "404": {
+            "description": "Cuidador não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Doencas/doencas": {
+      "get": {
+        "tags": [
+          "Doencas"
+        ],
+        "summary": "Carregar todas as doenças presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Doencas"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Doencas/doencas/{id_doenca}": {
+      "get": {
+        "tags": [
+          "Doencas"
+        ],
+        "summary": "Carregar a doença por meio do id",
+        "parameters": [
+          {
+            "name": "id_doenca",
+            "in": "path",
+            "description": "Id da doença",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doencas"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Doencas/doencas/criar": {
+      "post": {
+        "tags": [
+          "Doencas"
+        ],
+        "summary": "Criação de doença",
+        "requestBody": {
+          "description": "Dados da nova doença",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doencas"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doencas"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doencas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Doença criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doencas"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Doencas/doencas/atualiza/{id_doenca}": {
+      "put": {
+        "tags": [
+          "Doencas"
+        ],
+        "summary": "Atualizar dados da doença",
+        "parameters": [
+          {
+            "name": "id_doenca",
+            "in": "path",
+            "description": "Id da doença na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados da doença",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doencas"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doencas"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doencas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Doença atualizada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doencas"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Doença ou idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Doencas/doencas/deleta/{id_doenca}": {
+      "delete": {
+        "tags": [
+          "Doencas"
+        ],
+        "summary": "Remove uma doença do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_doenca",
+            "in": "path",
+            "description": "Id da doença a ser deletada",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Doença removida com sucesso"
+          },
+          "404": {
+            "description": "Doença não encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Idoso/idoso": {
+      "get": {
+        "tags": [
+          "Idoso"
+        ],
+        "summary": "Carregar todos os idosos presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Idoso"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Idoso/idoso/{id_idoso}": {
+      "get": {
+        "tags": [
+          "Idoso"
+        ],
+        "summary": "Carregar o idoso por meio do id",
+        "parameters": [
+          {
+            "name": "id_idoso",
+            "in": "path",
+            "description": "Id do idoso",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Idoso"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Idoso/idoso/criar": {
+      "post": {
+        "tags": [
+          "Idoso"
+        ],
+        "summary": "Criação de idoso",
+        "requestBody": {
+          "description": "Dados do novo idoso",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Idoso"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Idoso"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Idoso"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Idoso criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Idoso"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cuidador não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Idoso/idoso/atualiza/{id_idoso}": {
+      "put": {
+        "tags": [
+          "Idoso"
+        ],
+        "summary": "Atualizar dados do idoso",
+        "parameters": [
+          {
+            "name": "id_idoso",
+            "in": "path",
+            "description": "Id do idoso na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados do idoso",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Idoso"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Idoso"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Idoso"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Idoso atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Idoso"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Idoso ou cuidador não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Idoso/idoso/deleta/{id_idoso}": {
+      "delete": {
+        "tags": [
+          "Idoso"
+        ],
+        "summary": "Remove um idoso do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_idoso",
+            "in": "path",
+            "description": "Id do idoso a ser deletado",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Idoso removido com sucesso"
+          },
+          "404": {
+            "description": "Idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Lembrete_Consulta/lembrete_consulta": {
+      "get": {
+        "tags": [
+          "Lembrete_Consulta"
+        ],
+        "summary": "Carregar todos os lembretes de consulta presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Lembrete_Consulta"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Lembrete_Consulta/lembrete_consulta/{id_lembrete_consulta}": {
+      "get": {
+        "tags": [
+          "Lembrete_Consulta"
+        ],
+        "summary": "Carregar o lembrete de consulta por meio do id",
+        "parameters": [
+          {
+            "name": "id_lembrete_consulta",
+            "in": "path",
+            "description": "Id do lembrete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lembrete_Consulta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Lembrete_Consulta/lembrete_consulta/criar": {
+      "post": {
+        "tags": [
+          "Lembrete_Consulta"
+        ],
+        "summary": "Criação de lembrete de consulta",
+        "requestBody": {
+          "description": "Dados do novo lembrete",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lembrete_Consulta"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lembrete_Consulta"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lembrete_Consulta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Lembrete criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lembrete_Consulta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Lembrete_Consulta/lembrete_consulta/atualiza/{id_lembrete_consulta}": {
+      "put": {
+        "tags": [
+          "Lembrete_Consulta"
+        ],
+        "summary": "Atualizar dados do lembrete de consulta",
+        "parameters": [
+          {
+            "name": "id_lembrete_consulta",
+            "in": "path",
+            "description": "Id do lembrete na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados do lembrete",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lembrete_Consulta"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lembrete_Consulta"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lembrete_Consulta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Lembrete atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lembrete_Consulta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Lembrete ou idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Lembrete_Consulta/lembrete_consulta/deleta/{id_lembrete_consulta}": {
+      "delete": {
+        "tags": [
+          "Lembrete_Consulta"
+        ],
+        "summary": "Remove um lembrete de consulta do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_lembrete_consulta",
+            "in": "path",
+            "description": "Id do lembrete a ser deletado",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Lembrete removido com sucesso"
+          },
+          "404": {
+            "description": "Lembrete não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Medicamentos/medicamentos": {
+      "get": {
+        "tags": [
+          "Medicamentos"
+        ],
+        "summary": "Carregar todos os medicamentos presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Medicamentos"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Medicamentos/medicamentos/{id_medicamentos}": {
+      "get": {
+        "tags": [
+          "Medicamentos"
+        ],
+        "summary": "Carregar o medicamento por meio do id",
+        "parameters": [
+          {
+            "name": "id_medicamentos",
+            "in": "path",
+            "description": "Id do medicamento",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Medicamentos"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Medicamentos/medicamentos/criar": {
+      "post": {
+        "tags": [
+          "Medicamentos"
+        ],
+        "summary": "Criação de medicamento",
+        "requestBody": {
+          "description": "Dados do novo medicamento",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Medicamentos"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Medicamentos"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Medicamentos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Medicamento criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Medicamentos"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Medicamentos/medicamentos/atualiza/{id_medicamentos}": {
+      "put": {
+        "tags": [
+          "Medicamentos"
+        ],
+        "summary": "Atualizar dados do medicamento",
+        "parameters": [
+          {
+            "name": "id_medicamentos",
+            "in": "path",
+            "description": "Id do medicamento na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados do medicamento",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Medicamentos"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Medicamentos"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Medicamentos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Medicamento atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Medicamentos"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Medicamento ou idoso não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Medicamentos/medicamentos/deleta/{id_medicamentos}": {
+      "delete": {
+        "tags": [
+          "Medicamentos"
+        ],
+        "summary": "Remove um medicamento do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_medicamentos",
+            "in": "path",
+            "description": "Id do medicamento a ser deletado",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Medicamento removido com sucesso"
+          },
+          "404": {
+            "description": "Medicamento não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Parente/parente": {
+      "get": {
+        "tags": [
+          "Parente"
+        ],
+        "summary": "Carregar todos os parentes presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Parente"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Parente/parente/{id_parente}": {
+      "get": {
+        "tags": [
+          "Parente"
+        ],
+        "summary": "Carregar o parente por meio do id",
+        "parameters": [
+          {
+            "name": "id_parente",
+            "in": "path",
+            "description": "Id do parente",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parente"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Parente/parente/criar": {
+      "post": {
+        "tags": [
+          "Parente"
+        ],
+        "summary": "Criação de parente",
+        "requestBody": {
+          "description": "Dados do novo parente",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parente"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parente"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parente"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Parente criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parente"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Idoso ou perfil não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Parente/parente/atualiza/{id_parente}": {
+      "put": {
+        "tags": [
+          "Parente"
+        ],
+        "summary": "Atualizar dados do parente",
+        "parameters": [
+          {
+            "name": "id_parente",
+            "in": "path",
+            "description": "Id do parente na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados do parente",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parente"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parente"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parente"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Parente atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Parente"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Parente, idoso ou perfil não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Parente/parente/deleta/{id_parente}": {
+      "delete": {
+        "tags": [
+          "Parente"
+        ],
+        "summary": "Remove um parente do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_parente",
+            "in": "path",
+            "description": "Id do parente a ser deletado",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Parente removido com sucesso"
+          },
+          "404": {
+            "description": "Parente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Perfil/perfil": {
+      "get": {
+        "tags": [
+          "Perfil"
+        ],
+        "summary": "Carregar todos os perfis presentes no banco",
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Perfil"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/Perfil/perfil/{id_perfil}": {
+      "get": {
+        "tags": [
+          "Perfil"
+        ],
+        "summary": "Carregar o perfil por meio do id",
+        "parameters": [
+          {
+            "name": "id_perfil",
+            "in": "path",
+            "description": "Id do perfil",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Perfil"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Perfil/perfil/criar": {
+      "post": {
+        "tags": [
+          "Perfil"
+        ],
+        "summary": "Criação de perfil",
+        "requestBody": {
+          "description": "Dados do novo perfil",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Perfil"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Perfil"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Perfil"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Perfil criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Perfil"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cargo não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Perfil/perfil/atualiza/{id_perfil}": {
+      "put": {
+        "tags": [
+          "Perfil"
+        ],
+        "summary": "Atualizar dados do perfil",
+        "parameters": [
+          {
+            "name": "id_perfil",
+            "in": "path",
+            "description": "Id do perfil na URL",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Novos dados do perfil",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Perfil"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Perfil"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Perfil"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Perfil atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Perfil"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Perfil ou cargo não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Perfil/perfil/deleta/{id_perfil}": {
+      "delete": {
+        "tags": [
+          "Perfil"
+        ],
+        "summary": "Remove um perfil do sistema pelo seu id",
+        "parameters": [
+          {
+            "name": "id_perfil",
+            "in": "path",
+            "description": "Id do perfil a ser deletado",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Perfil removido com sucesso"
+          },
+          "404": {
+            "description": "Perfil não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Alimentacao": {
+        "required": [
+          "dt_consumo",
+          "hr_consumo",
+          "id_idoso",
+          "nm_alimentacao",
+          "tp_alimentacao"
+        ],
+        "type": "object",
+        "properties": {
+          "id_alimentacao": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm_alimentacao": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "tp_alimentacao": {
+            "$ref": "#/components/schemas/TipoAlimentacao"
+          },
+          "dt_consumo": {
+            "type": "string",
+            "format": "date"
+          },
+          "hr_consumo": {
+            "type": "string",
+            "format": "time"
+          },
+          "vlr_caloria": {
+            "type": "number",
+            "format": "double"
+          },
+          "ds_preparacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_idoso": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Atividades": {
+        "required": [
+          "dt_atividade",
+          "id_idoso",
+          "nm_atividade"
+        ],
+        "type": "object",
+        "properties": {
+          "id_atividade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm_atividade": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ds_atividade": {
+            "type": "string",
+            "nullable": true
+          },
+          "dt_atividade": {
+            "type": "string",
+            "format": "date"
+          },
+          "hr_atividade_inicio": {
+            "type": "string",
+            "format": "time"
+          },
+          "hr_atividade_fim": {
+            "type": "string",
+            "format": "time"
+          },
+          "id_idoso": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Cargo": {
+        "type": "object",
+        "properties": {
+          "id_cargo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm_cargo": {
+            "type": "string",
+            "nullable": true
+          },
+          "fg_permissao": {
+            "$ref": "#/components/schemas/Permissao"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Consulta_Medicamento": {
+        "required": [
+          "id_Medicamentos",
+          "id_lembrete_consulta"
+        ],
+        "type": "object",
+        "properties": {
+          "id_consulta_medicamento": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_lembrete_consulta": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_Medicamentos": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Cuidador": {
+        "required": [
+          "id_perfil",
+          "nm_cuidador"
+        ],
+        "type": "object",
+        "properties": {
+          "id_cuidador": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm_cuidador": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "cpf_cuidador": {
+            "type": "string",
+            "nullable": true
+          },
+          "ds_email": {
+            "type": "string",
+            "nullable": true
+          },
+          "ds_senha": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_perfil": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Doencas": {
+        "required": [
+          "id_idoso"
+        ],
+        "type": "object",
+        "properties": {
+          "id_doenca": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm_doenca": {
+            "type": "string",
+            "nullable": true
+          },
+          "ds_doenca": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_idoso": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Idoso": {
+        "required": [
+          "id_cuidador",
+          "nm_idoso"
+        ],
+        "type": "object",
+        "properties": {
+          "iD_idoso": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm_idoso": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "cpf_idoso": {
+            "type": "string",
+            "nullable": true
+          },
+          "vlr_altura": {
+            "type": "number",
+            "format": "double"
+          },
+          "vlr_peso": {
+            "type": "number",
+            "format": "double"
+          },
+          "dt_nascimento": {
+            "type": "string",
+            "format": "date"
+          },
+          "ds_comportamento": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_cuidador": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Lembrete_Consulta": {
+        "required": [
+          "id_idoso",
+          "st_consulta"
+        ],
+        "type": "object",
+        "properties": {
+          "id_lembrete_consulta": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ds_titulo_lembrente_consulta": {
+            "type": "string",
+            "nullable": true
+          },
+          "nm_consulta_medico": {
+            "type": "string",
+            "nullable": true
+          },
+          "dt_consulta": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "hr_consulta": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ds_consulta": {
+            "type": "string",
+            "nullable": true
+          },
+          "st_consulta": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "id_idoso": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Medicamentos": {
+        "required": [
+          "hr_medicamento",
+          "id_idoso"
+        ],
+        "type": "object",
+        "properties": {
+          "id_medicamentos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm_medicamentos": {
+            "type": "string",
+            "nullable": true
+          },
+          "via_administracao": {
+            "type": "string",
+            "nullable": true
+          },
+          "vl_frquencia": {
+            "type": "string",
+            "nullable": true
+          },
+          "ds_instrucao_uso": {
+            "type": "string",
+            "nullable": true
+          },
+          "dt_medicamento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "hr_medicamento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id_idoso": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Parente": {
+        "required": [
+          "id_idoso",
+          "id_perfil"
+        ],
+        "type": "object",
+        "properties": {
+          "id_parente": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm_parente": {
+            "type": "string",
+            "nullable": true
+          },
+          "nr_telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "ds_email": {
+            "type": "string",
+            "nullable": true
+          },
+          "ds_senha": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_idoso": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_perfil": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Perfil": {
+        "required": [
+          "id_cargo",
+          "nm_perfil"
+        ],
+        "type": "object",
+        "properties": {
+          "id_perfil": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm_perfil": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id_cargo": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Permissao": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "Status": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "TipoAlimentacao": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "UserLoginAux": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Insira o token JWT para realizar a autenticação",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "Alimentacao"
+    },
+    {
+      "name": "Atividades"
+    },
+    {
+      "name": "Auth"
+    },
+    {
+      "name": "Cargo"
+    },
+    {
+      "name": "Consulta_Medicamento"
+    },
+    {
+      "name": "Cuidador"
+    },
+    {
+      "name": "Doencas"
+    },
+    {
+      "name": "Idoso"
+    },
+    {
+      "name": "Lembrete_Consulta"
+    },
+    {
+      "name": "Medicamentos"
+    },
+    {
+      "name": "Parente"
+    },
+    {
+      "name": "Perfil"
+    }
+  ]
+}

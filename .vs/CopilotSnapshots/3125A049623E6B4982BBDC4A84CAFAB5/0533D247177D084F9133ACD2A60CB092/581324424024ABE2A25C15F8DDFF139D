@@ -1,0 +1,67 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace Ajudante_Familiar_Global.Infrastruture.Repository
+{
+    public class PerfilRepository : IPerfilRepository
+    {
+        private readonly AppDbContext _context;
+
+        public PerfilRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Perfil> CreatePerfilAsync(Perfil perfil)
+        {
+            await _context.Perfis.AddAsync(perfil);
+            await _context.SaveChangesAsync();
+            return perfil;
+        }
+
+        public async Task<Perfil> DeletePerfilAsync(int id_perfil)
+        {
+            var perfil = await _context.Perfis.FindAsync(id_perfil);
+            if (perfil == null)
+            {
+                throw new KeyNotFoundException($"Id perfil com id {id_perfil} não foi encontrado");
+            }
+            _context.Perfis.Remove(perfil);
+            await _context.SaveChangesAsync();
+            return perfil;
+        }
+
+        public async Task<Perfil> GetPerfilAsync(int id_perfil)
+        {
+            var existePerfil = await _context.Perfis.FindAsync(id_perfil);
+            if (existePerfil == null)
+            {
+                throw new KeyNotFoundException($"Perfil com id {id_perfil} não encontrado.");
+            }
+            return existePerfil;
+        }
+
+        public async Task<IEnumerable<Perfil>> GetAllPerfilAsync()
+        {
+            return await _context.Perfis.ToListAsync();
+        }
+
+        public async Task<Perfil> UpdatePerfilAsync(int id_perfil, Perfil perfil)
+        {
+            var existePerfil = await _context.Perfis.FindAsync(id_perfil);
+            if (existePerfil == null)
+            {
+                throw new KeyNotFoundException($"Perfil com id {id_perfil} não foi encontrado.");
+            }
+
+            existePerfil.nm_perfil = perfil.nm_perfil;
+            existePerfil.id_cargo = perfil.id_cargo;
+
+            await _context.SaveChangesAsync();
+
+            return existePerfil;
+        }
+    }
+}

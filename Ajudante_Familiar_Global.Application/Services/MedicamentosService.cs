@@ -1,6 +1,70 @@
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IRepository;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.Extensions.Logging;
+
 namespace Ajudante_Familiar_Global.Application.Services
 {
-    public class MedicamentosService
+    public class MedicamentosService : IMedicamentosService
     {
+        private readonly IMedicamentosRepository _medicamentos;
+        private readonly IIdosoRepository _idoso;
+        private readonly ILogger<MedicamentosService> _logger;
+
+        public MedicamentosService(IMedicamentosRepository medicamentos, IIdosoRepository idoso, ILogger<MedicamentosService> logger)
+        {
+            _medicamentos = medicamentos;
+            _logger = logger;
+            _idoso = idoso;
+        }
+
+        public async Task<Medicamentos> CreateMedicamentosAsync(Medicamentos medicamentos)
+        {
+            _logger.LogInformation("Medicamentos iniciado");
+            var existeIdoso = await _idoso.GetIdosoAsync(medicamentos.Id_idoso);
+
+            if (existeIdoso == null)
+            {
+                _logger.LogWarning("Sem o id idoso");
+                throw new KeyNotFoundException("Idoso não encontrado para fazer a conexao");
+            }
+
+            return await _medicamentos.CreateMedicamentosAsync(medicamentos);
+        }
+
+        public async Task<Medicamentos> DeleteMedicamentosAsync(int id_medicamentos)
+        {
+            _logger.LogInformation("Excluido medicamentos");
+
+            var deletado = await _medicamentos.DeleteMedicamentosAsync(id_medicamentos);
+            return deletado;
+        }
+
+        public async Task<Medicamentos> GetMedicamentosAsync(int id_medicamentos)
+        {
+            _logger.LogInformation("Buscar medicamentos");
+            return await _medicamentos.GetMedicamentosAsync(id_medicamentos);
+        }
+
+        public async Task<IEnumerable<Medicamentos>> GetAllMedicamentosAsync()
+        {
+            _logger.LogInformation("Listando medicamentos");
+
+            return await _medicamentos.GetAllMedicamentosAsync();
+        }
+
+        public async Task<Medicamentos> UpdateMedicamentosAsync(int id_medicamentos, Medicamentos medicamentos)
+        {
+            _logger.LogInformation("Atualizando medicamentos");
+
+            var existeIdoso = await _idoso.GetIdosoAsync(medicamentos.Id_idoso);
+
+            if (existeIdoso == null)
+            {
+                _logger.LogWarning("Sem o id idoso");
+                throw new KeyNotFoundException("Idoso não encontrado para fazer a conexao");
+            }
+            return await _medicamentos.UpdateMedicamentosAsync(id_medicamentos, medicamentos);
+        }
     }
 }

@@ -1,0 +1,13 @@
+﻿using Ajudante_Familiar_Global.Domain.Entities;
+
+namespace Ajudante_Familiar_Global.Domain.Interfaces.IRepository
+{
+    public interface IPerfilRepository
+    {
+        Task<Perfil> CreatePerfilAsync(Perfil perfil);
+        Task<Perfil> GetPerfilAsync(int id_perfil);
+        Task<IEnumerable<Perfil>> GetAllPerfilAsync();
+        Task<Perfil> UpdatePerfilAsync(int id_perfil, Perfil perfil);
+        Task<Perfil> DeletePerfilAsync(int id_perfil);
+    }
+}
