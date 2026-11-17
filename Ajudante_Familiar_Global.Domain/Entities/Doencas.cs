@@ -25,7 +25,7 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         [ForeignKey("Id_idoso")]
         public Idoso Idoso { get; set; }
 
-        private Doencas() { }
+        public Doencas() { }
 
         public Doencas(int id_doenca, string nm_doenca, string ds_doenca, int id_idoso, Idoso idoso)
         {

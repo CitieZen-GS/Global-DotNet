@@ -1,0 +1,21 @@
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Xunit;
+
+namespace Ajudante_Familiar_Global.integrationTests.FactoryFixture
+{
+    public class ApiFactoryFixture : WebApplicationFactory<Program>
+    {
+        protected override void ConfigureWebHost(IWebHostBuilder builder)
+        {
+            base.ConfigureWebHost(builder);
+        }
+    }
+
+    [CollectionDefinition("ApiCollection")]
+    public class ApiCollection : ICollectionFixture<ApiFactoryFixture>
+    {
+
+    }
+   
+}

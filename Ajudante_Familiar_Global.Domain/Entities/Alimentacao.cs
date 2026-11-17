@@ -20,7 +20,7 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         public string Nm_alimentacao { get; set; }
         [Required]
         [Column("tp_alimentacao")]
-        public TipoAlimentacao tp_alimentacao { get; set; }
+        public TipoAlimentacao Tp_alimentacao { get; set; }
         [Required]
         [Column("dt_consumo")]
         public DateOnly Dt_consumo { get; set; }
@@ -44,7 +44,7 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         {
             Id_alimentacao = id_alimentacao;
             Nm_alimentacao = nm_alimentacao;
-            this.tp_alimentacao = tp_alimentacao;
+            Tp_alimentacao = tp_alimentacao;
             Dt_consumo = dt_consumo;
             Hr_consumo = hr_consumo;
             Vlr_caloria = vlr_caloria;

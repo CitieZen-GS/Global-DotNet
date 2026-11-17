@@ -30,7 +30,7 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         [ForeignKey("id_Medicamentos")]
         public Medicamentos medicamentos { get; set; }
 
-        private Consulta_Medicamento() { }
+        public Consulta_Medicamento() { }
 
         public Consulta_Medicamento(int id_consulta_medicamento, int id_lembrete_consulta, Lembrete_Consulta lembrete_Consulta, int id_Medicamentos, Medicamentos medicamentos)
         {

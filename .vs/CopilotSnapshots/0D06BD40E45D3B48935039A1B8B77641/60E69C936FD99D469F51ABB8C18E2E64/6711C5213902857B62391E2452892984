@@ -1,0 +1,8 @@
+﻿using Microsoft.AspNetCore.Mvc.Testing;
+
+namespace Ajudante_Familiar_Global.integrationTests.FactoryFixture
+{
+    public class ApiFactoryFixture : WebApplicationFactory<global::Program>
+    {
+    }
+}

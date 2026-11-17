@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Ajudante_Familiar_Global.Domain/1.0.0": {
+        "runtime": {
+          "Ajudante_Familiar_Global.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Ajudante_Familiar_Global.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

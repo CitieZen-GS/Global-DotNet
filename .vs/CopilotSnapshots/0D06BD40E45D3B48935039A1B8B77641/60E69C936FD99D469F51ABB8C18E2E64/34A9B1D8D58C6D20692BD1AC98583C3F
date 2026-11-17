@@ -1,0 +1,11 @@
+﻿using Microsoft.VisualStudio.TestPlatform.TestHost;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Ajudante_Familiar_Global.integrationTests.FactoryFixture
+{
+    public class ApiFactoryFixture : WebApplicationFactory
+    {
+    }
+}

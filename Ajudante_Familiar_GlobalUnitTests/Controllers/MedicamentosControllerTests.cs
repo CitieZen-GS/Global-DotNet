@@ -1,5 +1,208 @@
+using Ajudante_Familiar_Global.Controllers;
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
+
 namespace Ajudante_Familiar_Global.UnitTests.Controllers;
 
 public class MedicamentosControllerTests
 {
+    private readonly Mock<IMedicamentosService> _medicamentos_ServiceMock;
+    private readonly MedicamentosController _controller;
+    private readonly ILogger<MedicamentosController> _logger;
+    private readonly AppDbContext _context;
+
+    public MedicamentosControllerTests()
+    {
+        _medicamentos_ServiceMock = new Mock<IMedicamentosService>();
+        var loggMock = new Mock<ILogger<MedicamentosController>>();
+
+        _logger = loggMock.Object;
+
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .Options;
+
+        _context = new AppDbContext(options);
+
+        _controller = new MedicamentosController(_medicamentos_ServiceMock.Object, _logger);
+
+        _controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext()
+        };
+
+        var urlHelper = new Mock<IUrlHelper>();
+        urlHelper.Setup(helper => helper.Link(It.IsAny<string?>(), It.IsAny<object?>()))
+                .Returns((string? routeName, object? _) => $"https://localhost/{routeName}");
+        _controller.Url = urlHelper.Object;
+    }
+
+    //Criação
+    [Fact]
+    public async Task Create_Medicamentos_RetornaCreated()
+    {
+        // Arrange
+        var medicamentos = new Medicamentos
+        {
+            id_medicamentos = 1,
+            Nm_medicamentos = "Medicamento teste",
+            Via_administracao = "Oral",
+            Vl_frquencia = "1 vez ao dia",
+            Ds_instrucao_uso = "Após refeição",
+            Dt_medicamento = new DateTime(2026, 8, 9),
+            Hr_medicamento = new DateTime(2026, 8, 9, 9, 0, 0),
+            Id_idoso = 1,
+            Idoso = null!
+        };
+
+        _medicamentos_ServiceMock.Setup(service => service.CreateMedicamentosAsync(medicamentos)).ReturnsAsync(medicamentos);
+
+        // Act
+        var resultado = await _controller.PostMedicamentos(medicamentos);
+
+        // Assert
+        var createdResult = Assert.IsType<CreatedAtActionResult>(resultado.Result);
+        var medicamentosRetornados = Assert.IsType<Medicamentos>(createdResult.Value);
+        Assert.NotNull(medicamentosRetornados);
+        Assert.Equal(medicamentos.id_medicamentos, medicamentosRetornados.id_medicamentos);
+    }
+
+    //Atualização
+    [Fact]
+    public async Task Update_Medicamentos_RetornaOk()
+    {
+        // Arrange
+        var id_medicamentos = 1;
+        var medicamentos = new Medicamentos
+        {
+            id_medicamentos = id_medicamentos,
+            Nm_medicamentos = "Medicamento atualizado",
+            Via_administracao = "Oral",
+            Vl_frquencia = "2 vezes ao dia",
+            Ds_instrucao_uso = "Antes da refeição",
+            Dt_medicamento = new DateTime(2026, 8, 10),
+            Hr_medicamento = new DateTime(2026, 8, 10, 10, 0, 0),
+            Id_idoso = 1,
+            Idoso = null!
+        };
+
+        _medicamentos_ServiceMock.Setup(service => service.UpdateMedicamentosAsync(id_medicamentos, medicamentos))
+            .ReturnsAsync(medicamentos);
+
+        //Act
+        var atualizacaoRealizada = await _controller.PutMedicamentos(id_medicamentos, medicamentos);
+
+        //Assert
+        var okResultado = Assert.IsType<OkObjectResult>(atualizacaoRealizada.Result);
+        var retornoMedicamentos = Assert.IsType<Medicamentos>(okResultado.Value);
+        //Dados atualizados
+        Assert.Equal(medicamentos.id_medicamentos, retornoMedicamentos.id_medicamentos);
+        Assert.Equal(medicamentos.Nm_medicamentos, retornoMedicamentos.Nm_medicamentos);
+        Assert.Equal(medicamentos.Via_administracao, retornoMedicamentos.Via_administracao);
+        Assert.Equal(medicamentos.Vl_frquencia, retornoMedicamentos.Vl_frquencia);
+        Assert.Equal(medicamentos.Ds_instrucao_uso, retornoMedicamentos.Ds_instrucao_uso);
+        Assert.Equal(medicamentos.Dt_medicamento, retornoMedicamentos.Dt_medicamento);
+        Assert.Equal(medicamentos.Hr_medicamento, retornoMedicamentos.Hr_medicamento);
+        Assert.Equal(medicamentos.Id_idoso, retornoMedicamentos.Id_idoso);
+    }
+
+    [Fact]
+    public async Task GetAll_Medicamentos_RetornandoOk()
+    {
+        // Arrange
+        var list = new List<Medicamentos>
+        {
+            new Medicamentos
+            {
+                id_medicamentos = 1,
+                Nm_medicamentos = "Medicamento teste",
+                Via_administracao = "Oral",
+                Vl_frquencia = "1 vez ao dia",
+                Ds_instrucao_uso = "Após refeição",
+                Dt_medicamento = new DateTime(2026, 8, 9),
+                Hr_medicamento = new DateTime(2026, 8, 9, 9, 0, 0),
+                Id_idoso = 1,
+                Idoso = null!
+            }
+        };
+
+        _medicamentos_ServiceMock.Setup(service => service.GetAllMedicamentosAsync()).ReturnsAsync(list);
+
+        // Act
+        var resultado = await _controller.GetAllMedicamentos();
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedList = Assert.IsType<List<Medicamentos>>(okResult.Value);
+
+        Assert.NotNull(returnedList);
+        Assert.Single(returnedList);
+        Assert.Equal(1, returnedList[0].id_medicamentos);
+    }
+
+    [Fact]
+    public async Task GetId_Medicamentos_RetornandoOk()
+    {
+        // Arrange
+        var id_medicamentos = 1;
+        var medicamentos = new Medicamentos
+        {
+            id_medicamentos = id_medicamentos,
+            Nm_medicamentos = "Medicamento teste",
+            Via_administracao = "Oral",
+            Vl_frquencia = "1 vez ao dia",
+            Ds_instrucao_uso = "Após refeição",
+            Dt_medicamento = new DateTime(2026, 8, 9),
+            Hr_medicamento = new DateTime(2026, 8, 9, 9, 0, 0),
+            Id_idoso = 1,
+            Idoso = null!
+        };
+
+        _medicamentos_ServiceMock.Setup(service => service.GetMedicamentosAsync(id_medicamentos)).ReturnsAsync(medicamentos);
+
+        // Act
+        var resultado = await _controller.GetMedicamentos(id_medicamentos);
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedMedicamentos = Assert.IsType<Medicamentos>(okResult.Value);
+
+        Assert.NotNull(returnedMedicamentos);
+        Assert.Equal(id_medicamentos, returnedMedicamentos.id_medicamentos);
+    }
+
+    [Fact]
+    public async Task Deleta_Medicamentos()
+    {
+        // Arrange
+        var id_medicamentos = 1;
+        var medicamentos = new Medicamentos
+        {
+            id_medicamentos = id_medicamentos,
+            Nm_medicamentos = "Medicamento teste",
+            Via_administracao = "Oral",
+            Vl_frquencia = "1 vez ao dia",
+            Ds_instrucao_uso = "Após refeição",
+            Dt_medicamento = new DateTime(2026, 8, 9),
+            Hr_medicamento = new DateTime(2026, 8, 9, 9, 0, 0),
+            Id_idoso = 1,
+            Idoso = null!
+        };
+
+        _medicamentos_ServiceMock.Setup(service => service.DeleteMedicamentosAsync(id_medicamentos))
+            .ReturnsAsync(medicamentos);
+
+        //Act
+        var resultado = await _controller.DeleteMedicamentos(id_medicamentos);
+
+        //Assert
+        Assert.IsType<NoContentResult>(resultado);
+    }
 }

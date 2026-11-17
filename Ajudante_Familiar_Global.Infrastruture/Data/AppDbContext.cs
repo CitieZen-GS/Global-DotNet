@@ -102,7 +102,7 @@ namespace Ajudante_Familiar_Global.Infrastruture.Data
             modelBuilder.Entity<Alimentacao>().HasKey(g => g.Id_alimentacao);
             modelBuilder.Entity<Alimentacao>().Property(g => g.Id_alimentacao).HasColumnName("id_alimentacao").ValueGeneratedOnAdd();
             modelBuilder.Entity<Alimentacao>().Property(g => g.Nm_alimentacao).HasColumnName("nm_alimentacao").HasMaxLength(20).IsRequired();
-            modelBuilder.Entity<Alimentacao>().Property(g => g.tp_alimentacao).HasColumnName("tp_alimentacao").HasConversion<string>().HasMaxLength(20).IsRequired();
+            modelBuilder.Entity<Alimentacao>().Property(g => g.Tp_alimentacao).HasColumnName("tp_alimentacao").HasConversion<string>().HasMaxLength(20).IsRequired();
             modelBuilder.Entity<Alimentacao>().ToTable(t => t.HasCheckConstraint("ck_alimentacao_tipo", "\"tp_alimentacao\" IN ('Cafe da manha', 'Almoco', 'Lanche de tarde', 'Jantar')"));
             modelBuilder.Entity<Alimentacao>().Property(g => g.Dt_consumo).HasColumnName("dt_consumo").IsRequired();
             modelBuilder.Entity<Alimentacao>().Property(g => g.Hr_consumo).HasColumnName("hr_consumo").IsRequired();

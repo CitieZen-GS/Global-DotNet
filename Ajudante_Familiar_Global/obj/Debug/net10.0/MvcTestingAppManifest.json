@@ -1,7 +1,0 @@
-{
-  "Ajudante_Familiar_Global.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Application",
-  "Ajudante_Familiar_Global.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Domain",
-  "Ajudante_Familiar_Global.Infrastruture, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.Infrastruture",
-  "Ajudante_Familiar_Global.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_Global.IntegrationTest",
-  "Ajudante_Familiar_Global.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Ajudante_Familiar_Global\\Ajudante_Familiar_GlobalUnitTests"
-}

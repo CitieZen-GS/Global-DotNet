@@ -82,8 +82,6 @@
     <ProjectReference Include="..\Ajudante_Familiar_Global.Application\Ajudante_Familiar_Global.Application.csproj" />
     <ProjectReference Include="..\Ajudante_Familiar_Global.Domain\Ajudante_Familiar_Global.Domain.csproj" />
     <ProjectReference Include="..\Ajudante_Familiar_Global.Infrastruture\Ajudante_Familiar_Global.Infrastruture.csproj" />
-    <ProjectReference Include="..\Ajudante_Familiar_Global.IntegrationTest\Ajudante_Familiar_Global.IntegrationTests.csproj" />
-    <ProjectReference Include="..\Ajudante_Familiar_GlobalUnitTests\Ajudante_Familiar_Global.UnitTests.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,252 @@
+using Ajudante_Familiar_Global.Controllers;
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
+
 namespace Ajudante_Familiar_Global.UnitTests.Controllers;
 
 public class IdosoControllerTests
 {
+    private readonly Mock<IIdosoService> _idoso_ServiceMock;
+    private readonly IdosoController _controller;
+    private readonly ILogger<IdosoController> _logger;
+    private readonly AppDbContext _context;
+
+    public IdosoControllerTests()
+    {
+        _idoso_ServiceMock = new Mock<IIdosoService>();
+        var loggMock = new Mock<ILogger<IdosoController>>();
+
+        _logger = loggMock.Object;
+
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .Options;
+
+        _context = new AppDbContext(options);
+
+        _controller = new IdosoController(_idoso_ServiceMock.Object, _logger);
+
+        _controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext()
+        };
+
+        var urlHelper = new Mock<IUrlHelper>();
+        urlHelper.Setup(helper => helper.Link(It.IsAny<string?>(), It.IsAny<object?>()))
+                .Returns((string? routeName, object? _) => $"https://localhost/{routeName}");
+        _controller.Url = urlHelper.Object;
+    }
+
+    //Criação
+    [Fact]
+    public async Task Create_Idoso_RetornaCreated()
+    {
+        // Arrange
+        var cuidador = new Cuidador
+        {
+            Id_cuidador = 1,
+            Nm_cuidador = "Cuidador teste",
+            Cpf_cuidador = "12345678900",
+            Ds_email = "teste@email.com",
+            Ds_senha = "senha",
+            Id_perfil = 1
+        };
+        var idoso = new Idoso
+        {
+            ID_idoso = 1,
+            Nm_idoso = "Idoso teste",
+            cpf_idoso = "12345678900",
+            vlr_altura = 1.7m,
+            vlr_peso = 70m,
+            dt_nascimento = new DateOnly(1950, 1, 1),
+            ds_comportamento = "Descrição teste",
+            id_cuidador = 1,
+            cuidador = cuidador
+        };
+
+        _idoso_ServiceMock.Setup(service => service.CreateIdosoAsync(idoso)).ReturnsAsync(idoso);
+
+        // Act
+        var resultado = await _controller.PostIdoso(idoso);
+
+        // Assert
+        var createdResult = Assert.IsType<CreatedAtActionResult>(resultado.Result);
+        var idosoRetornado = Assert.IsType<Idoso>(createdResult.Value);
+        Assert.NotNull(idosoRetornado);
+        Assert.Equal(idoso.ID_idoso, idosoRetornado.ID_idoso);
+    }
+
+    //Atualização
+    [Fact]
+    public async Task Update_Idoso_RetornaOk()
+    {
+        // Arrange
+        var id_idoso = 1;
+        var cuidador = new Cuidador
+        {
+            Id_cuidador = 1,
+            Nm_cuidador = "Cuidador teste",
+            Cpf_cuidador = "12345678900",
+            Ds_email = "teste@email.com",
+            Ds_senha = "senha",
+            Id_perfil = 1
+        };
+        var idoso = new Idoso
+        {
+            ID_idoso = id_idoso,
+            Nm_idoso = "Idoso atualizado",
+            cpf_idoso = "12345678900",
+            vlr_altura = 1.8m,
+            vlr_peso = 72m,
+            dt_nascimento = new DateOnly(1950, 1, 1),
+            ds_comportamento = "Descrição atualizada",
+            id_cuidador = 1,
+            cuidador = cuidador
+        };
+
+        _idoso_ServiceMock.Setup(service => service.UpdateIdosoAsync(id_idoso, idoso)).ReturnsAsync(idoso);
+
+        //Act
+        var atualizacaoRealizada = await _controller.PutIdoso(id_idoso, idoso);
+
+        //Assert
+        var okResultado = Assert.IsType<OkObjectResult>(atualizacaoRealizada.Result);
+        var retornoIdoso = Assert.IsType<Idoso>(okResultado.Value);
+        //Dados atualizados
+        Assert.Equal(idoso.ID_idoso, retornoIdoso.ID_idoso);
+        Assert.Equal(idoso.Nm_idoso, retornoIdoso.Nm_idoso);
+        Assert.Equal(idoso.cpf_idoso, retornoIdoso.cpf_idoso);
+        Assert.Equal(idoso.vlr_altura, retornoIdoso.vlr_altura);
+        Assert.Equal(idoso.vlr_peso, retornoIdoso.vlr_peso);
+        Assert.Equal(idoso.dt_nascimento, retornoIdoso.dt_nascimento);
+        Assert.Equal(idoso.ds_comportamento, retornoIdoso.ds_comportamento);
+        Assert.Equal(idoso.id_cuidador, retornoIdoso.id_cuidador);
+    }
+
+    [Fact]
+    public async Task GetAll_Idoso_RetornandoOk()
+    {
+        // Arrange
+        var cuidador = new Cuidador
+        {
+            Id_cuidador = 1,
+            Nm_cuidador = "Cuidador teste",
+            Cpf_cuidador = "12345678900",
+            Ds_email = "teste@email.com",
+            Ds_senha = "senha",
+            Id_perfil = 1
+        };
+        var list = new List<Idoso>
+        {
+            new Idoso
+            {
+                ID_idoso = 1,
+                Nm_idoso = "Idoso teste",
+                cpf_idoso = "12345678900",
+                vlr_altura = 1.7m,
+                vlr_peso = 70m,
+                dt_nascimento = new DateOnly(1950, 1, 1),
+                ds_comportamento = "Descrição teste",
+                id_cuidador = 1,
+                cuidador = cuidador
+            }
+        };
+
+        _idoso_ServiceMock.Setup(service => service.GetAllIdosoAsync()).ReturnsAsync(list);
+
+        // Act
+        var resultado = await _controller.GetAllIdoso();
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedList = Assert.IsType<List<Idoso>>(okResult.Value);
+
+        Assert.NotNull(returnedList);
+        Assert.Single(returnedList);
+        Assert.Equal(1, returnedList[0].ID_idoso);
+    }
+
+    [Fact]
+    public async Task GetId_Idoso_RetornandoOk()
+    {
+        // Arrange
+        var id_idoso = 1;
+        var cuidador = new Cuidador
+        {
+            Id_cuidador = 1,
+            Nm_cuidador = "Cuidador teste",
+            Cpf_cuidador = "12345678900",
+            Ds_email = "teste@email.com",
+            Ds_senha = "senha",
+            Id_perfil = 1
+        };
+        var idoso = new Idoso
+        {
+            ID_idoso = id_idoso,
+            Nm_idoso = "Idoso teste",
+            cpf_idoso = "12345678900",
+            vlr_altura = 1.7m,
+            vlr_peso = 70m,
+            dt_nascimento = new DateOnly(1950, 1, 1),
+            ds_comportamento = "Descrição teste",
+            id_cuidador = 1,
+            cuidador = cuidador
+        };
+
+        _idoso_ServiceMock.Setup(service => service.GetIdosoAsync(id_idoso)).ReturnsAsync(idoso);
+
+        // Act
+        var resultado = await _controller.GetIdoso(id_idoso);
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedIdoso = Assert.IsType<Idoso>(okResult.Value);
+
+        Assert.NotNull(returnedIdoso);
+        Assert.Equal(id_idoso, returnedIdoso.ID_idoso);
+    }
+
+    [Fact]
+    public async Task Deleta_Idoso()
+    {
+        // Arrange
+        var id_idoso = 1;
+        var cuidador = new Cuidador
+        {
+            Id_cuidador = 1,
+            Nm_cuidador = "Cuidador teste",
+            Cpf_cuidador = "12345678900",
+            Ds_email = "teste@email.com",
+            Ds_senha = "senha",
+            Id_perfil = 1
+        };
+        var idoso = new Idoso
+        {
+            ID_idoso = id_idoso,
+            Nm_idoso = "Idoso teste",
+            cpf_idoso = "12345678900",
+            vlr_altura = 1.7m,
+            vlr_peso = 70m,
+            dt_nascimento = new DateOnly(1950, 1, 1),
+            ds_comportamento = "Descrição teste",
+            id_cuidador = 1,
+            cuidador = cuidador
+        };
+
+        _idoso_ServiceMock.Setup(service => service.DeleteIdosoAsync(id_idoso))
+            .ReturnsAsync(idoso);
+
+        //Act
+        var resultado = await _controller.DeleteIdoso(id_idoso);
+
+        //Assert
+        Assert.IsType<NoContentResult>(resultado);
+    }
 }

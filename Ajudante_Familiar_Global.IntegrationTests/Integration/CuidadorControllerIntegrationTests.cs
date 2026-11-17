@@ -1,0 +1,150 @@
+using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
+using Ajudante_Familiar_Global.Domain.Entities;
+using System;
+using System.Net;
+using System.Net.Http.Json;
+using Xunit;
+
+namespace Ajudante_Familiar_Global.integrationTests.Integration
+{
+    //Atenção!!! Tanto o create quanto o update precisam ter cuidado com os dados que serão adicionados, porque, se não, pode dar erro.
+    //Recomendação faz um a cada vez, não faz eles tudo junto
+    [Collection("ApiCollection")]
+    public class CuidadorControllerIntegrationTests
+    {
+        private readonly HttpClient _client;
+
+        public CuidadorControllerIntegrationTests(ApiFactoryFixture factory)
+        {
+            _client = factory.CreateClient();
+        }
+
+        [Fact]
+        public async Task CriarCuidador_DadosValidos_RetornaOk()
+        {
+            // Arrange
+            var id_cuidador = Random.Shared.Next(1, 100);
+
+            var novoCuidador = new
+            {
+                Id_cuidador = id_cuidador,
+                Nm_cuidador = "Cuidador teste",
+                Cpf_cuidador = "12345678901",
+                Ds_email = "cuidador.teste@email.com",
+                Ds_senha = "senha123",
+                Id_perfil = 1
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Cuidador/cuidador/criar", novoCuidador);
+
+            // Assert
+            var erro = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+            var cuidadorCriado = await response.Content.ReadFromJsonAsync<Cuidador>();
+
+            Assert.NotNull(cuidadorCriado);
+            Assert.Equal(id_cuidador, cuidadorCriado.Id_cuidador);
+        }
+
+        [Fact]
+        public async Task AtualizarCuidador_DadosValidos_RetornaSucesso()
+        {
+            // Arrange
+            var id_cuidador = 6;
+
+            var cuidadorAtualizado = new
+            {
+                Id_cuidador = id_cuidador,
+                Nm_cuidador = "Cuidador atualizado",
+                Cpf_cuidador = "10987654321",
+                Ds_email = "cuidador.atualizado@email.com",
+                Ds_senha = "senha456",
+                Id_perfil = 1
+            };
+
+            // Act
+            var response = await _client.PutAsJsonAsync(
+                $"api/Cuidador/cuidador/atualiza/{id_cuidador}", cuidadorAtualizado);
+
+            // Assert
+            var erro = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                Assert.Fail($"Não foi atualizado por: {erro}");
+            }
+
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task GetCuidador_dados_RetornaOk()
+        {
+            // Arrange
+            var id_cuidador = 6;
+
+            // Act
+            var response = await _client.GetAsync($"api/Cuidador/cuidador/{id_cuidador}");
+
+            // Assert
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                Assert.Fail("Cuidador não encontrado");
+            }
+
+            response.EnsureSuccessStatusCode();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var cuidador = await response.Content.ReadFromJsonAsync<Cuidador>();
+
+            Assert.NotNull(cuidador);
+            Assert.Equal(id_cuidador, cuidador.Id_cuidador);
+        }
+
+        [Fact]
+        public async Task GetAllCuidador_dados_RetornarOk()
+        {
+            //Act
+            var response = await _client.GetAsync("api/Cuidador/cuidador");
+
+            //Assert
+            response.EnsureSuccessStatusCode();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var cuidadores = await response.Content.ReadFromJsonAsync<List<Cuidador>>();
+
+            Assert.NotNull(cuidadores);
+        }
+
+        [Fact]
+        public async Task DeleteCuidador_dados_RetornaOk()
+        {
+            // Arrange
+            var id_cuidador = 55;
+
+            // Act
+            var response = await _client.DeleteAsync(
+                $"api/Cuidador/cuidador/deleta/{id_cuidador}");
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erroAchado = await response.Content.ReadAsStringAsync();
+
+                Assert.Fail($"Não foi deletado pelo motivo: {erroAchado}");
+            }
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
+    }
+}

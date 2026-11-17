@@ -57,7 +57,7 @@ namespace Ajudante_Familiar_Global.Infrastruture.Repository
             }
 
             existeAlimentacao.Nm_alimentacao = alimentacao.Nm_alimentacao;
-            existeAlimentacao.tp_alimentacao = alimentacao.tp_alimentacao;
+            existeAlimentacao.Tp_alimentacao = alimentacao.Tp_alimentacao;
             existeAlimentacao.Dt_consumo = alimentacao.Dt_consumo;
             existeAlimentacao.Hr_consumo = alimentacao.Hr_consumo;
             existeAlimentacao.Vlr_caloria = alimentacao.Vlr_caloria;

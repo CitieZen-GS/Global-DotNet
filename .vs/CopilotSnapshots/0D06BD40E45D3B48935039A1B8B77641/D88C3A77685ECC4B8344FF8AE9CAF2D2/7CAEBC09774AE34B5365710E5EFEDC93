@@ -1,0 +1,29 @@
+﻿using System.Net;
+using System.Text.Json;
+using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
+using Xunit;
+
+namespace Ajudante_Familiar_Global.integrationTests.Integration
+{
+    [Collection("ApiCollection")]
+    public class Lembrete_ConsultaControllerIntegrationTests
+    {
+        private readonly HttpClient _client;
+
+        public Lembrete_ConsultaControllerIntegrationTests(ApiFactoryFixture factory)
+        {
+            _client = factory.CreateClient();
+        }
+
+        [Fact]
+        public async Task GetAll_ReturnsOkWithEmptyArray()
+        {
+            using var response = await _client.GetAsync("/api/Lembrete_Consulta/lembrete_consulta");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            using var content = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+            Assert.Equal(JsonValueKind.Array, content.RootElement.ValueKind);
+            Assert.Empty(content.RootElement.EnumerateArray());
+        }
+    }
+}

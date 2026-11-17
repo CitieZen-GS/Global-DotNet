@@ -18,6 +18,8 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         [Column("fg_permissao")]
         public Permissao Fg_permissao { get; set; }
 
+        public Cargo() { }
+
         public Cargo(int id_cargo, string nm_cargo, Permissao fg_permissao)
         {
             Id_cargo = id_cargo;

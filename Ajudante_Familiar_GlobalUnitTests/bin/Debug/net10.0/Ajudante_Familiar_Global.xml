@@ -1,0 +1,572 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ajudante_Familiar_Global</name>
+    </assembly>
+    <members>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AlimentacaoController.GetAllAlimentacao">
+            <summary>
+            Carregar todas as alimentações presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de alimentações</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AlimentacaoController.GetAlimentacao(System.Int32)">
+            <summary>
+            Carregar a alimentação por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_alimentacao">Id da alimentação</param>
+            <returns>Alimentação encontrada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AlimentacaoController.PostAlimentacao(Ajudante_Familiar_Global.Domain.Entities.Alimentacao)">
+            <summary>
+            Criação de alimentação
+            </summary>
+            <param name="alimentacao">Dados da nova alimentação</param>
+            <response code="201">Alimentação criada com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Idoso não encontrado</response>
+            <returns>Alimentação criada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AlimentacaoController.PutAlimentacao(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Alimentacao)">
+            <summary>
+            Atualizar dados de alimentação
+            </summary>
+            <param name="id_alimentacao">Id da alimentação na URL</param>
+            <param name="alimentacao">Novos dados da alimentação</param>
+            <response code="200">Alimentação atualizada</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Alimentação ou idoso não encontrado</response>
+            <returns>Alimentação atualizada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AlimentacaoController.DeleteAlimentacao(System.Int32)">
+            <summary>
+            Remove uma alimentação do sistema pelo seu id
+            </summary>
+            <param name="id_alimentacao">Id da alimentação a ser deletada</param>
+            <response code="204">Alimentação removida com sucesso</response>
+            <response code="404">Alimentação não encontrada</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AtividadesController.GetAllAtividades">
+            <summary>
+            Carregar todas as atividades presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de atividades</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AtividadesController.GetAtividades(System.Int32)">
+            <summary>
+            Carregar a atividade por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_atividade">Id da atividade</param>
+            <returns>Atividade encontrada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AtividadesController.PostAtividades(Ajudante_Familiar_Global.Domain.Entities.Atividades)">
+            <summary>
+            Criação de atividade
+            </summary>
+            <param name="atividades">Dados da nova atividade</param>
+            <response code="201">Atividade criada com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Idoso não encontrado</response>
+            <returns>Atividade criada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AtividadesController.PutAtividades(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Atividades)">
+            <summary>
+            Atualizar dados da atividade
+            </summary>
+            <param name="id_atividade">Id da atividade na URL</param>
+            <param name="atividades">Novos dados da atividade</param>
+            <response code="200">Atividade atualizada</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Atividade ou idoso não encontrado</response>
+            <returns>Atividade atualizada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.AtividadesController.DeleteAtividades(System.Int32)">
+            <summary>
+            Remove uma atividade do sistema pelo seu id
+            </summary>
+            <param name="id_atividade">Id da atividade a ser deletada</param>
+            <response code="204">Atividade removida com sucesso</response>
+            <response code="404">Atividade não encontrada</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Auth.AuthController.Login(Ajudante_Familiar_Global.Controllers.Auth.AuthController.UserLoginAux)">
+            <summary>
+            Realiza o login e gera o token JWT
+            </summary>
+            <param name="user">Usuário e senha</param>
+            <response code="200">Token gerado com sucesso</response>
+            <response code="401">Usuário ou senha inválidos</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Auth.AuthController.GetDadosProtegidos">
+            <summary>
+            Rota protegida: só acessa com token válido
+            </summary>
+            <response code="200">Usuário autenticado</response>
+            <response code="401">Token ausente ou inválido</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CargoController.GetAllCargo">
+            <summary>
+            Carregar todos os cargos presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de cargos</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CargoController.GetCargo(System.Int32)">
+            <summary>
+            Carregar o cargo por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_cargo">Id do cargo</param>
+            <returns>Cargo encontrado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CargoController.PostCargo(Ajudante_Familiar_Global.Domain.Entities.Cargo)">
+            <summary>
+            Criação de cargo
+            </summary>
+            <param name="cargo">Dados do novo cargo</param>
+            <response code="201">Cargo criado com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <returns>Cargo criado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CargoController.PutCargo(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Cargo)">
+            <summary>
+            Atualizar dados do cargo
+            </summary>
+            <param name="id_cargo">Id do cargo na URL</param>
+            <param name="cargo">Novos dados do cargo</param>
+            <response code="200">Cargo atualizado</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Cargo não encontrado</response>
+            <returns>Cargo atualizado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CargoController.DeleteCargo(System.Int32)">
+            <summary>
+            Remove um cargo do sistema pelo seu id
+            </summary>
+            <param name="id_cargo">Id do cargo a ser deletado</param>
+            <response code="204">Cargo removido com sucesso</response>
+            <response code="404">Cargo não encontrado</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Consulta_MedicamentoController.GetAllConsulta_Medicamento">
+            <summary>
+            Carregar todas as relações consulta-medicamento presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de relações consulta-medicamento</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Consulta_MedicamentoController.GetConsulta_Medicamento(System.Int32)">
+            <summary>
+            Carregar a relação consulta-medicamento por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_consulta_medicamento">Id da relação</param>
+            <returns>Relação encontrada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Consulta_MedicamentoController.PostConsulta_Medicamento(Ajudante_Familiar_Global.Domain.Entities.Consulta_Medicamento)">
+            <summary>
+            Criação de relação entre consulta e medicamento
+            </summary>
+            <param name="consulta_Medicamento">Dados da nova relação</param>
+            <response code="201">Relação criada com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Consulta ou medicamento não encontrado</response>
+            <returns>Relação criada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Consulta_MedicamentoController.PutConsulta_Medicamento(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Consulta_Medicamento)">
+            <summary>
+            Atualizar a relação entre consulta e medicamento
+            </summary>
+            <param name="id_consulta_medicamento">Id da relação na URL</param>
+            <param name="consulta_Medicamento">Novos dados da relação</param>
+            <response code="200">Relação atualizada</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Relação, consulta ou medicamento não encontrado</response>
+            <returns>Relação atualizada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Consulta_MedicamentoController.DeleteConsulta_Medicamento(System.Int32)">
+            <summary>
+            Remove uma relação consulta-medicamento pelo seu id
+            </summary>
+            <param name="id_consulta_medicamento">Id da relação a ser deletada</param>
+            <response code="204">Relação removida com sucesso</response>
+            <response code="404">Relação não encontrada</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CuidadorController.GetAllCuidador">
+            <summary>
+            Carregar todos os cuidadores presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de cuidadores</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CuidadorController.GetCuidador(System.Int32)">
+            <summary>
+            Carregar o cuidador por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_cuidador">Id do cuidador</param>
+            <returns>Cuidador encontrado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CuidadorController.PostCuidador(Ajudante_Familiar_Global.Domain.Entities.Cuidador)">
+            <summary>
+            Criação de cuidador
+            </summary>
+            <param name="cuidador">Dados do novo cuidador</param>
+            <response code="201">Cuidador criado com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Perfil não encontrado</response>
+            <returns>Cuidador criado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CuidadorController.PutCuidador(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Cuidador)">
+            <summary>
+            Atualizar dados do cuidador
+            </summary>
+            <param name="id_cuidador">Id do cuidador na URL</param>
+            <param name="cuidador">Novos dados do cuidador</param>
+            <response code="200">Cuidador atualizado</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Cuidador ou perfil não encontrado</response>
+            <returns>Cuidador atualizado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.CuidadorController.DeleteCuidador(System.Int32)">
+            <summary>
+            Remove um cuidador do sistema pelo seu id
+            </summary>
+            <param name="id_cuidador">Id do cuidador a ser deletado</param>
+            <response code="204">Cuidador removido com sucesso</response>
+            <response code="404">Cuidador não encontrado</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.DoencasController.GetAllDoencas">
+            <summary>
+            Carregar todas as doenças presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de doenças</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.DoencasController.GetDoencas(System.Int32)">
+            <summary>
+            Carregar a doença por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_doenca">Id da doença</param>
+            <returns>Doença encontrada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.DoencasController.PostDoencas(Ajudante_Familiar_Global.Domain.Entities.Doencas)">
+            <summary>
+            Criação de doença
+            </summary>
+            <param name="doencas">Dados da nova doença</param>
+            <response code="201">Doença criada com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Idoso não encontrado</response>
+            <returns>Doença criada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.DoencasController.PutDoencas(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Doencas)">
+            <summary>
+            Atualizar dados da doença
+            </summary>
+            <param name="id_doenca">Id da doença na URL</param>
+            <param name="doencas">Novos dados da doença</param>
+            <response code="200">Doença atualizada</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Doença ou idoso não encontrado</response>
+            <returns>Doença atualizada</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.DoencasController.DeleteDoencas(System.Int32)">
+            <summary>
+            Remove uma doença do sistema pelo seu id
+            </summary>
+            <param name="id_doenca">Id da doença a ser deletada</param>
+            <response code="204">Doença removida com sucesso</response>
+            <response code="404">Doença não encontrada</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.IdosoController.GetAllIdoso">
+            <summary>
+            Carregar todos os idosos presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de idosos</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.IdosoController.GetIdoso(System.Int32)">
+            <summary>
+            Carregar o idoso por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_idoso">Id do idoso</param>
+            <returns>Idoso encontrado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.IdosoController.PostIdoso(Ajudante_Familiar_Global.Domain.Entities.Idoso)">
+            <summary>
+            Criação de idoso
+            </summary>
+            <param name="idoso">Dados do novo idoso</param>
+            <response code="201">Idoso criado com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Cuidador não encontrado</response>
+            <returns>Idoso criado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.IdosoController.PutIdoso(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Idoso)">
+            <summary>
+            Atualizar dados do idoso
+            </summary>
+            <param name="id_idoso">Id do idoso na URL</param>
+            <param name="idoso">Novos dados do idoso</param>
+            <response code="200">Idoso atualizado</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Idoso ou cuidador não encontrado</response>
+            <returns>Idoso atualizado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.IdosoController.DeleteIdoso(System.Int32)">
+            <summary>
+            Remove um idoso do sistema pelo seu id
+            </summary>
+            <param name="id_idoso">Id do idoso a ser deletado</param>
+            <response code="204">Idoso removido com sucesso</response>
+            <response code="404">Idoso não encontrado</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Lembrete_ConsultaController.GetAllLembrete_Consulta">
+            <summary>
+            Carregar todos os lembretes de consulta presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de lembretes de consulta</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Lembrete_ConsultaController.GetLembrete_Consulta(System.Int32)">
+            <summary>
+            Carregar o lembrete de consulta por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_lembrete_consulta">Id do lembrete</param>
+            <returns>Lembrete encontrado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Lembrete_ConsultaController.PostLembrete_Consulta(Ajudante_Familiar_Global.Domain.Entities.Lembrete_Consulta)">
+            <summary>
+            Criação de lembrete de consulta
+            </summary>
+            <param name="lembrete_Consulta">Dados do novo lembrete</param>
+            <response code="201">Lembrete criado com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Idoso não encontrado</response>
+            <returns>Lembrete criado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Lembrete_ConsultaController.PutLembrete_Consulta(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Lembrete_Consulta)">
+            <summary>
+            Atualizar dados do lembrete de consulta
+            </summary>
+            <param name="id_lembrete_consulta">Id do lembrete na URL</param>
+            <param name="lembrete_Consulta">Novos dados do lembrete</param>
+            <response code="200">Lembrete atualizado</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Lembrete ou idoso não encontrado</response>
+            <returns>Lembrete atualizado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.Lembrete_ConsultaController.DeleteLembrete_Consulta(System.Int32)">
+            <summary>
+            Remove um lembrete de consulta do sistema pelo seu id
+            </summary>
+            <param name="id_lembrete_consulta">Id do lembrete a ser deletado</param>
+            <response code="204">Lembrete removido com sucesso</response>
+            <response code="404">Lembrete não encontrado</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.MedicamentosController.GetAllMedicamentos">
+            <summary>
+            Carregar todos os medicamentos presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de medicamentos</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.MedicamentosController.GetMedicamentos(System.Int32)">
+            <summary>
+            Carregar o medicamento por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_medicamentos">Id do medicamento</param>
+            <returns>Medicamento encontrado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.MedicamentosController.PostMedicamentos(Ajudante_Familiar_Global.Domain.Entities.Medicamentos)">
+            <summary>
+            Criação de medicamento
+            </summary>
+            <param name="medicamentos">Dados do novo medicamento</param>
+            <response code="201">Medicamento criado com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Idoso não encontrado</response>
+            <returns>Medicamento criado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.MedicamentosController.PutMedicamentos(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Medicamentos)">
+            <summary>
+            Atualizar dados do medicamento
+            </summary>
+            <param name="id_medicamentos">Id do medicamento na URL</param>
+            <param name="medicamentos">Novos dados do medicamento</param>
+            <response code="200">Medicamento atualizado</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Medicamento ou idoso não encontrado</response>
+            <returns>Medicamento atualizado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.MedicamentosController.DeleteMedicamentos(System.Int32)">
+            <summary>
+            Remove um medicamento do sistema pelo seu id
+            </summary>
+            <param name="id_medicamentos">Id do medicamento a ser deletado</param>
+            <response code="204">Medicamento removido com sucesso</response>
+            <response code="404">Medicamento não encontrado</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.ParenteController.GetAllParente">
+            <summary>
+            Carregar todos os parentes presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de parentes</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.ParenteController.GetParente(System.Int32)">
+            <summary>
+            Carregar o parente por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_parente">Id do parente</param>
+            <returns>Parente encontrado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.ParenteController.PostParente(Ajudante_Familiar_Global.Domain.Entities.Parente)">
+            <summary>
+            Criação de parente
+            </summary>
+            <param name="parente">Dados do novo parente</param>
+            <response code="201">Parente criado com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Idoso ou perfil não encontrado</response>
+            <returns>Parente criado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.ParenteController.PutParente(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Parente)">
+            <summary>
+            Atualizar dados do parente
+            </summary>
+            <param name="id_parente">Id do parente na URL</param>
+            <param name="parente">Novos dados do parente</param>
+            <response code="200">Parente atualizado</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Parente, idoso ou perfil não encontrado</response>
+            <returns>Parente atualizado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.ParenteController.DeleteParente(System.Int32)">
+            <summary>
+            Remove um parente do sistema pelo seu id
+            </summary>
+            <param name="id_parente">Id do parente a ser deletado</param>
+            <response code="204">Parente removido com sucesso</response>
+            <response code="404">Parente não encontrado</response>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.PerfilController.GetAllPerfil">
+            <summary>
+            Carregar todos os perfis presentes no banco
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="500">Erro interno do servidor</response>
+            <returns>Lista de perfis</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.PerfilController.GetPerfil(System.Int32)">
+            <summary>
+            Carregar o perfil por meio do id
+            </summary>
+            <response code="200">Busca feita com sucesso</response>
+            <response code="404">Id não encontrado</response>
+            <param name="id_perfil">Id do perfil</param>
+            <returns>Perfil encontrado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.PerfilController.PostPerfil(Ajudante_Familiar_Global.Domain.Entities.Perfil)">
+            <summary>
+            Criação de perfil
+            </summary>
+            <param name="perfil">Dados do novo perfil</param>
+            <response code="201">Perfil criado com sucesso</response>
+            <response code="400">Erro na validação</response>
+            <response code="404">Cargo não encontrado</response>
+            <returns>Perfil criado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.PerfilController.PutPerfil(System.Int32,Ajudante_Familiar_Global.Domain.Entities.Perfil)">
+            <summary>
+            Atualizar dados do perfil
+            </summary>
+            <param name="id_perfil">Id do perfil na URL</param>
+            <param name="perfil">Novos dados do perfil</param>
+            <response code="200">Perfil atualizado</response>
+            <response code="400">Erro na requisição</response>
+            <response code="404">Perfil ou cargo não encontrado</response>
+            <returns>Perfil atualizado</returns>
+        </member>
+        <member name="M:Ajudante_Familiar_Global.Controllers.PerfilController.DeletePerfil(System.Int32)">
+            <summary>
+            Remove um perfil do sistema pelo seu id
+            </summary>
+            <param name="id_perfil">Id do perfil a ser deletado</param>
+            <response code="204">Perfil removido com sucesso</response>
+            <response code="404">Perfil não encontrado</response>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
+            <summary>
+            Generates a documentation comment ID for a type.
+            Example: T:Namespace.Outer+Inner`1 becomes T:Namespace.Outer.Inner`1
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.PropertyInfo)">
+            <summary>
+            Generates a documentation comment ID for a property.
+            Example: P:Namespace.ContainingType.PropertyName or for an indexer P:Namespace.ContainingType.Item(System.Int32)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type,System.String)">
+            <summary>
+            Generates a documentation comment ID for a property given its container type and property name.
+            Example: P:Namespace.ContainingType.PropertyName
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.MethodInfo)">
+            <summary>
+            Generates a documentation comment ID for a method (or constructor).
+            For example:
+              M:Namespace.ContainingType.MethodName(ParamType1,ParamType2)~ReturnType
+              M:Namespace.ContainingType.#ctor(ParamType)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.GetTypeDocId(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a documentation ID string for a type.
+            This method handles nested types (replacing '+' with '.'),
+            generic types, arrays, pointers, by-ref types, and generic parameters.
+            The <paramref name="includeGenericArguments"/> flag controls whether
+            constructed generic type arguments are emitted, while <paramref name="omitGenericArity"/>
+            controls whether the generic arity marker (e.g. "`1") is appended.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.NormalizeDocId(System.String)">
+            <summary>
+            Normalizes a documentation comment ID to match the compiler-style format.
+            Strips the return type suffix for ordinary methods but retains it for conversion operators.
+            </summary>
+            <param name="docId">The documentation comment ID to normalize.</param>
+            <returns>The normalized documentation comment ID.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,144 @@
+﻿using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
+using Ajudante_Familiar_Global.Domain.Entities;
+using System;
+using System.Net;
+using System.Net.Http.Json;
+using Xunit;
+
+namespace Ajudante_Familiar_Global.integrationTests.Integration
+{
+    //Atenção!!! Tanto o create quanto o update precisam ter cuidado com os dados que serão adicionados, porque, se não, pode dar erro.
+    //Recomendação faz um a cada vez, não faz eles tudo junto
+    [Collection("ApiCollection")]
+    public class PerfilControllerIntegrationTests
+    {
+        private readonly HttpClient _client;
+
+        public PerfilControllerIntegrationTests(ApiFactoryFixture factory)
+        {
+            _client = factory.CreateClient();
+        }
+
+        [Fact]
+        public async Task CriarPerfil_DadosValidos_RetornaOk()
+        {
+            // Arrange
+            var id_perfil = Random.Shared.Next(1, 100);
+
+            var novoPerfil = new
+            {
+                id_perfil = id_perfil,
+                nm_perfil = "Perfil teste",
+                id_cargo = 1
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Perfil/perfil/criar", novoPerfil);
+
+            // Assert
+            var erro = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+            var perfilCriado = await response.Content.ReadFromJsonAsync<Perfil>();
+
+            Assert.NotNull(perfilCriado);
+            Assert.Equal(id_perfil, perfilCriado.id_perfil);
+        }
+
+        [Fact]
+        public async Task AtualizarPerfil_DadosValidos_RetornaSucesso()
+        {
+            // Arrange
+            var id_perfil = 6;
+
+            var perfilAtualizado = new
+            {
+                id_perfil = id_perfil,
+                nm_perfil = "Perfil atualizado",
+                id_cargo = 1
+            };
+
+            // Act
+            var response = await _client.PutAsJsonAsync(
+                $"api/Perfil/perfil/atualiza/{id_perfil}", perfilAtualizado);
+
+            // Assert
+            var erro = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                Assert.Fail($"Não foi atualizado por: {erro}");
+            }
+
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task GetPerfil_dados_RetornaOk()
+        {
+            // Arrange
+            var id_perfil = 6;
+
+            // Act
+            var response = await _client.GetAsync($"api/Perfil/perfil/{id_perfil}");
+
+            // Assert
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                Assert.Fail("Perfil não encontrado");
+            }
+
+            response.EnsureSuccessStatusCode();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var perfil = await response.Content.ReadFromJsonAsync<Perfil>();
+
+            Assert.NotNull(perfil);
+            Assert.Equal(id_perfil, perfil.id_perfil);
+        }
+
+        [Fact]
+        public async Task GetAllPerfil_dados_RetornarOk()
+        {
+            //Act
+            var response = await _client.GetAsync("api/Perfil/perfil");
+
+            //Assert
+            response.EnsureSuccessStatusCode();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var perfis = await response.Content.ReadFromJsonAsync<List<Perfil>>();
+
+            Assert.NotNull(perfis);
+        }
+
+        [Fact]
+        public async Task DeletePerfil_dados_RetornaOk()
+        {
+            // Arrange
+            var id_perfil = 55;
+
+            // Act
+            var response = await _client.DeleteAsync(
+                $"api/Perfil/perfil/deleta/{id_perfil}");
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erroAchado = await response.Content.ReadAsStringAsync();
+
+                Assert.Fail($"Não foi deletado pelo motivo: {erroAchado}");
+            }
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
+    }
+}

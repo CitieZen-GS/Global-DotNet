@@ -1,0 +1,5 @@
+﻿namespace Ajudante_Familiar_Global.UnitTests.Controllers;
+
+public class ParenteControllerTests
+{
+}

@@ -1,0 +1,154 @@
+using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
+using Ajudante_Familiar_Global.Domain.Entities;
+using System;
+using System.Net;
+using System.Net.Http.Json;
+using Xunit;
+
+namespace Ajudante_Familiar_Global.integrationTests.Integration
+{
+    //Atenção!!! Tanto o create quanto o update precisam ter cuidado com os dados que serão adicionados, porque, se não, pode dar erro.
+    //Recomendação faz um a cada vez, não faz eles tudo junto
+    [Collection("ApiCollection")]
+    public class IdosoControllerIntegrationTests
+    {
+        private readonly HttpClient _client;
+
+        public IdosoControllerIntegrationTests(ApiFactoryFixture factory)
+        {
+            _client = factory.CreateClient();
+        }
+
+        [Fact]
+        public async Task CriarIdoso_DadosValidos_RetornaOk()
+        {
+            // Arrange
+            var id_idoso = Random.Shared.Next(1, 100);
+
+            var novoIdoso = new
+            {
+                ID_idoso = id_idoso,
+                Nm_idoso = "Idoso teste",
+                cpf_idoso = "12345678901",
+                vlr_altura = 1.70m,
+                vlr_peso = 70m,
+                dt_nascimento = new DateOnly(1950, 1, 1),
+                ds_comportamento = "Teste",
+                id_cuidador = 1
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Idoso/idoso/criar", novoIdoso);
+
+            // Assert
+            var erro = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+            var idosoCriado = await response.Content.ReadFromJsonAsync<Idoso>();
+
+            Assert.NotNull(idosoCriado);
+            Assert.Equal(id_idoso, idosoCriado.ID_idoso);
+        }
+
+        [Fact]
+        public async Task AtualizarIdoso_DadosValidos_RetornaSucesso()
+        {
+            // Arrange
+            var id_idoso = 6;
+
+            var idosoAtualizado = new
+            {
+                ID_idoso = id_idoso,
+                Nm_idoso = "Idoso atualizado",
+                cpf_idoso = "10987654321",
+                vlr_altura = 1.72m,
+                vlr_peso = 72m,
+                dt_nascimento = new DateOnly(1951, 2, 2),
+                ds_comportamento = "Atualizado",
+                id_cuidador = 1
+            };
+
+            // Act
+            var response = await _client.PutAsJsonAsync(
+                $"api/Idoso/idoso/atualiza/{id_idoso}", idosoAtualizado);
+
+            // Assert
+            var erro = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                Assert.Fail($"Não foi atualizado por: {erro}");
+            }
+
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task GetIdoso_dados_RetornaOk()
+        {
+            // Arrange
+            var id_idoso = 6;
+
+            // Act
+            var response = await _client.GetAsync($"api/Idoso/idoso/{id_idoso}");
+
+            // Assert
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                Assert.Fail("Idoso não encontrado");
+            }
+
+            response.EnsureSuccessStatusCode();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var idoso = await response.Content.ReadFromJsonAsync<Idoso>();
+
+            Assert.NotNull(idoso);
+            Assert.Equal(id_idoso, idoso.ID_idoso);
+        }
+
+        [Fact]
+        public async Task GetAllIdoso_dados_RetornarOk()
+        {
+            //Act
+            var response = await _client.GetAsync("api/Idoso/idoso");
+
+            //Assert
+            response.EnsureSuccessStatusCode();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var idosos = await response.Content.ReadFromJsonAsync<List<Idoso>>();
+
+            Assert.NotNull(idosos);
+        }
+
+        [Fact]
+        public async Task DeleteIdoso_dados_RetornaOk()
+        {
+            // Arrange
+            var id_idoso = 55;
+
+            // Act
+            var response = await _client.DeleteAsync(
+                $"api/Idoso/idoso/deleta/{id_idoso}");
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erroAchado = await response.Content.ReadAsStringAsync();
+
+                Assert.Fail($"Não foi deletado pelo motivo: {erroAchado}");
+            }
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
+    }
+}

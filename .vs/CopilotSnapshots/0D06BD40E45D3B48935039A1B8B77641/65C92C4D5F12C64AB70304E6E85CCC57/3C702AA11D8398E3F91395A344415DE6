@@ -1,0 +1,44 @@
+﻿using System.Net;
+using System.Text.Json;
+using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
+using Xunit;
+using Assert = Xunit.Assert;
+
+namespace Ajudante_Familiar_Global.integrationTests.Integration
+{
+    [Collection("ApiCollection")]
+    public class AlimentacaoControllerIntegrationTests
+    {
+        private readonly HttpClient _client;
+
+        public AlimentacaoControllerIntegrationTests(ApiFactoryFixture factory)
+        {
+            _client = factory.CreateClient();
+        }
+
+        [Fact]
+        public async Task CreateAlimentacao_DadosValidos_RetornaOk()
+        {
+            //Arrange 
+            var id_alimentacao = Random.Shared.Next(1, 100);
+
+            var novaAlimentacao = new
+            {
+                Id_alimentacao = id_alimentacao,
+                Nm_alimentacao = ""
+
+            }
+        }
+
+        [Fact]
+        public async Task GetAll_ReturnsOkWithEmptyArray()
+        {
+            using var response = await _client.GetAsync("/api/Alimentacao/alimentacao");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            using var content = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+            Assert.Equal(JsonValueKind.Array, content.RootElement.ValueKind);
+            Assert.Empty(content.RootElement.EnumerateArray());
+        }
+    }
+}

@@ -1,0 +1,137 @@
+﻿using Ajudante_Familiar_Global.Controllers;
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Enums;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
+
+namespace Ajudante_Familiar_Global.UnitTests.Controllers;
+
+public class CargoControllerTests
+{
+    private readonly Mock<ICargoService> _cargo_ServiceMock;
+    private readonly CargoController _controller;
+    private readonly ILogger<CargoController> _logger;
+    private readonly AppDbContext _context;
+
+    public CargoControllerTests()
+    {
+        _cargo_ServiceMock = new Mock<ICargoService>();
+        var loggMock = new Mock<ILogger<CargoController>>();
+
+        _logger = loggMock.Object;
+
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .Options;
+
+        _context = new AppDbContext(options);
+
+        _controller = new CargoController(_cargo_ServiceMock.Object, _logger);
+
+        _controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext()
+        };
+
+        var urlHelper = new Mock<IUrlHelper>();
+        urlHelper.Setup(helper => helper.Link(It.IsAny<string?>(), It.IsAny<object?>()))
+                .Returns((string? routeName, object? _) => $"https://localhost/{routeName}");
+        _controller.Url = urlHelper.Object;
+    }
+
+    //Criação
+    [Fact]
+    public async Task Create_Cargo_RetornaCreated()
+    {
+        // Arrange
+        var cargo = new Cargo(1, "Cargo teste", Permissao.N);
+        _cargo_ServiceMock.Setup(service => service.CreateCargoAsync(cargo)).ReturnsAsync(cargo);
+
+        // Act
+        var resultado = await _controller.PostCargo(cargo);
+
+        // Assert
+        var createdResult = Assert.IsType<CreatedAtActionResult>(resultado.Result);
+        var cargoRetornado = Assert.IsType<Cargo>(createdResult.Value);
+        Assert.NotNull(cargoRetornado);
+        Assert.Equal(cargo.Id_cargo, cargoRetornado.Id_cargo);
+    }
+
+    //Atualização
+    [Fact]
+    public async Task Update_Cargo_RetornaOk()
+    {
+        // Arrange
+        var id_cargo = 1;
+        var cargo = new Cargo(id_cargo, "Cargo atualizado", Permissao.S);
+        _cargo_ServiceMock.Setup(service => service.UpdateCargoAsync(id_cargo, cargo)).ReturnsAsync(cargo);
+
+        //Act
+        var atualizacaoRealizada = await _controller.PutCargo(id_cargo, cargo);
+
+        //Assert
+        var okResultado = Assert.IsType<OkObjectResult>(atualizacaoRealizada.Result);
+        var retornoCargo = Assert.IsType<Cargo>(okResultado.Value);
+        //Dados atualizados
+        Assert.Equal(cargo.Id_cargo, retornoCargo.Id_cargo);
+        Assert.Equal(cargo.Nm_cargo, retornoCargo.Nm_cargo);
+        Assert.Equal(cargo.Fg_permissao, retornoCargo.Fg_permissao);
+    }
+
+    [Fact]
+    public async Task GetAll_Cargo_RetornandoOk()
+    {
+        // Arrange
+        var list = new List<Cargo> { new Cargo(1, "Cargo teste", Permissao.N) };
+        _cargo_ServiceMock.Setup(service => service.GetAllCargoAsync()).ReturnsAsync(list);
+
+        // Act
+        var resultado = await _controller.GetAllCargo();
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedList = Assert.IsType<List<Cargo>>(okResult.Value);
+        Assert.NotNull(returnedList);
+        Assert.Single(returnedList);
+        Assert.Equal(1, returnedList[0].Id_cargo);
+    }
+
+    [Fact]
+    public async Task GetId_Cargo_RetornandoOk()
+    {
+        // Arrange
+        var id_cargo = 1;
+        var cargo = new Cargo(id_cargo, "Cargo teste", Permissao.N);
+        _cargo_ServiceMock.Setup(service => service.GetCargoAsync(id_cargo)).ReturnsAsync(cargo);
+
+        // Act
+        var resultado = await _controller.GetCargo(id_cargo);
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedCargo = Assert.IsType<Cargo>(okResult.Value);
+        Assert.NotNull(returnedCargo);
+        Assert.Equal(id_cargo, returnedCargo.Id_cargo);
+    }
+
+    [Fact]
+    public async Task Deleta_Cargo()
+    {
+        // Arrange
+        var id_cargo = 1;
+        var cargo = new Cargo(id_cargo, "Cargo teste", Permissao.N);
+        _cargo_ServiceMock.Setup(service => service.DeleteCargoAsync(id_cargo)).ReturnsAsync(cargo);
+
+        //Act
+        var resultado = await _controller.DeleteCargo(id_cargo);
+
+        //Assert
+        Assert.IsType<NoContentResult>(resultado);
+    }
+}

@@ -1,5 +1,6 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Ajudante_Familiar_Global.Infrastruture.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ajudante_Familiar_Global.Controllers
@@ -9,11 +10,15 @@ namespace Ajudante_Familiar_Global.Controllers
     [Produces("application/json")]
     public class AlimentacaoController : ControllerBase
     {
+        private readonly AppDbContext _context;
         private readonly IAlimentacaoService _AlimentacaoService;
         private readonly ILogger<AlimentacaoController> _logger;
 
-        public AlimentacaoController(IAlimentacaoService alimentacaoService, ILogger<AlimentacaoController> logger)
+        public AlimentacaoController(AppDbContext context,
+            IAlimentacaoService alimentacaoService, 
+            ILogger<AlimentacaoController> logger)
         {
+            _context = context;
             _AlimentacaoService = alimentacaoService;
             _logger = logger;
         }

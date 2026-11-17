@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ajudante_Familiar_Global")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+152c8d5048fd7bed7695405de895c87c8c9cfa8e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+828174fd787b9e548c08cf65bcfefae42c027753")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ajudante_Familiar_Global")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ajudante_Familiar_Global")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

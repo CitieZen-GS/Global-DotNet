@@ -1,0 +1,129 @@
+﻿using Ajudante_Familiar_Global.Controllers;
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Moq;
+
+namespace Ajudante_Familiar_Global.UnitTests.Controllers;
+
+public class AtividadesControllerTests
+{
+    private readonly Mock<IAtividadesService> _atividades_ServiceMock;
+    private readonly AtividadesController _controller;
+    private readonly ILogger<AtividadesController> _logger;
+
+    public AtividadesControllerTests()
+    {
+        _atividades_ServiceMock = new Mock<IAtividadesService>();
+        var loggerMock = new Mock<ILogger<AtividadesController>>();
+        _logger = loggerMock.Object;
+        _controller = new AtividadesController(_atividades_ServiceMock.Object, _logger);
+    }
+
+    //Criação
+    [Fact]
+    public async Task Create_Atividades_RetornaCreated()
+    {
+        // Arrange
+        var atividades = new Atividades(1, "Atividade teste", "Descrição teste",
+            new DateOnly(2026, 8, 9), new TimeOnly(9, 0), new TimeOnly(10, 0), 1);
+        _atividades_ServiceMock.Setup(service => service.CreateAtividadesAsync(atividades))
+            .ReturnsAsync(atividades);
+
+        // Act
+        var resultado = await _controller.PostAtividades(atividades);
+
+        // Assert
+        var createdResult = Assert.IsType<CreatedAtActionResult>(resultado.Result);
+        var atividadesRetornadas = Assert.IsType<Atividades>(createdResult.Value);
+        Assert.NotNull(atividadesRetornadas);
+        Assert.Equal(atividades.Id_atividade, atividadesRetornadas.Id_atividade);
+    }
+
+    //Atualização
+    [Fact]
+    public async Task Update_Atividades_RetornaOk()
+    {
+        // Arrange
+        var id_atividade = 1;
+        var atividades = new Atividades(id_atividade, "Atividade atualizada", "Descrição atualizada",
+            new DateOnly(2026, 8, 10), new TimeOnly(10, 0), new TimeOnly(11, 0), 1);
+        _atividades_ServiceMock.Setup(service => service.UpdateAtividadesAsync(id_atividade, atividades))
+            .ReturnsAsync(atividades);
+
+        //Act
+        var atualizacaoRealizada = await _controller.PutAtividades(id_atividade, atividades);
+
+        //Assert
+        var okResultado = Assert.IsType<OkObjectResult>(atualizacaoRealizada.Result);
+        var retornoAtividades = Assert.IsType<Atividades>(okResultado.Value);
+        //Dados atualizados
+        Assert.Equal(atividades.Id_atividade, retornoAtividades.Id_atividade);
+        Assert.Equal(atividades.Nm_atividade, retornoAtividades.Nm_atividade);
+        Assert.Equal(atividades.Ds_atividade, retornoAtividades.Ds_atividade);
+        Assert.Equal(atividades.Dt_atividade, retornoAtividades.Dt_atividade);
+        Assert.Equal(atividades.Hr_atividade_inicio, retornoAtividades.Hr_atividade_inicio);
+        Assert.Equal(atividades.Hr_atividade_fim, retornoAtividades.Hr_atividade_fim);
+        Assert.Equal(atividades.id_idoso, retornoAtividades.id_idoso);
+    }
+
+    [Fact]
+    public async Task GetAll_Atividades_RetornandoOk()
+    {
+        // Arrange
+        var list = new List<Atividades>
+        {
+            new Atividades(1, "Atividade teste", "Descrição teste",
+                new DateOnly(2026, 8, 9), new TimeOnly(9, 0), new TimeOnly(10, 0), 1)
+        };
+        _atividades_ServiceMock.Setup(service => service.GetAllAtividadesAsync()).ReturnsAsync(list);
+
+        // Act
+        var resultado = await _controller.GetAllAtividades();
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedList = Assert.IsType<List<Atividades>>(okResult.Value);
+        Assert.NotNull(returnedList);
+        Assert.Single(returnedList);
+        Assert.Equal(1, returnedList[0].Id_atividade);
+    }
+
+    [Fact]
+    public async Task GetId_Atividades_RetornandoOk()
+    {
+        // Arrange
+        var id_atividade = 1;
+        var atividades = new Atividades(id_atividade, "Atividade teste", "Descrição teste",
+            new DateOnly(2026, 8, 9), new TimeOnly(9, 0), new TimeOnly(10, 0), 1);
+        _atividades_ServiceMock.Setup(service => service.GetAtividadesAsync(id_atividade))
+            .ReturnsAsync(atividades);
+
+        // Act
+        var resultado = await _controller.GetAtividades(id_atividade);
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedAtividades = Assert.IsType<Atividades>(okResult.Value);
+        Assert.NotNull(returnedAtividades);
+        Assert.Equal(id_atividade, returnedAtividades.Id_atividade);
+    }
+
+    [Fact]
+    public async Task Deleta_Atividades()
+    {
+        // Arrange
+        var id_atividade = 1;
+        var atividades = new Atividades(id_atividade, "Atividade teste", "Descrição teste",
+            new DateOnly(2026, 8, 9), new TimeOnly(9, 0), new TimeOnly(10, 0), 1);
+        _atividades_ServiceMock.Setup(service => service.DeleteAtividadesAsync(id_atividade))
+            .ReturnsAsync(atividades);
+
+        //Act
+        var resultado = await _controller.DeleteAtividades(id_atividade);
+
+        //Assert
+        Assert.IsType<NoContentResult>(resultado);
+    }
+}

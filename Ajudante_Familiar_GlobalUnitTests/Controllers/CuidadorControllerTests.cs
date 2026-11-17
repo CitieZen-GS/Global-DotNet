@@ -1,5 +1,190 @@
+using Ajudante_Familiar_Global.Controllers;
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
+
 namespace Ajudante_Familiar_Global.UnitTests.Controllers;
 
 public class CuidadorControllerTests
 {
+    private readonly Mock<ICuidadorService> _cuidador_ServiceMock;
+    private readonly CuidadorController _controller;
+    private readonly ILogger<CuidadorController> _logger;
+    private readonly AppDbContext _context;
+
+    public CuidadorControllerTests()
+    {
+        _cuidador_ServiceMock = new Mock<ICuidadorService>();
+        var loggMock = new Mock<ILogger<CuidadorController>>();
+
+        _logger = loggMock.Object;
+
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .Options;
+
+        _context = new AppDbContext(options);
+
+        _controller = new CuidadorController(_cuidador_ServiceMock.Object, _logger);
+
+        _controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext()
+        };
+
+        var urlHelper = new Mock<IUrlHelper>();
+        urlHelper.Setup(helper => helper.Link(It.IsAny<string?>(), It.IsAny<object?>()))
+                .Returns((string? routeName, object? _) => $"https://localhost/{routeName}");
+        _controller.Url = urlHelper.Object;
+    }
+
+    //Criação
+    [Fact]
+    public async Task Create_Cuidador_RetornaCreated()
+    {
+        // Arrange
+        var cuidador = new Cuidador
+        {
+            Id_cuidador = 1,
+            Nm_cuidador = "Cuidador teste",
+            Cpf_cuidador = "12345678900",
+            Ds_email = "teste@email.com",
+            Ds_senha = "senha",
+            Id_perfil = 1
+        };
+
+        _cuidador_ServiceMock.Setup(service => service.CreateCuidadorAsync(cuidador)).ReturnsAsync(cuidador);
+
+        // Act
+        var resultado = await _controller.PostCuidador(cuidador);
+
+        // Assert
+        var createdResult = Assert.IsType<CreatedAtActionResult>(resultado.Result);
+        var cuidadorRetornado = Assert.IsType<Cuidador>(createdResult.Value);
+        Assert.NotNull(cuidadorRetornado);
+        Assert.Equal(cuidador.Id_cuidador, cuidadorRetornado.Id_cuidador);
+    }
+
+    //Atualização
+    [Fact]
+    public async Task Update_Cuidador_RetornaOk()
+    {
+        // Arrange
+        var id_cuidador = 1;
+        var cuidador = new Cuidador
+        {
+            Id_cuidador = id_cuidador,
+            Nm_cuidador = "Cuidador atualizado",
+            Cpf_cuidador = "12345678900",
+            Ds_email = "atualizado@email.com",
+            Ds_senha = "senha2",
+            Id_perfil = 1
+        };
+
+        _cuidador_ServiceMock.Setup(service => service.UpdateCuidadorAsync(id_cuidador, cuidador)).ReturnsAsync(cuidador);
+
+        //Act
+        var atualizacaoRealizada = await _controller.PutCuidador(id_cuidador, cuidador);
+
+        //Assert
+        var okResultado = Assert.IsType<OkObjectResult>(atualizacaoRealizada.Result);
+        var retornoCuidador = Assert.IsType<Cuidador>(okResultado.Value);
+        //Dados atualizados
+        Assert.Equal(cuidador.Id_cuidador, retornoCuidador.Id_cuidador);
+        Assert.Equal(cuidador.Nm_cuidador, retornoCuidador.Nm_cuidador);
+        Assert.Equal(cuidador.Cpf_cuidador, retornoCuidador.Cpf_cuidador);
+        Assert.Equal(cuidador.Ds_email, retornoCuidador.Ds_email);
+        Assert.Equal(cuidador.Ds_senha, retornoCuidador.Ds_senha);
+        Assert.Equal(cuidador.Id_perfil, retornoCuidador.Id_perfil);
+    }
+
+    [Fact]
+    public async Task GetAll_Cuidador_RetornandoOk()
+    {
+        // Arrange
+        var list = new List<Cuidador>
+        {
+            new Cuidador
+            {
+                Id_cuidador = 1,
+                Nm_cuidador = "Cuidador teste",
+                Cpf_cuidador = "12345678900",
+                Ds_email = "teste@email.com",
+                Ds_senha = "senha",
+                Id_perfil = 1
+            }
+        };
+
+        _cuidador_ServiceMock.Setup(service => service.GetAllCuidadorAsync()).ReturnsAsync(list);
+
+        // Act
+        var resultado = await _controller.GetAllCuidador();
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedList = Assert.IsType<List<Cuidador>>(okResult.Value);
+
+        Assert.NotNull(returnedList);
+        Assert.Single(returnedList);
+        Assert.Equal(1, returnedList[0].Id_cuidador);
+    }
+
+    [Fact]
+    public async Task GetId_Cuidador_RetornandoOk()
+    {
+        // Arrange
+        var id_cuidador = 1;
+        var cuidador = new Cuidador
+        {
+            Id_cuidador = id_cuidador,
+            Nm_cuidador = "Cuidador teste",
+            Cpf_cuidador = "12345678900",
+            Ds_email = "teste@email.com",
+            Ds_senha = "senha",
+            Id_perfil = 1
+        };
+
+        _cuidador_ServiceMock.Setup(service => service.GetCuidadorAsync(id_cuidador)).ReturnsAsync(cuidador);
+
+        // Act
+        var resultado = await _controller.GetCuidador(id_cuidador);
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(resultado.Result);
+        var returnedCuidador = Assert.IsType<Cuidador>(okResult.Value);
+
+        Assert.NotNull(returnedCuidador);
+        Assert.Equal(id_cuidador, returnedCuidador.Id_cuidador);
+    }
+
+    [Fact]
+    public async Task Deleta_Cuidador()
+    {
+        // Arrange
+        var id_cuidador = 1;
+        var cuidador = new Cuidador
+        {
+            Id_cuidador = id_cuidador,
+            Nm_cuidador = "Cuidador teste",
+            Cpf_cuidador = "12345678900",
+            Ds_email = "teste@email.com",
+            Ds_senha = "senha",
+            Id_perfil = 1
+        };
+
+        _cuidador_ServiceMock.Setup(service => service.DeleteCuidadorAsync(id_cuidador))
+            .ReturnsAsync(cuidador);
+
+        //Act
+        var resultado = await _controller.DeleteCuidador(id_cuidador);
+
+        //Assert
+        Assert.IsType<NoContentResult>(resultado);
+    }
 }
