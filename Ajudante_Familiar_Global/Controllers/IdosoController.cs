@@ -1,12 +1,17 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ajudante_Familiar_Global.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api")]
     [Produces("application/json")]
+    [EnableRateLimiting("fixed")]
     public class IdosoController : ControllerBase
     {
         private readonly IIdosoService _IdosoService;
@@ -90,6 +95,11 @@ namespace Ajudante_Familiar_Global.Controllers
             catch (KeyNotFoundException ex)
             {
                 return NotFound(new { mensagem = ex.Message });
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "Erro ao gravar idoso");
+                return BadRequest(new { mensagem = "Não foi possível gravar o idoso. Verifique os valores informados (ex.: altura em metros, como 1.70)." });
             }
         }
 

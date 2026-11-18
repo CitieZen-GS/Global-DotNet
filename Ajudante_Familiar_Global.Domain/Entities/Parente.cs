@@ -27,13 +27,13 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         public int Id_idoso { get; set; }
         [JsonIgnore]
         [ForeignKey("Id_idoso")]
-        public Idoso Idoso { get; set; }
+        public Idoso? Idoso { get; set; }
         [Required]
         [Column("id_perfil")]
         public int Id_perfil { get; set; }
         [JsonIgnore]
         [ForeignKey("Id_perfil")]
-        public Perfil Perfil { get; set; }
+        public Perfil? Perfil { get; set; }
 
         public Parente() { }
 

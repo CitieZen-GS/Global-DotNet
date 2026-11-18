@@ -1,5 +1,6 @@
 using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
 using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Enums;
 using System;
 using System.Net;
 using System.Net.Http.Json;
@@ -7,146 +8,277 @@ using Xunit;
 
 namespace Ajudante_Familiar_Global.integrationTests.Integration
 {
-    //Atenção!!! Tanto o create quanto o update precisam ter cuidado com os dados que serão adicionados, porque, se não, pode dar erro.
-    //Recomendação faz um a cada vez, não faz eles tudo junto
+
     [Collection("ApiCollection")]
-    public class AtividadesControllerIntegrationTests
+    public class AtividadesControllerIntegrationTests : IAsyncLifetime
     {
-        private readonly HttpClient _client;
+        private readonly ApiFactoryFixture _factory;
+        private HttpClient _client = null!;
 
         public AtividadesControllerIntegrationTests(ApiFactoryFixture factory)
         {
-            _client = factory.CreateClient();
+            _factory = factory;
         }
 
-        [Fact]
-        public async Task CriarAtividades_DadosValidos_RetornaOk()
+        public async Task InitializeAsync()
+        {
+            _client = await _factory.CreateAuthenticatedClientAsync();
+        }
+
+        public Task DisposeAsync()
+        {
+            _client.Dispose();
+            return Task.CompletedTask;
+        }
+
+        private async Task<Cargo> CriarCargoAsync()
         {
             // Arrange
-            var id_atividade = Random.Shared.Next(1, 100);
+            var novoCargo = new
+            {
+                Nm_cargo = $"{Guid.NewGuid():N}"[..20],
+                Fg_permissao = Permissao.S
+            };
 
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Cargo/cargo/criar", novoCargo);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+            var cargo = await response.Content.ReadFromJsonAsync<Cargo>();
+
+            Assert.NotNull(cargo);
+            return cargo!;
+        }
+
+        private async Task<Perfil> CriarPerfilAsync()
+        {
+            // Arrange
+            var cargo = await CriarCargoAsync();
+            var novoPerfil = new
+            {
+                nm_perfil = $"{Guid.NewGuid():N}"[..20],
+                id_cargo = cargo.Id_cargo
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Perfil/perfil/criar", novoPerfil);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+            var perfil = await response.Content.ReadFromJsonAsync<Perfil>();
+
+            Assert.NotNull(perfil);
+            return perfil!;
+        }
+
+        private async Task<Cuidador> CriarCuidadorAsync()
+        {
+            // Arrange
+            var perfil = await CriarPerfilAsync();
+            var identificador = Guid.NewGuid().ToString("N");
+            var novoCuidador = new
+            {
+                Nm_cuidador = $"{identificador}"[..20],
+                Cpf_cuidador = identificador[..11],
+                Ds_email = $"a{identificador[..8]}",
+                Ds_senha = "12123123",
+                Id_perfil = perfil.id_perfil
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Cuidador/cuidador/criar", novoCuidador);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+            var cuidador = await response.Content.ReadFromJsonAsync<Cuidador>();
+
+            Assert.NotNull(cuidador);
+            return cuidador!;
+        }
+
+        private async Task<Idoso> CriarIdosoAsync()
+        {
+            // Arrange
+            var cuidador = await CriarCuidadorAsync();
+            var identificador = Guid.NewGuid().ToString("N");
+            var novoIdoso = new
+            {
+                Nm_idoso = $"{identificador}"[..20],
+                cpf_idoso = identificador[..11],
+                vlr_altura = 1.70m,
+                vlr_peso = 70m,
+                dt_nascimento = new DateOnly(1950, 1, 1),
+                ds_comportamento = "Teste de integração",
+                id_cuidador = cuidador.Id_cuidador
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Idoso/idoso/criar", novoIdoso);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+            var idoso = await response.Content.ReadFromJsonAsync<Idoso>();
+
+            Assert.NotNull(idoso);
+            return idoso!;
+        }
+
+        private async Task<Atividades> CriarAtividadeAsync()
+        {
+            // Arrange
+            var idoso = await CriarIdosoAsync();
             var novaAtividade = new
             {
-                Id_atividade = id_atividade,
                 Nm_atividade = "Atividade teste",
                 Ds_atividade = "Descrição teste",
                 Dt_atividade = new DateOnly(2026, 8, 9),
                 Hr_atividade_inicio = new TimeOnly(9, 0),
                 Hr_atividade_fim = new TimeOnly(10, 0),
-                id_idoso = 1
+                id_idoso = idoso.ID_idoso
             };
 
             // Act
             var response = await _client.PostAsJsonAsync("api/Atividades/atividades/criar", novaAtividade);
 
             // Assert
-            var erro = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)
             {
-                Assert.Fail($"Não foi criada por: {erro}");
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criada a atividade: {erro}");
             }
 
-            response.EnsureSuccessStatusCode();
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var atividade = await response.Content.ReadFromJsonAsync<Atividades>();
+            Assert.NotNull(atividade);
+            return atividade!;
+        }
 
-            var atividadeCriada = await response.Content.ReadFromJsonAsync<Atividades>();
+        [Fact]
+        public async Task CriarAtividades_DadosValidos_RetornaOk()
+        {
+            // Act
+            var atividadeCriada = await CriarAtividadeAsync();
 
-            Assert.NotNull(atividadeCriada);
-            Assert.Equal(id_atividade, atividadeCriada.Id_atividade);
+            // Assert
+            Assert.True(atividadeCriada.Id_atividade > 0);
+            Assert.Equal("Atividade teste", atividadeCriada.Nm_atividade);
         }
 
         [Fact]
         public async Task AtualizarAtividades_DadosValidos_RetornaSucesso()
         {
             // Arrange
-            var id_atividade = 6;
-
+            var atividadeExistente = await CriarAtividadeAsync();
             var atividadeAtualizada = new
             {
-                Id_atividade = id_atividade,
                 Nm_atividade = "Atividade atualizada",
                 Ds_atividade = "Descrição atualizada",
                 Dt_atividade = new DateOnly(2026, 10, 12),
                 Hr_atividade_inicio = new TimeOnly(10, 0),
                 Hr_atividade_fim = new TimeOnly(11, 0),
-                id_idoso = 1
+                id_idoso = atividadeExistente.id_idoso
             };
 
             // Act
             var response = await _client.PutAsJsonAsync(
-                $"api/Atividades/atividades/atualiza/{id_atividade}", atividadeAtualizada);
+                $"api/Atividades/atividades/atualiza/{atividadeExistente.Id_atividade}", atividadeAtualizada);
 
             // Assert
-            var erro = await response.Content.ReadAsStringAsync();
-            if (!response.IsSuccessStatusCode)
-            {
-                Assert.Fail($"Não foi atualizada por: {erro}");
-            }
-
-            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var atividade = await response.Content.ReadFromJsonAsync<Atividades>();
+            Assert.True(atividade is not null, $"Resposta sem atividade: {responseBody}");
+            Assert.Equal("Atividade atualizada", atividade!.Nm_atividade);
         }
 
         [Fact]
         public async Task GetAtividades_dados_RetornaOk()
         {
             // Arrange
-            var id_atividade = 6;
+            var atividadeCriada = await CriarAtividadeAsync();
 
             // Act
-            var response = await _client.GetAsync($"api/Atividades/atividades/{id_atividade}");
+            var response = await _client.GetAsync($"api/Atividades/atividades/{atividadeCriada.Id_atividade}");
 
             // Assert
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
                 Assert.Fail("Atividade não encontrada");
             }
-
             response.EnsureSuccessStatusCode();
-
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var atividade = await response.Content.ReadFromJsonAsync<Atividades>();
-
             Assert.NotNull(atividade);
-            Assert.Equal(id_atividade, atividade.Id_atividade);
+            Assert.Equal(atividadeCriada.Id_atividade, atividade.Id_atividade);
         }
 
         [Fact]
         public async Task GetAllAtividades_dados_RetornarOk()
         {
-            //Act
+            // Arrange
+            var atividadeCriada = await CriarAtividadeAsync();
+
+            // Act
             var response = await _client.GetAsync("api/Atividades/atividades");
 
-            //Assert
-            response.EnsureSuccessStatusCode();
-
+            // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-
             var atividades = await response.Content.ReadFromJsonAsync<List<Atividades>>();
-
             Assert.NotNull(atividades);
+            Assert.Contains(atividades, atividade => atividade.Id_atividade == atividadeCriada.Id_atividade);
         }
 
         [Fact]
         public async Task DeleteAtividades_dados_RetornaOk()
         {
             // Arrange
-            var id_atividade = 55;
+            var atividadeCriada = await CriarAtividadeAsync();
 
             // Act
             var response = await _client.DeleteAsync(
-                $"api/Atividades/atividades/deleta/{id_atividade}");
+                $"api/Atividades/atividades/deleta/{atividadeCriada.Id_atividade}");
 
             // Assert
             if (!response.IsSuccessStatusCode)
             {
-                var erroAchado = await response.Content.ReadAsStringAsync();
-
-                Assert.Fail($"Não foi deletada a atividade pelo motivo: {erroAchado}");
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi deletada a atividade: {erro}");
             }
-
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+
+            var consultaResponse = await _client.GetAsync(
+                $"api/Atividades/atividades/{atividadeCriada.Id_atividade}");
+            Assert.Equal(HttpStatusCode.NotFound, consultaResponse.StatusCode);
         }
     }
 }

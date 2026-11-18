@@ -15,7 +15,7 @@ namespace Ajudante_Familiar_Global.Domain.Entities
 
         [Key]
         [Column("id_lembrete_consulta")]
-        public int id_lembrete_consulta { get; set; }
+        public int Id_lembrete_consulta { get; set; }
         [Column("ds_titulo_lembrente_consulta")]
         public string Ds_titulo_lembrente_consulta { get; set; }
         [Column("nm_consulta_medico")]
@@ -23,7 +23,7 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         [Column("dt_consulta")]
         public DateTime Dt_consulta { get; set; }
         [Column("hr_consulta")]
-        public DateTime Hr_consulta { get; set; }
+        public TimeOnly? Hr_consulta { get; set; }
         [Column("ds_consulta")]
         public string Ds_consulta { get; set; }
         [Required]
@@ -34,13 +34,13 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         public int Id_idoso { get; set; }
         [JsonIgnore]
         [ForeignKey("Id_idoso")]
-        public Idoso Idoso { get; set; }
+        public Idoso? Idoso { get; set; }
 
         public Lembrete_Consulta() { }
 
-        public Lembrete_Consulta(int id_lembrete_consulta, string ds_titulo_lembrente_consulta, string nm_consulta_medico, DateTime dt_consulta, DateTime hr_consulta, string ds_consulta, Status st_consulta, int id_idoso, Idoso idoso)
+        public Lembrete_Consulta(int id_lembrete_consulta, string ds_titulo_lembrente_consulta, string nm_consulta_medico, DateTime dt_consulta, TimeOnly? hr_consulta, string ds_consulta, Status st_consulta, int id_idoso, Idoso? idoso)
         {
-            this.id_lembrete_consulta = id_lembrete_consulta;
+            Id_lembrete_consulta = id_lembrete_consulta;
             Ds_titulo_lembrente_consulta = ds_titulo_lembrente_consulta;
             Nm_consulta_medico = nm_consulta_medico;
             Dt_consulta = dt_consulta;

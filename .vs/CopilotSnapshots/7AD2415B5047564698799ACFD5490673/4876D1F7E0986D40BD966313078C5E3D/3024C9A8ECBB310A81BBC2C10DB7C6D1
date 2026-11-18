@@ -1,0 +1,145 @@
+﻿using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
+using Ajudante_Familiar_Global.Domain.Entities;
+using System;
+using System.Net;
+using System.Net.Http.Json;
+using Xunit;
+
+namespace Ajudante_Familiar_Global.integrationTests.Integration
+{
+    //Atenção!!! Tanto o create quanto o update precisam ter cuidado com os dados que serão adicionados, porque, se não, pode dar erro.
+    //Recomendação faz um a cada vez, não faz eles tudo junto
+    [Collection("ApiCollection")]
+    public class ParenteControllerIntegrationTests
+    {
+        private readonly HttpClient _client;
+
+        public ParenteControllerIntegrationTests(ApiFactoryFixture factory)
+        {
+            _client = factory.CreateClient();
+        }
+
+        private async Task<Parente> CriarParenteAsync()
+        {
+            // Arrange
+            var idoso = await IntegrationTestData.CriarIdosoAsync(_client);
+            var perfil = await IntegrationTestData.CriarPerfilAsync(_client);
+            var identificador = Guid.NewGuid().ToString("N");
+            var novoParente = new
+            {
+                Nm_parente = "Parente teste",
+                Nr_telefone = identificador[..11],
+                Ds_email = $"p{identificador[..8]}@x.co",
+                Ds_senha = "senha123",
+                Id_idoso = idoso.ID_idoso,
+                Id_perfil = perfil.id_perfil
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Parente/parente/criar", novoParente);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado o parente: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var parente = await response.Content.ReadFromJsonAsync<Parente>();
+            Assert.NotNull(parente);
+            return parente!;
+        }
+
+        [Fact]
+        public async Task CriarParente_DadosValidos_RetornaOk()
+        {
+            // Act
+            var parenteCriado = await CriarParenteAsync();
+
+            // Assert
+            Assert.True(parenteCriado.Id_parente > 0);
+            Assert.Equal("Parente teste", parenteCriado.Nm_parente);
+            Assert.True(parenteCriado.Id_idoso > 0);
+            Assert.True(parenteCriado.Id_perfil > 0);
+        }
+
+        [Fact]
+        public async Task AtualizarParente_DadosValidos_RetornaSucesso()
+        {
+            // Arrange
+            var parenteExistente = await CriarParenteAsync();
+            var identificador = Guid.NewGuid().ToString("N");
+            var parenteAtualizado = new
+            {
+                Nm_parente = "Parente atualizado",
+                Nr_telefone = identificador[..11],
+                Ds_email = $"q{identificador[..8]}@x.co",
+                Ds_senha = "senha456",
+                Id_idoso = parenteExistente.Id_idoso,
+                Id_perfil = parenteExistente.Id_perfil
+            };
+
+            // Act
+            var response = await _client.PutAsJsonAsync(
+                $"api/Parente/parente/atualiza/{parenteExistente.Id_parente}", parenteAtualizado);
+
+            // Assert
+            var responseBody = await response.Content.ReadAsStringAsync();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var parente = await response.Content.ReadFromJsonAsync<Parente>();
+            Assert.True(parente is not null, $"Resposta sem parente: {responseBody}");
+            Assert.Equal("Parente atualizado", parente!.Nm_parente);
+            Assert.Equal(parenteAtualizado.Nr_telefone, parente.Nr_telefone);
+        }
+
+        [Fact]
+        public async Task GetParente_dados_RetornaOk()
+        {
+            // Arrange
+            var parenteCriado = await CriarParenteAsync();
+
+            // Act
+            var response = await _client.GetAsync($"api/Parente/parente/{parenteCriado.Id_parente}");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var parente = await response.Content.ReadFromJsonAsync<Parente>();
+            Assert.NotNull(parente);
+            Assert.Equal(parenteCriado.Id_parente, parente.Id_parente);
+        }
+
+        [Fact]
+        public async Task GetAllParente_dados_RetornarOk()
+        {
+            // Arrange
+            var parenteCriado = await CriarParenteAsync();
+
+            // Act
+            var response = await _client.GetAsync("api/Parente/parente");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var parentes = await response.Content.ReadFromJsonAsync<List<Parente>>();
+            Assert.NotNull(parentes);
+            Assert.Contains(parentes, parente => parente.Id_parente == parenteCriado.Id_parente);
+        }
+
+        [Fact]
+        public async Task DeleteParente_dados_RetornaOk()
+        {
+            // Arrange
+            var parenteCriado = await CriarParenteAsync();
+
+            // Act
+            var response = await _client.DeleteAsync(
+                $"api/Parente/parente/deleta/{parenteCriado.Id_parente}");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+            var consultaResponse = await _client.GetAsync(
+                $"api/Parente/parente/{parenteCriado.Id_parente}");
+            Assert.Equal(HttpStatusCode.NotFound, consultaResponse.StatusCode);
+        }
+    }
+}

@@ -57,7 +57,7 @@ public class MedicamentosControllerTests
             Vl_frquencia = "1 vez ao dia",
             Ds_instrucao_uso = "Após refeição",
             Dt_medicamento = new DateTime(2026, 8, 9),
-            Hr_medicamento = new DateTime(2026, 8, 9, 9, 0, 0),
+            Hr_medicamento = new TimeOnly(9, 0, 0),
             Id_idoso = 1,
             Idoso = null!
         };
@@ -88,7 +88,7 @@ public class MedicamentosControllerTests
             Vl_frquencia = "2 vezes ao dia",
             Ds_instrucao_uso = "Antes da refeição",
             Dt_medicamento = new DateTime(2026, 8, 10),
-            Hr_medicamento = new DateTime(2026, 8, 10, 10, 0, 0),
+            Hr_medicamento = new TimeOnly(10, 0, 0),
             Id_idoso = 1,
             Idoso = null!
         };
@@ -127,7 +127,7 @@ public class MedicamentosControllerTests
                 Vl_frquencia = "1 vez ao dia",
                 Ds_instrucao_uso = "Após refeição",
                 Dt_medicamento = new DateTime(2026, 8, 9),
-                Hr_medicamento = new DateTime(2026, 8, 9, 9, 0, 0),
+                Hr_medicamento = new TimeOnly (9, 0, 0),
                 Id_idoso = 1,
                 Idoso = null!
             }
@@ -160,7 +160,7 @@ public class MedicamentosControllerTests
             Vl_frquencia = "1 vez ao dia",
             Ds_instrucao_uso = "Após refeição",
             Dt_medicamento = new DateTime(2026, 8, 9),
-            Hr_medicamento = new DateTime(2026, 8, 9, 9, 0, 0),
+            Hr_medicamento = new TimeOnly(9, 0, 0),
             Id_idoso = 1,
             Idoso = null!
         };
@@ -191,7 +191,7 @@ public class MedicamentosControllerTests
             Vl_frquencia = "1 vez ao dia",
             Ds_instrucao_uso = "Após refeição",
             Dt_medicamento = new DateTime(2026, 8, 9),
-            Hr_medicamento = new DateTime(2026, 8, 9, 9, 0, 0),
+            Hr_medicamento = new TimeOnly(9, 0, 0),
             Id_idoso = 1,
             Idoso = null!
         };

@@ -1,0 +1,128 @@
+﻿using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Enums;
+using System;
+using System.Net;
+using System.Net.Http.Json;
+using Xunit;
+
+namespace Ajudante_Familiar_Global.integrationTests.Integration
+{
+    //Atenção!!! Tanto o create quanto o update precisam ter cuidado com os dados que serão adicionados, porque, se não, pode dar erro.
+    //Recomendação faz um a cada vez, não faz eles tudo junto
+    [Collection("ApiCollection")]
+    public class CargoControllerIntegrationTests
+    {
+        private readonly HttpClient _client;
+
+        public CargoControllerIntegrationTests(ApiFactoryFixture factory)
+        {
+            _client = factory.CreateClient();
+        }
+
+        private async Task<Cargo> CriarCargoAsync()
+        {
+            var novoCargo = new
+            {
+                Nm_cargo = $"cargo-{Guid.NewGuid():N}"[..18],
+                Fg_permissao = Permissao.S
+            };
+
+            var response = await _client.PostAsJsonAsync("api/Cargo/cargo/criar", novoCargo);
+            var responseBody = await response.Content.ReadAsStringAsync();
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+            var cargo = await response.Content.ReadFromJsonAsync<Cargo>();
+            Assert.True(cargo is not null, $"Resposta sem cargo: {responseBody}");
+            return cargo!;
+        }
+
+        [Fact]
+        public async Task CriarCargo_DadosValidos_RetornaOk()
+        {
+            // Act
+            var cargoCriado = await CriarCargoAsync();
+
+            // Assert
+            Assert.True(cargoCriado.Id_cargo > 0);
+            Assert.StartsWith("cargo-", cargoCriado.Nm_cargo);
+            Assert.Equal(Permissao.S, cargoCriado.Fg_permissao);
+        }
+
+        [Fact]
+        public async Task AtualizarCargo_DadosValidos_RetornaSucesso()
+        {
+            // Arrange
+            var cargoExistente = await CriarCargoAsync();
+            var cargoAtualizado = new
+            {
+                Nm_cargo = "Cargo atualizado",
+                Fg_permissao = Permissao.N
+            };
+
+            // Act
+            var response = await _client.PutAsJsonAsync(
+                $"api/Cargo/cargo/atualiza/{cargoExistente.Id_cargo}", cargoAtualizado);
+
+            // Assert
+            var responseBody = await response.Content.ReadAsStringAsync();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var cargoRetornado = await response.Content.ReadFromJsonAsync<Cargo>();
+            Assert.True(cargoRetornado is not null, $"Resposta sem cargo: {responseBody}");
+            Assert.Equal(cargoExistente.Id_cargo, cargoRetornado!.Id_cargo);
+            Assert.Equal("Cargo atualizado", cargoRetornado.Nm_cargo);
+            Assert.Equal(Permissao.N, cargoRetornado.Fg_permissao);
+        }
+
+        [Fact]
+        public async Task GetCargo_dados_RetornaOk()
+        {
+            // Arrange
+            var cargoCriado = await CriarCargoAsync();
+
+            // Act
+            var response = await _client.GetAsync($"api/Cargo/cargo/{cargoCriado.Id_cargo}");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var cargo = await response.Content.ReadFromJsonAsync<Cargo>();
+            Assert.NotNull(cargo);
+            Assert.Equal(cargoCriado.Id_cargo, cargo.Id_cargo);
+            Assert.Equal(cargoCriado.Nm_cargo, cargo.Nm_cargo);
+        }
+
+        [Fact]
+        public async Task GetAllCargo_dados_RetornarOk()
+        {
+            // Arrange
+            var cargoCriado = await CriarCargoAsync();
+
+            // Act
+            var response = await _client.GetAsync("api/Cargo/cargo");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var cargos = await response.Content.ReadFromJsonAsync<List<Cargo>>();
+            Assert.NotNull(cargos);
+            Assert.Contains(cargos, cargo => cargo.Id_cargo == cargoCriado.Id_cargo);
+        }
+
+        [Fact]
+        public async Task DeleteCargo_dados_RetornaOk()
+        {
+            // Arrange
+            var cargoCriado = await CriarCargoAsync();
+
+            // Act
+            var response = await _client.DeleteAsync(
+                $"api/Cargo/cargo/deleta/{cargoCriado.Id_cargo}");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+
+            var consultaResponse = await _client.GetAsync(
+                $"api/Cargo/cargo/{cargoCriado.Id_cargo}");
+            Assert.Equal(HttpStatusCode.NotFound, consultaResponse.StatusCode);
+        }
+    }
+}

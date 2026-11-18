@@ -1,5 +1,7 @@
 ﻿using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +26,13 @@ namespace Ajudante_Familiar_Global.Infrastruture.Data
         public DbSet<Parente> Parentes { get; set; } = null!;
         public DbSet<Cuidador> Cuidadores { get; set; } = null!;
         public DbSet<Doencas> Doencas { get; set; } = null!;
+
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            configurationBuilder.Properties<TimeOnly>()
+                .HaveConversion<TimeOnlyParaDateConverter>()
+                .HaveColumnType("DATE");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -102,7 +111,17 @@ namespace Ajudante_Familiar_Global.Infrastruture.Data
             modelBuilder.Entity<Alimentacao>().HasKey(g => g.Id_alimentacao);
             modelBuilder.Entity<Alimentacao>().Property(g => g.Id_alimentacao).HasColumnName("id_alimentacao").ValueGeneratedOnAdd();
             modelBuilder.Entity<Alimentacao>().Property(g => g.Nm_alimentacao).HasColumnName("nm_alimentacao").HasMaxLength(20).IsRequired();
-            modelBuilder.Entity<Alimentacao>().Property(g => g.Tp_alimentacao).HasColumnName("tp_alimentacao").HasConversion<string>().HasMaxLength(20).IsRequired();
+            modelBuilder.Entity<Alimentacao>().Property(g => g.Tp_alimentacao).HasColumnName("tp_alimentacao").HasMaxLength(20).IsRequired().HasConversion(
+                v => v == TipoAlimentacao.cafe_da_manha ? "Cafe da manha"
+                   : v == TipoAlimentacao.almoco ? "Almoco"
+                   : v == TipoAlimentacao.lache_da_tarde ? "Lanche de tarde"
+                   : "Jantar",
+                v => v.Trim() == "Cafe da manha" ? TipoAlimentacao.cafe_da_manha
+                   : v.Trim() == "Almoco" ? TipoAlimentacao.almoco
+                   : v.Trim() == "Lanche de tarde" ? TipoAlimentacao.lache_da_tarde
+                   : TipoAlimentacao.jantar
+            );
+
             modelBuilder.Entity<Alimentacao>().ToTable(t => t.HasCheckConstraint("ck_alimentacao_tipo", "\"tp_alimentacao\" IN ('Cafe da manha', 'Almoco', 'Lanche de tarde', 'Jantar')"));
             modelBuilder.Entity<Alimentacao>().Property(g => g.Dt_consumo).HasColumnName("dt_consumo").IsRequired();
             modelBuilder.Entity<Alimentacao>().Property(g => g.Hr_consumo).HasColumnName("hr_consumo").IsRequired();
@@ -112,8 +131,8 @@ namespace Ajudante_Familiar_Global.Infrastruture.Data
             modelBuilder.Entity<Alimentacao>().HasOne(g => g.Idoso).WithMany().HasForeignKey(g => g.Id_idoso).IsRequired();
 
             modelBuilder.Entity<Lembrete_Consulta>().ToTable("T_Ajudante_familiar_Lembrete_Consulta");
-            modelBuilder.Entity<Lembrete_Consulta>().HasKey(g => g.id_lembrete_consulta);
-            modelBuilder.Entity<Lembrete_Consulta>().Property(g => g.id_lembrete_consulta).HasColumnName("id_lembrete_consulta").ValueGeneratedOnAdd();
+            modelBuilder.Entity<Lembrete_Consulta>().HasKey(g => g.Id_lembrete_consulta);
+            modelBuilder.Entity<Lembrete_Consulta>().Property(g => g.Id_lembrete_consulta).HasColumnName("id_lembrete_consulta").ValueGeneratedOnAdd();
             modelBuilder.Entity<Lembrete_Consulta>().Property(g => g.Ds_titulo_lembrente_consulta).HasColumnName("ds_titulo_lembrente_consulta").HasMaxLength(20);
             modelBuilder.Entity<Lembrete_Consulta>().Property(g => g.Nm_consulta_medico).HasColumnName("nm_consulta_medico").HasMaxLength(20);
             modelBuilder.Entity<Lembrete_Consulta>().Property(g => g.Dt_consulta).HasColumnName("dt_consulta");
@@ -145,6 +164,16 @@ namespace Ajudante_Familiar_Global.Infrastruture.Data
             modelBuilder.Entity<Consulta_Medicamento>().Property(g => g.id_Medicamentos).HasColumnName("id_medicamentos").IsRequired();
             modelBuilder.Entity<Consulta_Medicamento>().HasOne(g => g.medicamentos).WithMany().HasForeignKey(g => g.id_Medicamentos).IsRequired();
         }
+        //Isso aqui é para questao de tempo ou horas ou data
 
+            public class TimeOnlyParaDateConverter : ValueConverter<TimeOnly, DateTime>
+            {
+                public TimeOnlyParaDateConverter() : base(t => new DateTime(1900, 1, 1, t.Hour, t.Minute, t.Second),
+                           d => TimeOnly.FromDateTime(d))
+                {
+
+                }
+
+            }
     }
 }

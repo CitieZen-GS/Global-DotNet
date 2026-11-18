@@ -22,7 +22,7 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         public int id_cargo { get; set; }
         [JsonIgnore]
         [ForeignKey("id_cargo")]
-        public Cargo cargo { get; set; }
+        public Cargo? cargo { get; set; }
 
         public Perfil() { }
 

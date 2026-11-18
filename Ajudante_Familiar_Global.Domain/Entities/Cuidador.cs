@@ -27,7 +27,7 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         public int Id_perfil { get; set; }
         [JsonIgnore]
         [ForeignKey("Id_perfil")]
-        public Perfil Perfil { get; set; }
+        public Perfil? Perfil { get; set; }
 
         public Cuidador()
         {

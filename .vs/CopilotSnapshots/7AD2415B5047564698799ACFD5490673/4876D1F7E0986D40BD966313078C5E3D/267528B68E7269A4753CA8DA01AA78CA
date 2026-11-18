@@ -1,0 +1,119 @@
+﻿using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Enums;
+using System;
+using System.Net;
+using System.Net.Http.Json;
+using Xunit;
+
+namespace Ajudante_Familiar_Global.integrationTests.Integration
+{
+    //Atenção!!! Tanto o create quanto o update precisam ter cuidado com os dados que serão adicionados, porque, se não, pode dar erro.
+    //Recomendação faz um a cada vez, não faz eles tudo junto
+    [Collection("ApiCollection")]
+    public class Lembrete_ConsultaControllerIntegrationTests
+    {
+        private readonly HttpClient _client;
+
+        public Lembrete_ConsultaControllerIntegrationTests(ApiFactoryFixture factory)
+        {
+            _client = factory.CreateClient();
+        }
+
+        private Task<Lembrete_Consulta> CriarLembreteConsultaAsync()
+        {
+            return IntegrationTestData.CriarLembreteConsultaAsync(_client);
+        }
+
+        [Fact]
+        public async Task CriarLembreteConsulta_DadosValidos_RetornaOk()
+        {
+            // Act
+            var lembreteCriado = await CriarLembreteConsultaAsync();
+
+            // Assert
+            Assert.True(lembreteCriado.id_lembrete_consulta > 0);
+            Assert.Equal(Status.Pendente, lembreteCriado.St_consulta);
+            Assert.True(lembreteCriado.Id_idoso > 0);
+        }
+
+        [Fact]
+        public async Task AtualizarLembreteConsulta_DadosValidos_RetornaSucesso()
+        {
+            // Arrange
+            var lembreteExistente = await CriarLembreteConsultaAsync();
+            var lembreteAtualizado = new
+            {
+                Ds_titulo_lembrente_consulta = "Consulta atualizada",
+                Nm_consulta_medico = "Médico atualizado",
+                Dt_consulta = new DateTime(2026, 10, 12),
+                Hr_consulta = new DateTime(2026, 10, 12, 10, 0, 0),
+                Ds_consulta = "Descrição atualizada",
+                St_consulta = Status.Realizado,
+                Id_idoso = lembreteExistente.Id_idoso
+            };
+
+            // Act
+            var response = await _client.PutAsJsonAsync(
+                $"api/Lembrete_Consulta/lembrete_consulta/atualiza/{lembreteExistente.id_lembrete_consulta}", lembreteAtualizado);
+
+            // Assert
+            var responseBody = await response.Content.ReadAsStringAsync();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var lembrete = await response.Content.ReadFromJsonAsync<Lembrete_Consulta>();
+            Assert.True(lembrete is not null, $"Resposta sem lembrete: {responseBody}");
+            Assert.Equal("Consulta atualizada", lembrete!.Ds_titulo_lembrente_consulta);
+            Assert.Equal(Status.Realizado, lembrete.St_consulta);
+        }
+
+        [Fact]
+        public async Task GetLembreteConsulta_dados_RetornaOk()
+        {
+            // Arrange
+            var lembreteCriado = await CriarLembreteConsultaAsync();
+
+            // Act
+            var response = await _client.GetAsync(
+                $"api/Lembrete_Consulta/lembrete_consulta/{lembreteCriado.id_lembrete_consulta}");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var lembrete = await response.Content.ReadFromJsonAsync<Lembrete_Consulta>();
+            Assert.NotNull(lembrete);
+            Assert.Equal(lembreteCriado.id_lembrete_consulta, lembrete.id_lembrete_consulta);
+        }
+
+        [Fact]
+        public async Task GetAllLembreteConsulta_dados_RetornarOk()
+        {
+            // Arrange
+            var lembreteCriado = await CriarLembreteConsultaAsync();
+
+            // Act
+            var response = await _client.GetAsync("api/Lembrete_Consulta/lembrete_consulta");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var lembretes = await response.Content.ReadFromJsonAsync<List<Lembrete_Consulta>>();
+            Assert.NotNull(lembretes);
+            Assert.Contains(lembretes, lembrete => lembrete.id_lembrete_consulta == lembreteCriado.id_lembrete_consulta);
+        }
+
+        [Fact]
+        public async Task DeleteLembreteConsulta_dados_RetornaOk()
+        {
+            // Arrange
+            var lembreteCriado = await CriarLembreteConsultaAsync();
+
+            // Act
+            var response = await _client.DeleteAsync(
+                $"api/Lembrete_Consulta/lembrete_consulta/deleta/{lembreteCriado.id_lembrete_consulta}");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+            var consultaResponse = await _client.GetAsync(
+                $"api/Lembrete_Consulta/lembrete_consulta/{lembreteCriado.id_lembrete_consulta}");
+            Assert.Equal(HttpStatusCode.NotFound, consultaResponse.StatusCode);
+        }
+    }
+}

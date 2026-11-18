@@ -21,14 +21,14 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         public int id_lembrete_consulta { get; set; }
         [JsonIgnore]
         [ForeignKey("id_lembrete_consulta")]
-        public Lembrete_Consulta lembrete_Consulta { get; set; }
+        public Lembrete_Consulta? lembrete_Consulta { get; set; }
 
         [Required]
         [Column("id_Medicamentos")]
         public int id_Medicamentos { get; set; }
         [JsonIgnore]
         [ForeignKey("id_Medicamentos")]
-        public Medicamentos medicamentos { get; set; }
+        public Medicamentos? medicamentos { get; set; }
 
         public Consulta_Medicamento() { }
 

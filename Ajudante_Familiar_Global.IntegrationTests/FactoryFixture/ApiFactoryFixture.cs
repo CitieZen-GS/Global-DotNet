@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using Xunit;
 
 namespace Ajudante_Familiar_Global.integrationTests.FactoryFixture
@@ -14,6 +16,7 @@ namespace Ajudante_Familiar_Global.integrationTests.FactoryFixture
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
+            builder.UseEnvironment("Testing");
             builder.ConfigureTestServices(services =>
             {
                 services.RemoveAll<AppDbContext>();
@@ -22,6 +25,38 @@ namespace Ajudante_Familiar_Global.integrationTests.FactoryFixture
                 services.AddDbContext<AppDbContext>(options =>
                     options.UseInMemoryDatabase("ApiIntegrationTests"));
             });
+        }
+        //O motivo disso ter o authorize presente na classe e por causa disso para testa o integrationTest foi adicionar a questao do jwt
+        public async Task<HttpClient> CreateAuthenticatedClientAsync()
+        {
+            var client = CreateClient();
+            var loginResponse = await client.PostAsJsonAsync("api/auth/login", new
+            {
+                Username = "admin",
+                Password = "123456"
+            });
+
+            if (!loginResponse.IsSuccessStatusCode)
+            {
+                var error = await loginResponse.Content.ReadAsStringAsync();
+                client.Dispose();
+                throw new InvalidOperationException($"Não foi possível autenticar o cliente de integração: {error}");
+            }
+
+            var login = await loginResponse.Content.ReadFromJsonAsync<LoginResponse>();
+            if (string.IsNullOrWhiteSpace(login?.Token))
+            {
+                client.Dispose();
+                throw new InvalidOperationException("A resposta de login não contém um token JWT.");
+            }
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", login.Token);
+            return client;
+        }
+
+        private sealed class LoginResponse
+        {
+            public string? Token { get; set; }
         }
     }
 

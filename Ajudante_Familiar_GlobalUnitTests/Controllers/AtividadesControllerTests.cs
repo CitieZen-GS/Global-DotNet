@@ -52,8 +52,8 @@ public class AtividadesControllerTests
         var atividades = new Atividades
         {
             Id_atividade = 1,
-            Nm_atividade = "Atividade teste",
-            Ds_atividade = "Descrição teste",
+            Nm_atividade = " teste",
+            Ds_atividade = " teste",
             Dt_atividade = new DateOnly(2026, 8, 9),
             Hr_atividade_inicio = new TimeOnly(9, 0),
             Hr_atividade_fim = new TimeOnly(10, 0),
@@ -82,8 +82,8 @@ public class AtividadesControllerTests
         var atividades = new Atividades
         {
             Id_atividade = id_atividade,
-            Nm_atividade = "Atividade atualizada",
-            Ds_atividade = "Descrição atualizada",
+            Nm_atividade = " atualizada",
+            Ds_atividade = " atualizada",
             Dt_atividade = new DateOnly(2026, 8, 10),
             Hr_atividade_inicio = new TimeOnly(10, 0),
             Hr_atividade_fim = new TimeOnly(11, 0),
@@ -118,8 +118,8 @@ public class AtividadesControllerTests
             new Atividades
             {
                 Id_atividade = 1,
-                Nm_atividade = "Atividade teste",
-                Ds_atividade = "Descrição teste",
+                Nm_atividade = " teste",
+                Ds_atividade = " teste",
                 Dt_atividade = new DateOnly(2026, 8, 9),
                 Hr_atividade_inicio = new TimeOnly(9, 0),
                 Hr_atividade_fim = new TimeOnly(10, 0),
@@ -149,8 +149,8 @@ public class AtividadesControllerTests
         var atividades = new Atividades
         {
             Id_atividade = id_atividade,
-            Nm_atividade = "Atividade teste",
-            Ds_atividade = "Descrição teste",
+            Nm_atividade = " teste",
+            Ds_atividade = " teste",
             Dt_atividade = new DateOnly(2026, 8, 9),
             Hr_atividade_inicio = new TimeOnly(9, 0),
             Hr_atividade_fim = new TimeOnly(10, 0),
@@ -179,8 +179,8 @@ public class AtividadesControllerTests
         var atividades = new Atividades
         {
             Id_atividade = id_atividade,
-            Nm_atividade = "Atividade teste",
-            Ds_atividade = "Descrição teste",
+            Nm_atividade = " teste",
+            Ds_atividade = " teste",
             Dt_atividade = new DateOnly(2026, 8, 9),
             Hr_atividade_inicio = new TimeOnly(9, 0),
             Hr_atividade_fim = new TimeOnly(10, 0),

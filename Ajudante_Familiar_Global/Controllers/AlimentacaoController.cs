@@ -1,13 +1,18 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
 using Ajudante_Familiar_Global.Infrastruture.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ajudante_Familiar_Global.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api")]
     [Produces("application/json")]
+    [EnableRateLimiting("fixed")]
     public class AlimentacaoController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -45,6 +50,7 @@ namespace Ajudante_Familiar_Global.Controllers
                 _logger.LogError(ex, "Erro ao buscar todas as alimentações");
                 return StatusCode(500, new { mensagem = "Erro interno do servidor" });
             }
+
         }
 
         /// <summary>
@@ -100,6 +106,11 @@ namespace Ajudante_Familiar_Global.Controllers
             catch (KeyNotFoundException ex)
             {
                 return NotFound(new { mensagem = ex.Message });
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "Erro ao gravar");
+                return BadRequest(new { mensagem = ex.InnerException?.Message });
             }
         }
 

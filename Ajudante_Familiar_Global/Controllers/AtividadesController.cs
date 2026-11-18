@@ -1,12 +1,16 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Ajudante_Familiar_Global.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api")]
     [Produces("application/json")]
+    [EnableRateLimiting("fixed")]
     public class AtividadesController : ControllerBase
     {
         private readonly IAtividadesService _AtividadesService;

@@ -24,20 +24,20 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         [Column("ds_instrucao_uso")]
         public string Ds_instrucao_uso { get; set; }
         [Column("dt_medicamento")]
-        public DateTime Dt_medicamento { get; set; }
+        public DateTime? Dt_medicamento { get; set; }
         [Required]
         [Column("hr_medicamento")]
-        public DateTime Hr_medicamento { get; set; }
+        public TimeOnly Hr_medicamento { get; set; }
         [Required]
         [Column("id_idoso")]
         public int Id_idoso { get; set; }
         [JsonIgnore]
         [ForeignKey("Id_idoso")]
-        public Idoso Idoso { get; set; }
+        public Idoso? Idoso { get; set; }
 
         public Medicamentos() { }
 
-        public Medicamentos(int id_medicamentos, string nm_medicamentos, string via_administracao, string vl_frquencia, string ds_instrucao_uso, DateTime dt_medicamento, DateTime hr_medicamento, int id_idoso, Idoso idoso)
+        public Medicamentos(int id_medicamentos, string nm_medicamentos, string via_administracao, string vl_frquencia, string ds_instrucao_uso, DateTime dt_medicamento, TimeOnly hr_medicamento, int id_idoso, Idoso? idoso)
         {
             this.id_medicamentos = id_medicamentos;
             Nm_medicamentos = nm_medicamentos;

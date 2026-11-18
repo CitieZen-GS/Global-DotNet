@@ -2918,7 +2918,8 @@
           },
           "hr_consulta": {
             "type": "string",
-            "format": "date-time"
+            "format": "time",
+            "nullable": true
           },
           "ds_consulta": {
             "type": "string",
@@ -2963,11 +2964,12 @@
           },
           "dt_medicamento": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "hr_medicamento": {
             "type": "string",
-            "format": "date-time"
+            "format": "time"
           },
           "id_idoso": {
             "type": "integer",

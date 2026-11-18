@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
+using System.Text.Json.Serialization;
+
+namespace Ajudante_Familiar_Global.Domain.Entities
+{
+    [Table("T_Ajudante_familiar_Doencas")]
+    public class Doencas
+    {
+
+        [Key]
+        [Column("id_idoso")]
+        public int id_doenca { get; set; }
+        [Column("nm_doenca")]
+        public string Nm_doenca { get; set; }
+        [Column("ds_doenca")]
+        public string Ds_doenca { get; set; }
+        [Required]
+        [Column("id_idoso")]
+        public int Id_idoso { get; set; }
+        [JsonIgnore]
+        [ForeignKey("Id_idoso")]
+        public Idoso? Idoso { get; set; }
+
+        public Doencas() { }
+
+        public Doencas(int id_doenca, string nm_doenca, string ds_doenca, int id_idoso, Idoso idoso)
+        {
+            this.id_doenca = id_doenca;
+            Nm_doenca = nm_doenca;
+            Ds_doenca = ds_doenca;
+            Id_idoso = id_idoso;
+            Idoso = idoso;
+        }
+    }
+}

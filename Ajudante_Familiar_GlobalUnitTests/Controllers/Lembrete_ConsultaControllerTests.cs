@@ -52,11 +52,11 @@ public class Lembrete_ConsultaControllerTests
         // Arrange
         var lembrete = new Lembrete_Consulta
         {
-            id_lembrete_consulta = 1,
+            Id_lembrete_consulta = 1,
             Ds_titulo_lembrente_consulta = "Consulta teste",
             Nm_consulta_medico = "Médico teste",
             Dt_consulta = new DateTime(2026, 8, 9),
-            Hr_consulta = new DateTime(2026, 8, 9, 9, 0, 0),
+            Hr_consulta = new TimeOnly( 9, 0, 0),
             Ds_consulta = "Descrição teste",
             St_consulta = Status.Pendente,
             Id_idoso = 1,
@@ -72,7 +72,7 @@ public class Lembrete_ConsultaControllerTests
         var createdResult = Assert.IsType<CreatedAtActionResult>(resultado.Result);
         var lembreteRetornado = Assert.IsType<Lembrete_Consulta>(createdResult.Value);
         Assert.NotNull(lembreteRetornado);
-        Assert.Equal(lembrete.id_lembrete_consulta, lembreteRetornado.id_lembrete_consulta);
+        Assert.Equal(lembrete.Id_lembrete_consulta, lembreteRetornado.Id_lembrete_consulta);
     }
 
     //Atualização
@@ -83,11 +83,11 @@ public class Lembrete_ConsultaControllerTests
         var id_lembrete_consulta = 1;
         var lembrete = new Lembrete_Consulta
         {
-            id_lembrete_consulta = id_lembrete_consulta,
+            Id_lembrete_consulta = id_lembrete_consulta,
             Ds_titulo_lembrente_consulta = "Consulta atualizada",
             Nm_consulta_medico = "Médico teste",
             Dt_consulta = new DateTime(2026, 8, 10),
-            Hr_consulta = new DateTime(2026, 8, 10, 10, 0, 0),
+            Hr_consulta = new TimeOnly(10, 0, 0),
             Ds_consulta = "Descrição atualizada",
             St_consulta = Status.Realizado,
             Id_idoso = 1,
@@ -104,7 +104,7 @@ public class Lembrete_ConsultaControllerTests
         var okResultado = Assert.IsType<OkObjectResult>(atualizacaoRealizada.Result);
         var retornoLembrete = Assert.IsType<Lembrete_Consulta>(okResultado.Value);
         //Dados atualizados
-        Assert.Equal(lembrete.id_lembrete_consulta, retornoLembrete.id_lembrete_consulta);
+        Assert.Equal(lembrete.Id_lembrete_consulta, retornoLembrete.Id_lembrete_consulta);
         Assert.Equal(lembrete.Ds_titulo_lembrente_consulta, retornoLembrete.Ds_titulo_lembrente_consulta);
         Assert.Equal(lembrete.Nm_consulta_medico, retornoLembrete.Nm_consulta_medico);
         Assert.Equal(lembrete.Dt_consulta, retornoLembrete.Dt_consulta);
@@ -122,11 +122,11 @@ public class Lembrete_ConsultaControllerTests
         {
             new Lembrete_Consulta
             {
-                id_lembrete_consulta = 1,
+                Id_lembrete_consulta = 1,
                 Ds_titulo_lembrente_consulta = "Consulta teste",
                 Nm_consulta_medico = "Médico teste",
                 Dt_consulta = new DateTime(2026, 8, 9),
-                Hr_consulta = new DateTime(2026, 8, 9, 9, 0, 0),
+                Hr_consulta = new TimeOnly( 9, 0, 0),
                 Ds_consulta = "Descrição teste",
                 St_consulta = Status.Pendente,
                 Id_idoso = 1,
@@ -145,7 +145,7 @@ public class Lembrete_ConsultaControllerTests
 
         Assert.NotNull(returnedList);
         Assert.Single(returnedList);
-        Assert.Equal(1, returnedList[0].id_lembrete_consulta);
+        Assert.Equal(1, returnedList[0].Id_lembrete_consulta);
     }
 
     [Fact]
@@ -155,11 +155,11 @@ public class Lembrete_ConsultaControllerTests
         var id_lembrete_consulta = 1;
         var lembrete = new Lembrete_Consulta
         {
-            id_lembrete_consulta = id_lembrete_consulta,
+            Id_lembrete_consulta = id_lembrete_consulta,
             Ds_titulo_lembrente_consulta = "Consulta teste",
             Nm_consulta_medico = "Médico teste",
             Dt_consulta = new DateTime(2026, 8, 9),
-            Hr_consulta = new DateTime(2026, 8, 9, 9, 0, 0),
+            Hr_consulta = new TimeOnly( 9, 0, 0),
             Ds_consulta = "Descrição teste",
             St_consulta = Status.Pendente,
             Id_idoso = 1,
@@ -177,7 +177,7 @@ public class Lembrete_ConsultaControllerTests
         var returnedLembrete = Assert.IsType<Lembrete_Consulta>(okResult.Value);
 
         Assert.NotNull(returnedLembrete);
-        Assert.Equal(id_lembrete_consulta, returnedLembrete.id_lembrete_consulta);
+        Assert.Equal(id_lembrete_consulta, returnedLembrete.Id_lembrete_consulta);
     }
 
     [Fact]
@@ -187,11 +187,11 @@ public class Lembrete_ConsultaControllerTests
         var id_lembrete_consulta = 1;
         var lembrete = new Lembrete_Consulta
         {
-            id_lembrete_consulta = id_lembrete_consulta,
+            Id_lembrete_consulta = id_lembrete_consulta,
             Ds_titulo_lembrente_consulta = "Consulta teste",
             Nm_consulta_medico = "Médico teste",
             Dt_consulta = new DateTime(2026, 8, 9),
-            Hr_consulta = new DateTime(2026, 8, 9, 9, 0, 0),
+            Hr_consulta = new TimeOnly( 9, 0, 0),
             Ds_consulta = "Descrição teste",
             St_consulta = Status.Pendente,
             Id_idoso = 1,

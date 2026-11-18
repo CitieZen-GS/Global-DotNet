@@ -52,7 +52,7 @@ public class DoencasControllerTests
         var cuidador = new Cuidador
         {
             Id_cuidador = 1,
-            Nm_cuidador = "Cuidador teste",
+            Nm_cuidador = " teste",
             Cpf_cuidador = "12345678900",
             Ds_email = "teste@email.com",
             Ds_senha = "senha",
@@ -61,20 +61,20 @@ public class DoencasControllerTests
         var idoso = new Idoso
         {
             ID_idoso = 1,
-            Nm_idoso = "Idoso teste",
+            Nm_idoso = " teste",
             cpf_idoso = "12345678900",
             vlr_altura = 1.7m,
             vlr_peso = 70m,
             dt_nascimento = new DateOnly(1950, 1, 1),
-            ds_comportamento = "Descrição teste",
+            ds_comportamento = " teste",
             id_cuidador = 1,
             cuidador = cuidador
         };
         var doencas = new Doencas
         {
             id_doenca = 1,
-            Nm_doenca = "Doença teste",
-            Ds_doenca = "Descrição teste",
+            Nm_doenca = " teste",
+            Ds_doenca = " teste",
             Id_idoso = 1,
             Idoso = idoso
         };
@@ -100,7 +100,7 @@ public class DoencasControllerTests
         var cuidador = new Cuidador
         {
             Id_cuidador = 1,
-            Nm_cuidador = "Cuidador teste",
+            Nm_cuidador = " teste",
             Cpf_cuidador = "12345678900",
             Ds_email = "teste@email.com",
             Ds_senha = "senha",
@@ -109,7 +109,7 @@ public class DoencasControllerTests
         var idoso = new Idoso
         {
             ID_idoso = 1,
-            Nm_idoso = "Idoso teste",
+            Nm_idoso = " teste",
             cpf_idoso = "12345678900",
             vlr_altura = 1.7m,
             vlr_peso = 70m,
@@ -121,7 +121,7 @@ public class DoencasControllerTests
         var doencas = new Doencas
         {
             id_doenca = id_doenca,
-            Nm_doenca = "Doença atualizada",
+            Nm_doenca = " atualizada",
             Ds_doenca = "Descrição atualizada",
             Id_idoso = 1,
             Idoso = idoso
@@ -149,7 +149,7 @@ public class DoencasControllerTests
         var cuidador = new Cuidador
         {
             Id_cuidador = 1,
-            Nm_cuidador = "Cuidador teste",
+            Nm_cuidador = " teste",
             Cpf_cuidador = "12345678900",
             Ds_email = "teste@email.com",
             Ds_senha = "senha",
@@ -158,7 +158,7 @@ public class DoencasControllerTests
         var idoso = new Idoso
         {
             ID_idoso = 1,
-            Nm_idoso = "Idoso teste",
+            Nm_idoso = " teste",
             cpf_idoso = "12345678900",
             vlr_altura = 1.7m,
             vlr_peso = 70m,
@@ -172,7 +172,7 @@ public class DoencasControllerTests
             new Doencas
             {
                 id_doenca = 1,
-                Nm_doenca = "Doença teste",
+                Nm_doenca = " teste",
                 Ds_doenca = "Descrição teste",
                 Id_idoso = 1,
                 Idoso = idoso
@@ -201,7 +201,7 @@ public class DoencasControllerTests
         var cuidador = new Cuidador
         {
             Id_cuidador = 1,
-            Nm_cuidador = "Cuidador teste",
+            Nm_cuidador = " teste",
             Cpf_cuidador = "12345678900",
             Ds_email = "teste@email.com",
             Ds_senha = "senha",
@@ -210,20 +210,20 @@ public class DoencasControllerTests
         var idoso = new Idoso
         {
             ID_idoso = 1,
-            Nm_idoso = "Idoso teste",
+            Nm_idoso = " teste",
             cpf_idoso = "12345678900",
             vlr_altura = 1.7m,
             vlr_peso = 70m,
             dt_nascimento = new DateOnly(1950, 1, 1),
-            ds_comportamento = "Descrição teste",
+            ds_comportamento = " teste",
             id_cuidador = 1,
             cuidador = cuidador
         };
         var doencas = new Doencas
         {
             id_doenca = id_doenca,
-            Nm_doenca = "Doença teste",
-            Ds_doenca = "Descrição teste",
+            Nm_doenca = " teste",
+            Ds_doenca = " teste",
             Id_idoso = 1,
             Idoso = idoso
         };
@@ -249,7 +249,7 @@ public class DoencasControllerTests
         var cuidador = new Cuidador
         {
             Id_cuidador = 1,
-            Nm_cuidador = "Cuidador teste",
+            Nm_cuidador = " teste",
             Cpf_cuidador = "12345678900",
             Ds_email = "teste@email.com",
             Ds_senha = "senha",
@@ -258,7 +258,7 @@ public class DoencasControllerTests
         var idoso = new Idoso
         {
             ID_idoso = 1,
-            Nm_idoso = "Idoso teste",
+            Nm_idoso = " teste",
             cpf_idoso = "12345678900",
             vlr_altura = 1.7m,
             vlr_peso = 70m,
@@ -270,8 +270,8 @@ public class DoencasControllerTests
         var doencas = new Doencas
         {
             id_doenca = id_doenca,
-            Nm_doenca = "Doença teste",
-            Ds_doenca = "Descrição teste",
+            Nm_doenca = " teste",
+            Ds_doenca = " teste",
             Id_idoso = 1,
             Idoso = idoso
         };

@@ -53,7 +53,7 @@ public class CargoControllerTests
         var cargo = new Cargo
         {
             Id_cargo = 1,
-            Nm_cargo = "Cargo teste",
+            Nm_cargo = " teste",
             Fg_permissao = Permissao.N
         };
 
@@ -78,7 +78,7 @@ public class CargoControllerTests
         var cargo = new Cargo
         {
             Id_cargo = id_cargo,
-            Nm_cargo = "Cargo atualizado",
+            Nm_cargo = " atualizado",
             Fg_permissao = Permissao.S
         };
 
@@ -105,7 +105,7 @@ public class CargoControllerTests
             new Cargo
             {
                 Id_cargo = 1,
-                Nm_cargo = "Cargo teste",
+                Nm_cargo = " teste",
                 Fg_permissao = Permissao.N
             }
         };
@@ -132,7 +132,7 @@ public class CargoControllerTests
         var cargo = new Cargo
         {
             Id_cargo = id_cargo,
-            Nm_cargo = "Cargo teste",
+            Nm_cargo = " teste",
             Fg_permissao = Permissao.N
         };
 
@@ -157,7 +157,7 @@ public class CargoControllerTests
         var cargo = new Cargo
         {
             Id_cargo = id_cargo,
-            Nm_cargo = "Cargo teste",
+            Nm_cargo = " teste",
             Fg_permissao = Permissao.N
         };
 

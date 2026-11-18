@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
+using System.Text.Json.Serialization;
+
+namespace Ajudante_Familiar_Global.Domain.Entities
+{
+    [Table("T_Ajudante_familiar_Medicamentos")]
+    public class Medicamentos
+    {
+        
+
+        [Key]
+        [Column("id_medicamentos")]
+        public int id_medicamentos { get; set; }
+        [Column("nm_medicamentos")]
+        public string Nm_medicamentos { get; set; }
+        [Column("via_administracao")]
+        public string Via_administracao { get; set; }
+        [Column("vl_frquencia")]
+        public string Vl_frquencia { get; set; }
+        [Column("ds_instrucao_uso")]
+        public string Ds_instrucao_uso { get; set; }
+        [Column("dt_medicamento")]
+        public DateTime Dt_medicamento { get; set; }
+        [Required]
+        [Column("hr_medicamento")]
+        public DateTime Hr_medicamento { get; set; }
+        [Required]
+        [Column("id_idoso")]
+        public int Id_idoso { get; set; }
+        [JsonIgnore]
+        [ForeignKey("Id_idoso")]
+        public Idoso Idoso { get; set; }
+
+        public Medicamentos() { }
+
+        public Medicamentos(int id_medicamentos, string nm_medicamentos, string via_administracao, string vl_frquencia, string ds_instrucao_uso, DateTime dt_medicamento, DateTime hr_medicamento, int id_idoso, Idoso idoso)
+        {
+            this.id_medicamentos = id_medicamentos;
+            Nm_medicamentos = nm_medicamentos;
+            Via_administracao = via_administracao;
+            Vl_frquencia = vl_frquencia;
+            Ds_instrucao_uso = ds_instrucao_uso;
+            Dt_medicamento = dt_medicamento;
+            Hr_medicamento = hr_medicamento;
+            Id_idoso = id_idoso;
+            Idoso = idoso;
+        }
+    }
+}

@@ -1,0 +1,277 @@
+﻿using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Enums;
+using System;
+using System.Net;
+using System.Net.Http.Json;
+using Xunit;
+
+namespace Ajudante_Familiar_Global.integrationTests.Integration
+{
+
+    [Collection("ApiCollection")]
+    public class AlimentacaoControllerIntegrationTests
+    {
+        private readonly HttpClient _client;
+
+        public AlimentacaoControllerIntegrationTests(ApiFactoryFixture factory)
+        {
+            _client = factory.CreateClient();
+        }
+
+        // Métodos auxiliares de criação (helpers):
+        // em vez de repetir o POST com dados diferentes em cada teste, ou depender de
+        // registros que já existem no banco, cada helper cria o dado que o teste precisa,
+        // com valores únicos (GUID), e devolve o objeto criado.
+        // Eles também resolvem as dependências em cascata (FK):
+        // CriarIdosoAsync -> CriarCuidadorAsync -> CriarPerfilAsync -> CriarCargoAsync.
+        // Assim cada teste é independente e pode rodar sozinho, em qualquer ordem.
+        private async Task<Cargo> CriarCargoAsync()
+        {
+            // Arrange
+            var novoCargo = new
+            {
+                Nm_cargo = $"{Guid.NewGuid():N}"[..20],
+                Fg_permissao = Permissao.S
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Cargo/cargo/criar", novoCargo);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var cargo = await response.Content.ReadFromJsonAsync<Cargo>();
+            Assert.NotNull(cargo);
+            return cargo!;
+        }
+
+        private async Task<Perfil> CriarPerfilAsync()
+        {
+            // Arrange
+            var cargo = await CriarCargoAsync();
+            var novoPerfil = new
+            {
+                nm_perfil = $"{Guid.NewGuid():N}"[..20],
+                id_cargo = cargo.Id_cargo
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Perfil/perfil/criar", novoPerfil);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var perfil = await response.Content.ReadFromJsonAsync<Perfil>();
+            Assert.NotNull(perfil);
+            return perfil!;
+        }
+
+        private async Task<Cuidador> CriarCuidadorAsync()
+        {
+            // Arrange
+            var perfil = await CriarPerfilAsync();
+            var identificador = Guid.NewGuid().ToString("N");
+            var novoCuidador = new
+            {
+                Nm_cuidador = $"{identificador}"[..20],
+                Cpf_cuidador = identificador[..11],
+                Ds_email = $"{identificador[..8]}",
+                Ds_senha = "senha123",
+                Id_perfil = perfil.id_perfil
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Cuidador/cuidador/criar", novoCuidador);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var cuidador = await response.Content.ReadFromJsonAsync<Cuidador>();
+            Assert.NotNull(cuidador);
+            return cuidador!;
+        }
+
+        private async Task<Idoso> CriarIdosoAsync()
+        {
+            // Arrange
+            var cuidador = await CriarCuidadorAsync();
+            var identificador = Guid.NewGuid().ToString("N");
+            var novoIdoso = new
+            {
+                Nm_idoso = $"{identificador}"[..20],
+                cpf_idoso = identificador[..11],
+                vlr_altura = 1.70m,
+                vlr_peso = 70m,
+                dt_nascimento = new DateOnly(1950, 1, 1),
+                ds_comportamento = "Teste de integração",
+                id_cuidador = cuidador.Id_cuidador
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Idoso/idoso/criar", novoIdoso);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var idoso = await response.Content.ReadFromJsonAsync<Idoso>();
+            Assert.NotNull(idoso);
+            return idoso!;
+        }
+
+
+        ///Parte de api
+        private async Task<Alimentacao> CriarAlimentacaoAsync()
+        {
+            // Arrange
+            var idoso = await CriarIdosoAsync();
+            var novaAlimentacao = new
+            {
+                Nm_alimentacao = "Refeição de teste",
+                Tp_alimentacao = TipoAlimentacao.almoco,
+                Dt_consumo = new DateOnly(2026, 8, 9),
+                Hr_consumo = new TimeOnly(12, 0),
+                Vlr_caloria = 450m,
+                Ds_preparacao = "Preparação de teste",
+                Id_idoso = idoso.ID_idoso
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Alimentacao/alimentacao/criar", novaAlimentacao);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criada a alimentação: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var alimentacao = await response.Content.ReadFromJsonAsync<Alimentacao>();
+            Assert.NotNull(alimentacao);
+            return alimentacao!;
+        }
+
+        [Fact]
+        public async Task CriarAlimentacao_DadosValidos_RetornaOk()
+        {
+            // Act
+            var alimentacaoCriada = await CriarAlimentacaoAsync();
+
+            // Assert
+            Assert.True(alimentacaoCriada.Id_alimentacao > 0);
+            Assert.Equal("Refeição de teste", alimentacaoCriada.Nm_alimentacao);
+            Assert.Equal(TipoAlimentacao.almoco, alimentacaoCriada.Tp_alimentacao);
+        }
+
+        [Fact]
+        public async Task AtualizarAlimentacao_DadosValidos_RetornaSucesso()
+        {
+            // Arrange
+            var alimentacaoExistente = await CriarAlimentacaoAsync();
+            var alimentacaoAtualizada = new
+            {
+                Nm_alimentacao = "Refeição atualizada",
+                Tp_alimentacao = TipoAlimentacao.jantar,
+                Dt_consumo = new DateOnly(2026, 10, 12),
+                Hr_consumo = new TimeOnly(19, 0),
+                Vlr_caloria = 500m,
+                Ds_preparacao = "Preparação atualizada",
+                Id_idoso = alimentacaoExistente.Id_idoso
+            };
+
+            // Act
+            var response = await _client.PutAsJsonAsync(
+                $"api/Alimentacao/alimentacao/atualiza/{alimentacaoExistente.Id_alimentacao}", alimentacaoAtualizada);
+
+            // Assert
+            var responseBody = await response.Content.ReadAsStringAsync();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var alimentacao = await response.Content.ReadFromJsonAsync<Alimentacao>();
+            Assert.True(alimentacao is not null, $"Resposta sem alimentação: {responseBody}");
+            Assert.Equal("Refeição atualizada", alimentacao!.Nm_alimentacao);
+            Assert.Equal(TipoAlimentacao.jantar, alimentacao.Tp_alimentacao);
+        }
+
+        [Fact]
+        public async Task GetAlimentacao_dados_RetornaOk()
+        {
+            // Arrange
+            var alimentacaoCriada = await CriarAlimentacaoAsync();
+
+            // Act
+            var response = await _client.GetAsync($"api/Alimentacao/alimentacao/{alimentacaoCriada.Id_alimentacao}");
+
+            // Assert
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                Assert.Fail("Alimentação não encontrada");
+            }
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var alimentacao = await response.Content.ReadFromJsonAsync<Alimentacao>();
+            Assert.NotNull(alimentacao);
+            Assert.Equal(alimentacaoCriada.Id_alimentacao, alimentacao.Id_alimentacao);
+        }
+
+        [Fact]
+        public async Task GetAllAlimentacao_dados_RetornarOk()
+        {
+            // Arrange
+            var alimentacaoCriada = await CriarAlimentacaoAsync();
+
+            // Act
+            var response = await _client.GetAsync("api/Alimentacao/alimentacao");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var alimentacoes = await response.Content.ReadFromJsonAsync<List<Alimentacao>>();
+            Assert.NotNull(alimentacoes);
+            Assert.Contains(alimentacoes, alimentacao => alimentacao.Id_alimentacao == alimentacaoCriada.Id_alimentacao);
+        }
+
+        [Fact]
+        public async Task DeleteAlimentacao_dados_RetornaOk()
+        {
+            // Arrange
+            var alimentacaoCriada = await CriarAlimentacaoAsync();
+
+            // Act
+            var response = await _client.DeleteAsync(
+                $"api/Alimentacao/alimentacao/deleta/{alimentacaoCriada.Id_alimentacao}");
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi deletada a alimentação: {erro}");
+            }
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+
+            var consultaResponse = await _client.GetAsync(
+                $"api/Alimentacao/alimentacao/{alimentacaoCriada.Id_alimentacao}");
+            Assert.Equal(HttpStatusCode.NotFound, consultaResponse.StatusCode);
+        }
+    }
+}

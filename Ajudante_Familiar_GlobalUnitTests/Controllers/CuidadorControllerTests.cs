@@ -52,9 +52,9 @@ public class CuidadorControllerTests
         var cuidador = new Cuidador
         {
             Id_cuidador = 1,
-            Nm_cuidador = "Cuidador teste",
+            Nm_cuidador = " teste",
             Cpf_cuidador = "12345678900",
-            Ds_email = "teste@email.com",
+            Ds_email = "TesteGlobal@email.com",
             Ds_senha = "senha",
             Id_perfil = 1
         };
@@ -80,10 +80,10 @@ public class CuidadorControllerTests
         var cuidador = new Cuidador
         {
             Id_cuidador = id_cuidador,
-            Nm_cuidador = "Cuidador atualizado",
+            Nm_cuidador = " atualizado",
             Cpf_cuidador = "12345678900",
-            Ds_email = "atualizado@email.com",
-            Ds_senha = "senha2",
+            Ds_email = "atualizadoGlobal@email.com",
+            Ds_senha = "12121",
             Id_perfil = 1
         };
 
@@ -113,10 +113,10 @@ public class CuidadorControllerTests
             new Cuidador
             {
                 Id_cuidador = 1,
-                Nm_cuidador = "Cuidador teste",
+                Nm_cuidador = " teste",
                 Cpf_cuidador = "12345678900",
-                Ds_email = "teste@email.com",
-                Ds_senha = "senha",
+                Ds_email = "21211e@email.com",
+                Ds_senha = "12121212",
                 Id_perfil = 1
             }
         };
@@ -143,10 +143,10 @@ public class CuidadorControllerTests
         var cuidador = new Cuidador
         {
             Id_cuidador = id_cuidador,
-            Nm_cuidador = "Cuidador teste",
+            Nm_cuidador = " teste",
             Cpf_cuidador = "12345678900",
             Ds_email = "teste@email.com",
-            Ds_senha = "senha",
+            Ds_senha = "213123131",
             Id_perfil = 1
         };
 
@@ -171,10 +171,10 @@ public class CuidadorControllerTests
         var cuidador = new Cuidador
         {
             Id_cuidador = id_cuidador,
-            Nm_cuidador = "Cuidador teste",
+            Nm_cuidador = " teste",
             Cpf_cuidador = "12345678900",
             Ds_email = "teste@email.com",
-            Ds_senha = "senha",
+            Ds_senha = "1212121",
             Id_perfil = 1
         };
 

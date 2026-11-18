@@ -201,7 +201,6 @@ D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\staticweb
 D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\staticwebassets.development.json
 D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\swae.build.ex.cache
-D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\Ajudante.5EA7CE23.Up2Date
 D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\Ajudante_Familiar_Global.dll
 D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\refint\Ajudante_Familiar_Global.dll

@@ -1,5 +1,6 @@
 using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
 using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Enums;
 using System;
 using System.Net;
 using System.Net.Http.Json;
@@ -7,144 +8,208 @@ using Xunit;
 
 namespace Ajudante_Familiar_Global.integrationTests.Integration
 {
-    //Atenção!!! Tanto o create quanto o update precisam ter cuidado com os dados que serão adicionados, porque, se não, pode dar erro.
-    //Recomendação faz um a cada vez, não faz eles tudo junto
+
     [Collection("ApiCollection")]
-    public class CuidadorControllerIntegrationTests
+    public class CuidadorControllerIntegrationTests : IAsyncLifetime
     {
-        private readonly HttpClient _client;
+        private readonly ApiFactoryFixture _factory;
+        private HttpClient _client = null!;
 
         public CuidadorControllerIntegrationTests(ApiFactoryFixture factory)
         {
-            _client = factory.CreateClient();
+            _factory = factory;
         }
 
-        [Fact]
-        public async Task CriarCuidador_DadosValidos_RetornaOk()
+        public async Task InitializeAsync()
+        {
+            _client = await _factory.CreateAuthenticatedClientAsync();
+        }
+
+        public Task DisposeAsync()
+        {
+            _client.Dispose();
+            return Task.CompletedTask;
+        }
+
+        private async Task<Cargo> CriarCargoAsync()
         {
             // Arrange
-            var id_cuidador = Random.Shared.Next(1, 100);
+            var novoCargo = new
+            {
+                Nm_cargo = $"{Guid.NewGuid():N}"[..20],
+                Fg_permissao = Permissao.S
+            };
 
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Cargo/cargo/criar", novoCargo);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var cargo = await response.Content.ReadFromJsonAsync<Cargo>();
+            Assert.NotNull(cargo);
+            return cargo!;
+        }
+
+        private async Task<Perfil> CriarPerfilAsync()
+        {
+            // Arrange
+            var cargo = await CriarCargoAsync();
+            var novoPerfil = new
+            {
+                nm_perfil = $"{Guid.NewGuid():N}"[..20],
+                id_cargo = cargo.Id_cargo
+            };
+
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Perfil/perfil/criar", novoPerfil);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var perfil = await response.Content.ReadFromJsonAsync<Perfil>();
+            Assert.NotNull(perfil);
+            return perfil!;
+        }
+
+        private async Task<Cuidador> CriarCuidadorAsync()
+        {
+            // Arrange
+            var perfil = await CriarPerfilAsync();
+            var identificador = Guid.NewGuid().ToString("N");
             var novoCuidador = new
             {
-                Id_cuidador = id_cuidador,
-                Nm_cuidador = "Cuidador teste",
-                Cpf_cuidador = "12345678901",
-                Ds_email = "cuidador.teste@email.com",
-                Ds_senha = "senha123",
-                Id_perfil = 1
+                Nm_cuidador = $"{identificador}"[..20],
+                Cpf_cuidador = identificador[..11],
+                Ds_email = $"{identificador[..8]}",
+                Ds_senha = "123456",
+                Id_perfil = perfil.id_perfil
             };
 
             // Act
             var response = await _client.PostAsJsonAsync("api/Cuidador/cuidador/criar", novoCuidador);
 
             // Assert
-            var erro = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)
             {
+                var erro = await response.Content.ReadAsStringAsync();
                 Assert.Fail($"Não foi criado por: {erro}");
             }
 
-            response.EnsureSuccessStatusCode();
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var cuidador = await response.Content.ReadFromJsonAsync<Cuidador>();
+            Assert.NotNull(cuidador);
+            return cuidador!;
+        }
 
-            var cuidadorCriado = await response.Content.ReadFromJsonAsync<Cuidador>();
+        [Fact]
+        public async Task CriarCuidador_DadosValidos_RetornaOk()
+        {
+            // Act
+            var cuidadorCriado = await CriarCuidadorAsync();
 
-            Assert.NotNull(cuidadorCriado);
-            Assert.Equal(id_cuidador, cuidadorCriado.Id_cuidador);
+            // Assert
+            Assert.True(cuidadorCriado.Id_cuidador > 0);
+            Assert.True(cuidadorCriado.Id_perfil > 0);
         }
 
         [Fact]
         public async Task AtualizarCuidador_DadosValidos_RetornaSucesso()
         {
             // Arrange
-            var id_cuidador = 6;
-
+            var cuidadorExistente = await CriarCuidadorAsync();
+            var identificador = Guid.NewGuid().ToString("N");
             var cuidadorAtualizado = new
             {
-                Id_cuidador = id_cuidador,
-                Nm_cuidador = "Cuidador atualizado",
-                Cpf_cuidador = "10987654321",
-                Ds_email = "cuidador.atualizado@email.com",
-                Ds_senha = "senha456",
-                Id_perfil = 1
+                Nm_cuidador = "Cuidador",
+                Cpf_cuidador = identificador[..11],
+                Ds_email = $"{identificador[..8]}",
+                Ds_senha = "121123",
+                Id_perfil = cuidadorExistente.Id_perfil
             };
 
             // Act
             var response = await _client.PutAsJsonAsync(
-                $"api/Cuidador/cuidador/atualiza/{id_cuidador}", cuidadorAtualizado);
+                $"api/Cuidador/cuidador/atualiza/{cuidadorExistente.Id_cuidador}", cuidadorAtualizado);
 
             // Assert
-            var erro = await response.Content.ReadAsStringAsync();
-            if (!response.IsSuccessStatusCode)
-            {
-                Assert.Fail($"Não foi atualizado por: {erro}");
-            }
-
-            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var cuidador = await response.Content.ReadFromJsonAsync<Cuidador>();
+            Assert.True(cuidador is not null, $"Resposta sem cuidador: {responseBody}");
+
+            Assert.Equal(cuidadorAtualizado.Ds_email, cuidador.Ds_email);
         }
 
         [Fact]
         public async Task GetCuidador_dados_RetornaOk()
         {
             // Arrange
-            var id_cuidador = 6;
+            var cuidadorCriado = await CriarCuidadorAsync();
 
             // Act
-            var response = await _client.GetAsync($"api/Cuidador/cuidador/{id_cuidador}");
+            var response = await _client.GetAsync($"api/Cuidador/cuidador/{cuidadorCriado.Id_cuidador}");
 
             // Assert
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
                 Assert.Fail("Cuidador não encontrado");
             }
-
             response.EnsureSuccessStatusCode();
-
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var cuidador = await response.Content.ReadFromJsonAsync<Cuidador>();
-
             Assert.NotNull(cuidador);
-            Assert.Equal(id_cuidador, cuidador.Id_cuidador);
+            Assert.Equal(cuidadorCriado.Id_cuidador, cuidador.Id_cuidador);
         }
 
         [Fact]
         public async Task GetAllCuidador_dados_RetornarOk()
         {
-            //Act
+            // Arrange
+            var cuidadorCriado = await CriarCuidadorAsync();
+
+            // Act
             var response = await _client.GetAsync("api/Cuidador/cuidador");
 
-            //Assert
-            response.EnsureSuccessStatusCode();
-
+            // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-
             var cuidadores = await response.Content.ReadFromJsonAsync<List<Cuidador>>();
-
             Assert.NotNull(cuidadores);
+            Assert.Contains(cuidadores, cuidador => cuidador.Id_cuidador == cuidadorCriado.Id_cuidador);
         }
 
         [Fact]
         public async Task DeleteCuidador_dados_RetornaOk()
         {
             // Arrange
-            var id_cuidador = 55;
+            var cuidadorCriado = await CriarCuidadorAsync();
 
             // Act
             var response = await _client.DeleteAsync(
-                $"api/Cuidador/cuidador/deleta/{id_cuidador}");
+                $"api/Cuidador/cuidador/deleta/{cuidadorCriado.Id_cuidador}");
 
             // Assert
             if (!response.IsSuccessStatusCode)
             {
-                var erroAchado = await response.Content.ReadAsStringAsync();
-
-                Assert.Fail($"Não foi deletado pelo motivo: {erroAchado}");
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi deletado o cuidador: {erro}");
             }
-
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+
+            var consultaResponse = await _client.GetAsync(
+                $"api/Cuidador/cuidador/{cuidadorCriado.Id_cuidador}");
+            Assert.Equal(HttpStatusCode.NotFound, consultaResponse.StatusCode);
         }
     }
 }

@@ -53,12 +53,12 @@ public class AlimentacaoControllerTests
         var alimentacao = new Alimentacao
         {
             Id_alimentacao = 1,
-            Nm_alimentacao = "Refeição teste",
+            Nm_alimentacao = "teste",
             Tp_alimentacao = TipoAlimentacao.almoco,
             Dt_consumo = new DateOnly(2026, 8, 9),
             Hr_consumo = new TimeOnly(12, 0),
             Vlr_caloria = 450m,
-            Ds_preparacao = "Preparação teste",
+            Ds_preparacao = "teste",
             Id_idoso = 1
         };
 
@@ -84,12 +84,12 @@ public class AlimentacaoControllerTests
         var alimentacao = new Alimentacao
         {
             Id_alimentacao = id_alimentacao,
-            Nm_alimentacao = "Refeição atualizada",
+            Nm_alimentacao = " atualizada",
             Tp_alimentacao = TipoAlimentacao.jantar,
             Dt_consumo = new DateOnly(2026, 8, 10),
             Hr_consumo = new TimeOnly(19, 0),
             Vlr_caloria = 500m,
-            Ds_preparacao = "Preparação atualizada",
+            Ds_preparacao = " atualizada",
             Id_idoso = 1
         };
 
@@ -122,12 +122,12 @@ public class AlimentacaoControllerTests
             new Alimentacao
             {
                 Id_alimentacao = 1,
-                Nm_alimentacao = "Refeição teste",
+                Nm_alimentacao = " teste",
                 Tp_alimentacao = TipoAlimentacao.almoco,
                 Dt_consumo = new DateOnly(2026, 8, 9),
                 Hr_consumo = new TimeOnly(12, 0),
                 Vlr_caloria = 450m,
-                Ds_preparacao = "Preparação teste",
+                Ds_preparacao = " teste",
                 Id_idoso = 1
             }
         };
@@ -155,12 +155,12 @@ public class AlimentacaoControllerTests
         var alimentacao = new Alimentacao
         {
             Id_alimentacao = id_alimentacao,
-            Nm_alimentacao = "Refeição teste",
+            Nm_alimentacao = "teste",
             Tp_alimentacao = TipoAlimentacao.almoco,
             Dt_consumo = new DateOnly(2026, 8, 9),
             Hr_consumo = new TimeOnly(12, 0),
             Vlr_caloria = 450m,
-            Ds_preparacao = "Preparação teste",
+            Ds_preparacao = "teste",
             Id_idoso = 1
         };
 
@@ -186,12 +186,12 @@ public class AlimentacaoControllerTests
         var alimentacao = new Alimentacao
         {
             Id_alimentacao = id_alimentacao,
-            Nm_alimentacao = "Refeição teste",
+            Nm_alimentacao = "teste",
             Tp_alimentacao = TipoAlimentacao.almoco,
             Dt_consumo = new DateOnly(2026, 8, 9),
             Hr_consumo = new TimeOnly(12, 0),
             Vlr_caloria = 450m,
-            Ds_preparacao = "Preparação teste",
+            Ds_preparacao = "teste",
             Id_idoso = 1
         };
 

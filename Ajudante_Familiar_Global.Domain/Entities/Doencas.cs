@@ -23,7 +23,7 @@ namespace Ajudante_Familiar_Global.Domain.Entities
         public int Id_idoso { get; set; }
         [JsonIgnore]
         [ForeignKey("Id_idoso")]
-        public Idoso Idoso { get; set; }
+        public Idoso? Idoso { get; set; }
 
         public Doencas() { }
 

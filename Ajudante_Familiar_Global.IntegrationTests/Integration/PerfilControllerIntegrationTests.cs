@@ -1,5 +1,6 @@
 using Ajudante_Familiar_Global.integrationTests.FactoryFixture;
 using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Enums;
 using System;
 using System.Net;
 using System.Net.Http.Json;
@@ -7,138 +8,173 @@ using Xunit;
 
 namespace Ajudante_Familiar_Global.integrationTests.Integration
 {
-    //Atenção!!! Tanto o create quanto o update precisam ter cuidado com os dados que serão adicionados, porque, se não, pode dar erro.
-    //Recomendação faz um a cada vez, não faz eles tudo junto
     [Collection("ApiCollection")]
-    public class PerfilControllerIntegrationTests
+    public class PerfilControllerIntegrationTests : IAsyncLifetime
     {
-        private readonly HttpClient _client;
+        private readonly ApiFactoryFixture _factory;
+        private HttpClient _client = null!;
 
         public PerfilControllerIntegrationTests(ApiFactoryFixture factory)
         {
-            _client = factory.CreateClient();
+            _factory = factory;
         }
 
-        [Fact]
-        public async Task CriarPerfil_DadosValidos_RetornaOk()
+        public async Task InitializeAsync()
+        {
+            _client = await _factory.CreateAuthenticatedClientAsync();
+        }
+
+        public Task DisposeAsync()
+        {
+            _client.Dispose();
+            return Task.CompletedTask;
+        }
+
+        private async Task<Cargo> CriarCargoAsync()
         {
             // Arrange
-            var id_perfil = Random.Shared.Next(1, 100);
+            var novoCargo = new
+            {
+                Nm_cargo = $"{Guid.NewGuid():N}"[..20],
+                Fg_permissao = Permissao.S
+            };
 
+            // Act
+            var response = await _client.PostAsJsonAsync("api/Cargo/cargo/criar", novoCargo);
+
+            // Assert
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi criado por: {erro}");
+            }
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var cargo = await response.Content.ReadFromJsonAsync<Cargo>();
+            Assert.NotNull(cargo);
+            return cargo!;
+        }
+
+        private async Task<Perfil> CriarPerfilAsync()
+        {
+            // Arrange
+            var cargo = await CriarCargoAsync();
             var novoPerfil = new
             {
-                id_perfil = id_perfil,
-                nm_perfil = "Perfil teste",
-                id_cargo = 1
+                nm_perfil = $"{Guid.NewGuid():N}"[..20],
+                id_cargo = cargo.Id_cargo
             };
 
             // Act
             var response = await _client.PostAsJsonAsync("api/Perfil/perfil/criar", novoPerfil);
 
             // Assert
-            var erro = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)
             {
+                var erro = await response.Content.ReadAsStringAsync();
                 Assert.Fail($"Não foi criado por: {erro}");
             }
 
-            response.EnsureSuccessStatusCode();
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            var perfil = await response.Content.ReadFromJsonAsync<Perfil>();
+            Assert.NotNull(perfil);
+            return perfil!;
+        }
 
-            var perfilCriado = await response.Content.ReadFromJsonAsync<Perfil>();
+        [Fact]
+        public async Task CriarPerfil_DadosValidos_RetornaOk()
+        {
+            // Act
+            var perfilCriado = await CriarPerfilAsync();
 
-            Assert.NotNull(perfilCriado);
-            Assert.Equal(id_perfil, perfilCriado.id_perfil);
+            // Assert
+            Assert.True(perfilCriado.id_perfil > 0);
+            Assert.False(string.IsNullOrWhiteSpace(perfilCriado.nm_perfil));
+            Assert.True(perfilCriado.id_cargo > 0);
         }
 
         [Fact]
         public async Task AtualizarPerfil_DadosValidos_RetornaSucesso()
         {
             // Arrange
-            var id_perfil = 6;
-
+            var perfilExistente = await CriarPerfilAsync();
             var perfilAtualizado = new
             {
-                id_perfil = id_perfil,
                 nm_perfil = "Perfil atualizado",
-                id_cargo = 1
+                id_cargo = perfilExistente.id_cargo
             };
 
             // Act
             var response = await _client.PutAsJsonAsync(
-                $"api/Perfil/perfil/atualiza/{id_perfil}", perfilAtualizado);
+                $"api/Perfil/perfil/atualiza/{perfilExistente.id_perfil}", perfilAtualizado);
 
             // Assert
-            var erro = await response.Content.ReadAsStringAsync();
-            if (!response.IsSuccessStatusCode)
-            {
-                Assert.Fail($"Não foi atualizado por: {erro}");
-            }
-
-            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var perfil = await response.Content.ReadFromJsonAsync<Perfil>();
+            Assert.True(perfil is not null, $"Resposta sem perfil: {responseBody}");
+            Assert.Equal("Perfil atualizado", perfil!.nm_perfil);
         }
 
         [Fact]
         public async Task GetPerfil_dados_RetornaOk()
         {
             // Arrange
-            var id_perfil = 6;
+            var perfilCriado = await CriarPerfilAsync();
 
             // Act
-            var response = await _client.GetAsync($"api/Perfil/perfil/{id_perfil}");
+            var response = await _client.GetAsync($"api/Perfil/perfil/{perfilCriado.id_perfil}");
 
             // Assert
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
                 Assert.Fail("Perfil não encontrado");
             }
-
             response.EnsureSuccessStatusCode();
-
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var perfil = await response.Content.ReadFromJsonAsync<Perfil>();
-
             Assert.NotNull(perfil);
-            Assert.Equal(id_perfil, perfil.id_perfil);
+            Assert.Equal(perfilCriado.id_perfil, perfil.id_perfil);
         }
 
         [Fact]
         public async Task GetAllPerfil_dados_RetornarOk()
         {
-            //Act
+            // Arrange
+            var perfilCriado = await CriarPerfilAsync();
+
+            // Act
             var response = await _client.GetAsync("api/Perfil/perfil");
 
-            //Assert
-            response.EnsureSuccessStatusCode();
-
+            // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-
             var perfis = await response.Content.ReadFromJsonAsync<List<Perfil>>();
-
             Assert.NotNull(perfis);
+            Assert.Contains(perfis, perfil => perfil.id_perfil == perfilCriado.id_perfil);
         }
 
         [Fact]
         public async Task DeletePerfil_dados_RetornaOk()
         {
             // Arrange
-            var id_perfil = 55;
+            var perfilCriado = await CriarPerfilAsync();
 
             // Act
             var response = await _client.DeleteAsync(
-                $"api/Perfil/perfil/deleta/{id_perfil}");
+                $"api/Perfil/perfil/deleta/{perfilCriado.id_perfil}");
 
             // Assert
             if (!response.IsSuccessStatusCode)
             {
-                var erroAchado = await response.Content.ReadAsStringAsync();
-
-                Assert.Fail($"Não foi deletado pelo motivo: {erroAchado}");
+                var erro = await response.Content.ReadAsStringAsync();
+                Assert.Fail($"Não foi deletado o perfil: {erro}");
             }
-
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+
+            var consultaResponse = await _client.GetAsync(
+                $"api/Perfil/perfil/{perfilCriado.id_perfil}");
+            Assert.Equal(HttpStatusCode.NotFound, consultaResponse.StatusCode);
         }
     }
 }

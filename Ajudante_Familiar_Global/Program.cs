@@ -17,6 +17,9 @@ using Serilog.Events;
 using System.Text;
 using System.Threading.RateLimiting;
 using Ajudante_Familiar_Global.Application.Services.Token;
+using OpenTelemetry.Trace;
+
+
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .Enrich.FromLogContext()
@@ -75,6 +78,31 @@ try
         options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
 
         // o nome "fixed" deve ser o mesmo usado nos [EnableRateLimiting("...")] dos controllers
+        options.OnRejected = async (context, token) =>
+        {
+            if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter))
+            {
+                context.HttpContext.Response.Headers.RetryAfter =
+                ((int)retryAfter.TotalSeconds).ToString();
+            }
+            context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+
+            await context.HttpContext.Response.WriteAsJsonAsync(new
+            {
+                erro = "Muitas requisições presente no sistema. Por favor tentar mais tarde"
+            }, token);
+        };
+
+        options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(ctx =>
+            RateLimitPartition.GetFixedWindowLimiter(
+                ctx.Connection.RemoteIpAddress?.ToString() ?? "anon",
+                _ => new FixedWindowRateLimiterOptions
+                {
+                    PermitLimit = 100,
+                    Window = TimeSpan.FromMinutes(1),
+                    QueueLimit = 0
+                })
+            );
         options.AddFixedWindowLimiter("fixed", opt =>
         {
             opt.PermitLimit = 10;
@@ -164,9 +192,12 @@ try
     // Request logging estruturado com Serilog
     app.UseSerilogRequestLogging();
 
-    app.UseRateLimiter();
     app.UseAuthentication();
     app.UseAuthorization();
+    if (!app.Environment.IsEnvironment("Testing"))
+    {
+        app.UseRateLimiter();
+    }
 
     app.MapHealthChecks("/health/live", new HealthCheckOptions
     {

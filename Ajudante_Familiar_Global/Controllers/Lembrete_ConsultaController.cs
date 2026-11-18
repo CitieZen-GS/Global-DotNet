@@ -1,12 +1,16 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Ajudante_Familiar_Global.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api")]
     [Produces("application/json")]
+    [EnableRateLimiting("fixed")]
     public class Lembrete_ConsultaController : ControllerBase
     {
         private readonly ILembrete_ConsultaService _Lembrete_ConsultaService;
@@ -85,7 +89,7 @@ namespace Ajudante_Familiar_Global.Controllers
             try
             {
                 var criado = await _Lembrete_ConsultaService.CreateLembrete_ConsultaAsync(lembrete_Consulta);
-                return CreatedAtAction(nameof(GetLembrete_Consulta), new { id_lembrete_consulta = criado.id_lembrete_consulta }, criado);
+                return CreatedAtAction(nameof(GetLembrete_Consulta), new { id_lembrete_consulta = criado.Id_lembrete_consulta }, criado);
             }
             catch (KeyNotFoundException ex)
             {
