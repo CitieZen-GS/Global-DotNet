@@ -1,5 +1,6 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using IdempotentAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.RateLimiting;
 namespace Ajudante_Familiar_Global.Controllers
 {
     [Authorize]
+    [Idempotent]
     [ApiController]
     [Route("api")]
     [Produces("application/json")]

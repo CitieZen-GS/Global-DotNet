@@ -1,6 +1,7 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
 using Ajudante_Familiar_Global.Infrastruture.Data;
+using IdempotentAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -87,6 +88,7 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="404">Idoso não encontrado</response>
         /// <returns>Alimentação criada</returns>
         [HttpPost]
+        [Idempotent]
         [Route("[controller]/alimentacao/criar")]
         [ProducesResponseType(typeof(Alimentacao), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

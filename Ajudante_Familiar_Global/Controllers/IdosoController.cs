@@ -1,5 +1,6 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using IdempotentAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -81,6 +82,7 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="404">Cuidador não encontrado</response>
         /// <returns>Idoso criado</returns>
         [HttpPost]
+        [Idempotent]
         [Route("[controller]/idoso/criar")]
         [ProducesResponseType(typeof(Idoso), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -1,5 +1,6 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using IdempotentAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -107,6 +108,7 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="404">Lembrete ou idoso não encontrado</response>
         /// <returns>Lembrete atualizado</returns>
         [HttpPut]
+        [Idempotent]
         [Route("[controller]/lembrete_consulta/atualiza/{id_lembrete_consulta:int}")]
         [ProducesResponseType(typeof(Lembrete_Consulta), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

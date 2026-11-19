@@ -1,5 +1,6 @@
 using Ajudante_Familiar_Global.Domain.Entities;
 using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using IdempotentAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -79,6 +80,7 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="400">Erro na validação</response>
         /// <returns>Cargo criado</returns>
         [HttpPost]
+        [Idempotent]
         [Route("[controller]/cargo/criar")]
         [ProducesResponseType(typeof(Cargo), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
