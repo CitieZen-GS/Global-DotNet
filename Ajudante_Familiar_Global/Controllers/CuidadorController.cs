@@ -81,7 +81,6 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="404">Perfil não encontrado</response>
         /// <returns>Cuidador criado</returns>
         [HttpPost]
-        [Idempotent]
         [Route("[controller]/cuidador/criar")]
         [ProducesResponseType(typeof(Cuidador), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

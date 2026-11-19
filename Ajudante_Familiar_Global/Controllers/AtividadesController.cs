@@ -81,7 +81,6 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="404">Idoso não encontrado</response>
         /// <returns>Atividade criada</returns>
         [HttpPost]
-        [Idempotent]
         [Route("[controller]/atividades/criar")]
         [ProducesResponseType(typeof(Atividades), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -88,7 +88,6 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="404">Idoso não encontrado</response>
         /// <returns>Alimentação criada</returns>
         [HttpPost]
-        [Idempotent]
         [Route("[controller]/alimentacao/criar")]
         [ProducesResponseType(typeof(Alimentacao), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

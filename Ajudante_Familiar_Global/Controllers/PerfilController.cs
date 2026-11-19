@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.RateLimiting;
 namespace Ajudante_Familiar_Global.Controllers
 {
     [Authorize]
-    [Idempotent]
     [ApiController]
     [Route("api")]
     [Produces("application/json")]

@@ -81,7 +81,6 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="404">Idoso não encontrado</response>
         /// <returns>Doença criada</returns>
         [HttpPost]
-        [Idempotent]
         [Route("[controller]/doencas/criar")]
         [ProducesResponseType(typeof(Doencas), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

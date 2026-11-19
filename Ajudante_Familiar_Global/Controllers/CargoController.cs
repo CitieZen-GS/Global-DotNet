@@ -80,7 +80,6 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="400">Erro na validação</response>
         /// <returns>Cargo criado</returns>
         [HttpPost]
-        [Idempotent]
         [Route("[controller]/cargo/criar")]
         [ProducesResponseType(typeof(Cargo), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

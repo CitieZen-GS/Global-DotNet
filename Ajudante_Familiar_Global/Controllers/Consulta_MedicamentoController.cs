@@ -81,7 +81,6 @@ namespace Ajudante_Familiar_Global.Controllers
         /// <response code="404">Consulta ou medicamento não encontrado</response>
         /// <returns>Relação criada</returns>
         [HttpPost]
-        [Idempotent]
         [Route("[controller]/consulta_medicamento/criar")]
         [ProducesResponseType(typeof(Consulta_Medicamento), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
