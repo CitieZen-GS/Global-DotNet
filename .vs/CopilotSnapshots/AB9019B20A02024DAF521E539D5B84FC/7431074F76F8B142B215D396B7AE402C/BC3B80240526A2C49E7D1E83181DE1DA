@@ -1,0 +1,187 @@
+﻿using System.ComponentModel.DataAnnotations;
+using Ajudante_Familiar_Global.Domain.Entities;
+using Ajudante_Familiar_Global.Domain.Interfaces.IService;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
+
+namespace Ajudante_Familiar_Global.Endpoints
+{
+    public static class AlimentacaoEndpoints
+    {
+        public static RouteGroupBuilder MapAlimentacaoEndpoints(this IEndpointRouteBuilder routes)
+        {
+            var group = routes.MapGroup("/api/alimentacoes")
+                .WithTags("Alimentações")
+                .RequireAuthorization()
+                .RequireRateLimiting("fixed");
+
+            group.MapGet("/", GetAllAsync)
+                .WithSummary("Lista todas as alimentações");
+            group.MapGet("/{id:int}", GetByIdAsync)
+                .WithName("GetAlimentacao")
+                .WithSummary("Busca uma alimentação pelo id");
+            group.MapPost("/", CreateAsync)
+                .WithSummary("Cadastra uma alimentação");
+            group.MapPut("/{id:int}", UpdateAsync)
+                .WithSummary("Atualiza uma alimentação");
+            group.MapDelete("/{id:int}", DeleteAsync)
+                .WithSummary("Remove uma alimentação");
+
+            return group;
+        }
+
+        private static async Task<IResult> GetAllAsync(IAlimentacaoService service)
+        {
+            var alimentacoes = await service.GetAllAlimentacaoAsync();
+            return Results.Ok(alimentacoes);
+        }
+
+        private static async Task<IResult> GetByIdAsync(int id, IAlimentacaoService service)
+        {
+            if (id <= 0)
+            {
+                return Results.BadRequest(new { mensagem = "O id deve ser maior que zero." });
+            }
+
+            try
+            {
+                var alimentacao = await service.GetAlimentacaoAsync(id);
+                return Results.Ok(alimentacao);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Results.NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        private static async Task<IResult> CreateAsync(
+            Alimentacao alimentacao,
+            IAlimentacaoService service,
+            ILogger<AlimentacaoEndpoints> logger)
+        {
+            var errors = Validate(alimentacao);
+            if (errors.Count > 0)
+            {
+                return Results.ValidationProblem(errors);
+            }
+
+            try
+            {
+                var criada = await service.CreateAlimentacaoAsync(alimentacao);
+                return Results.CreatedAtRoute(
+                    "GetAlimentacao",
+                    new { id = criada.Id_alimentacao },
+                    criada);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Results.NotFound(new { mensagem = ex.Message });
+            }
+            catch (DbUpdateException ex)
+            {
+                logger.LogError(ex, "Erro ao salvar alimentação");
+                return Results.Problem(
+                    title: "Não foi possível salvar a alimentação.",
+                    statusCode: StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        private static async Task<IResult> UpdateAsync(
+            int id,
+            Alimentacao alimentacao,
+            IAlimentacaoService service,
+            ILogger<AlimentacaoEndpoints> logger)
+        {
+            if (id <= 0)
+            {
+                return Results.BadRequest(new { mensagem = "O id deve ser maior que zero." });
+            }
+
+            if (alimentacao.Id_alimentacao != 0 && alimentacao.Id_alimentacao != id)
+            {
+                return Results.BadRequest(new { mensagem = "O id do corpo deve corresponder ao id da URL." });
+            }
+
+            alimentacao.Id_alimentacao = id;
+            var errors = Validate(alimentacao);
+            if (errors.Count > 0)
+            {
+                return Results.ValidationProblem(errors);
+            }
+
+            try
+            {
+                var atualizada = await service.UpdateAlimentacaoAsync(id, alimentacao);
+                return Results.Ok(atualizada);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Results.NotFound(new { mensagem = ex.Message });
+            }
+            catch (DbUpdateException ex)
+            {
+                logger.LogError(ex, "Erro ao atualizar alimentação {Id}", id);
+                return Results.Problem(
+                    title: "Não foi possível atualizar a alimentação.",
+                    statusCode: StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        private static async Task<IResult> DeleteAsync(int id, IAlimentacaoService service)
+        {
+            if (id <= 0)
+            {
+                return Results.BadRequest(new { mensagem = "O id deve ser maior que zero." });
+            }
+
+            try
+            {
+                await service.DeleteAlimentacaoAsync(id);
+                return Results.NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Results.NotFound(new { mensagem = ex.Message });
+            }
+        }
+
+        private static Dictionary<string, string[]> Validate(Alimentacao alimentacao)
+        {
+            var validationResults = new List<ValidationResult>();
+            Validator.TryValidateObject(
+                alimentacao,
+                new ValidationContext(alimentacao),
+                validationResults,
+                validateAllProperties: true);
+
+            if (!Enum.IsDefined(typeof(Domain.Enums.TipoAlimentacao), alimentacao.Tp_alimentacao))
+            {
+                validationResults.Add(new ValidationResult(
+                    "O tipo de alimentação informado é inválido.",
+                    [nameof(alimentacao.Tp_alimentacao)]));
+            }
+
+            if (alimentacao.Id_idoso <= 0)
+            {
+                validationResults.Add(new ValidationResult(
+                    "O id do idoso deve ser maior que zero.",
+                    [nameof(alimentacao.Id_idoso)]));
+            }
+
+            if (alimentacao.Vlr_caloria < 0)
+            {
+                validationResults.Add(new ValidationResult(
+                    "O valor de calorias não pode ser negativo.",
+                    [nameof(alimentacao.Vlr_caloria)]));
+            }
+
+            return validationResults
+                .SelectMany(result => result.MemberNames.DefaultIfEmpty(string.Empty)
+                    .Select(memberName => new { memberName, result.ErrorMessage }))
+                .GroupBy(error => error.memberName)
+                .ToDictionary(
+                    group => group.Key,
+                    group => group.Select(error => error.ErrorMessage ?? "Valor inválido.").ToArray());
+        }
+    }
+}

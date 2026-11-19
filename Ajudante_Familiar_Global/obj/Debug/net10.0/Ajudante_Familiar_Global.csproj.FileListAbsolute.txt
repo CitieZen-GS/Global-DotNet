@@ -208,3 +208,4 @@ D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\Ajudante_
 D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\Ajudante_Familiar_Global.pdb
 D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\Ajudante_Familiar_Global.genruntimeconfig.cache
 D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\ref\Ajudante_Familiar_Global.dll
+D:\Ajudante_Familiar_Global\Ajudante_Familiar_Global\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

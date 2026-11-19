@@ -48,7 +48,7 @@ namespace Ajudante_Familiar_Global.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Erro ao buscar todas as alimentações");
-                return StatusCode(500, new { mensagem = "Erro interno do servidor" });
+                return StatusCode(500, new { mensagem = ex.Message, detalhe = ex.InnerException?.Message });
             }
 
         }
