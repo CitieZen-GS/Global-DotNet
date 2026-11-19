@@ -172,6 +172,47 @@ Add-Migration {nome que deseja} -StartupProject Ajudante_Familiar_Global -Contex
 Update-Database -StartupProject Ajudante_Familiar_Global -Context AppDbContext
 ```
 
+<h2>🩺 Health Checks</h2>
+
+A API possui verificações de saúde para monitorar a disponibilidade da aplicação e a conexão com o banco de dados Oracle.
+
+Foram implementados dois endpoints:
+
+/health/live: verifica se a aplicação está em execução.
+
+/health/ready: verifica se a aplicação está pronta para receber requisições, incluindo a disponibilidade do banco de dados Oracle.
+
+```
+/health/live
+```
+
+```
+/health/ready
+```
+
+<h2>🚦 Rate Limiting</h2>
+
+<p>Essa parte funcionar como um limitado de tentativas, ele funcionando quando tenta varias tentativas e recomendo voce fazer apos do jwt</p>
+
+
+<h2> idempotência </h2>
+
+<p>Essa parte funcionar como um limitado de nao acontecer duplicidades e pode ser vista tanto no controller por meio desses dois : </p>
+
+```
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddIdempotentAPI();
+builder.Services.AddIdempotentAPIUsingDistributedCache();
+```
+
+<h3>Mas tambem temos dentro do controllers</h3
+
+```
+[Produces("application/json")]
+
+[Idempotent]
+```                                            
+
 <h4>🛠️ Instalações necessarias: </h4>
 
 •	.NET: 10 (net10.0)
