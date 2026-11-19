@@ -4,13 +4,10 @@
 
 <h2 align="center" >  👥 Integrante </h2>
 
-
 - Letícia Santiago e Silva - RM565799 - 2TDSPW
 - Iago Dias ainette -  RM565708 - 2TDSPW
 - Gabriel Fachin de Oliveira- RM561551 - 2TDSPW
 - Fernando Charlles Faustino Fernandes -  RM566482 - 2TDSPW
-
-
 
 <h2> 📋 sobre Tema: </h2>
 
@@ -134,8 +131,58 @@
 •	PUT: api/Perfil/perfil/atualiza/{id_perfil:int}
 •	DELETE: api/Perfil/perfil/deleta/{id_perfil:int}
 
+<h2>🛠️ Tecnologias utilizadas</h2>
 
+### ⚙️ Backend
+- **C#** e **.NET 10**
+- **ASP.NET Core Web API** com Controllers
+- **Entity Framework Core 10**
+
+### 🗄️ Banco de dados
+- **Oracle Database**
+- Provedor `Oracle.EntityFrameworkCore`
+
+### 🔐 Segurança e confiabilidade
+- Autenticação e autorização com **JWT**
+- **Rate Limiting** para limitar requisições
+- **Idempotência** para evitar operações duplicadas
+- **Health Checks** para monitoramento
+
+### 📚 Documentação e testes
+- **Swagger/OpenAPI** e **Scalar** para documentar a API
+- **xUnit** para testes unitários e de integração
+- **Moq** para simular dependências nos testes
+
+### 📊 Logs e telemetria
+- **Serilog** para registro de logs
+- **OpenTelemetry** para telemetria
 <h2>🚀 Instruções de instalação e execução: </h2>
 
+<h3>Migration</h3>
+
+<p>Na parte de Infrastruture deve fazer isso para fazer o seu migration</p>
+
+```
+Add-Migration {nome que deseja} -StartupProject Ajudante_Familiar_Global -Context AppDbContext
+```
+
+<p>Apos disso precisa aplicar isso para aplicar no seu Oracle</p>
+
+```
+Update-Database -StartupProject Ajudante_Familiar_Global -Context AppDbContext
+```
 
 <h4>🛠️ Instalações necessarias: </h4>
+
+•	.NET: 10 (net10.0)
+•	Banco de dados: Oracle
+•	ORM: Entity Framework Core 10.0.0
+•	Oracle: Oracle.EntityFrameworkCore 10.23.26400
+•	JWT: Microsoft.AspNetCore.Authentication.JwtBearer 10.0.0
+•	Swagger/OpenAPI: Swashbuckle.AspNetCore 10.0.1 e Microsoft.AspNetCore.OpenApi 10.0.0
+•	Idempotência: IdempotentAPI 2.6.0 e IdempotentAPI.Cache.DistributedCache 2.2.0
+•	Health Checks: AspNetCore.HealthChecks.Oracle 9.0.0
+•	Testes: xUnit 2.9.3
+•	Testes de integração: Microsoft.AspNetCore.Mvc.Testing 10.0.0
+•	Mocks para testes: Moq 4.21.0
+•	Logs e telemetria: Serilog.AspNetCore 10.0.0 e OpenTelemetry 1.20.1
