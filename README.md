@@ -175,14 +175,25 @@ Update-Database -StartupProject Ajudante_Familiar_Global -Context AppDbContext
 <h4>🛠️ Instalações necessarias: </h4>
 
 •	.NET: 10 (net10.0)
+
 •	Banco de dados: Oracle
+
 •	ORM: Entity Framework Core 10.0.0
+
 •	Oracle: Oracle.EntityFrameworkCore 10.23.26400
+
 •	JWT: Microsoft.AspNetCore.Authentication.JwtBearer 10.0.0
+
 •	Swagger/OpenAPI: Swashbuckle.AspNetCore 10.0.1 e Microsoft.AspNetCore.OpenApi 10.0.0
+
 •	Idempotência: IdempotentAPI 2.6.0 e IdempotentAPI.Cache.DistributedCache 2.2.0
+
 •	Health Checks: AspNetCore.HealthChecks.Oracle 9.0.0
+
 •	Testes: xUnit 2.9.3
+
 •	Testes de integração: Microsoft.AspNetCore.Mvc.Testing 10.0.0
+
 •	Mocks para testes: Moq 4.21.0
+
 •	Logs e telemetria: Serilog.AspNetCore 10.0.0 e OpenTelemetry 1.20.1
