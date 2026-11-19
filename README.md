@@ -41,6 +41,11 @@
 
 <p>O objetivo do dotnet espeficicalmente é servir como api que conectar tanto no banco de dados da oracle com nosso sistema de front end para assim possar adicionar dados.</p>
 
+<h2>Tabela</h2>
+
+<img width="1839" height="890" alt="Logical" src="https://github.com/user-attachments/assets/92eabfe0-56ff-43a4-b6ff-d4369869a4f5" />
+
+
 <h2> 🛣️ Rotas da API: </h2>
 
 🍽️ Alimentação — tabela Oracle: T_Ajudante_familiar_Alimentacao
@@ -234,7 +239,6 @@ Testam se as partes do sistema funcionam juntas.
 
 No projeto, são feitas requisições HTTP para testar os endpoints da API, verificando operações como cadastro, atualização, consulta e exclusão de alimentação.
 
-"C:\Users\Pichau\OneDrive\Imagens\Screenshots\Captura de tela 2026-11-19 191521.png"
 
 <h2>🛠️ Instalações necessarias: </h2>
 
