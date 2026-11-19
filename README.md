@@ -51,89 +51,133 @@
 🍽️ Alimentação — tabela Oracle: T_Ajudante_familiar_Alimentacao
 
 •	GET - ALL: api/Alimentacao/alimentacao
+
 •	GET - ID: api/Alimentacao/alimentacao/{id_alimentacao:int}
+
 •	POST: api/Alimentacao/alimentacao/criar
+
 •	PUT: api/Alimentacao/alimentacao/atualiza/{id_alimentacao:int}
+
 •	DELETE: api/Alimentacao/alimentacao/deleta/{id_alimentacao:int}
 
 📅 Atividades — tabela Oracle: T_Ajudante_familiar_atividades
 
 •	GET - ALL: api/Atividades/atividades
+
 •	GET - ID: api/Atividades/atividades/{id_atividade:int}
+
 •	POST: api/Atividades/atividades/criar
+
 •	PUT: api/Atividades/atividades/atualiza/{id_atividade:int}
+
 •	DELETE: api/Atividades/atividades/deleta/{id_atividade:int}
 
 💼 Cargo — tabela Oracle: T_Ajudante_familiar_Cargo
 
 •	GET - ALL: api/Cargo/cargo
+
 •	GET - ID: api/Cargo/cargo/{id_cargo:int}
+
 •	POST: api/Cargo/cargo/criar
+
 •	PUT: api/Cargo/cargo/atualiza/{id_cargo:int}
+
 •	DELETE: api/Cargo/cargo/deleta/{id_cargo:int}
 
 🔗 Consulta_Medicamento — tabela Oracle: T_Ajudante_familiar_Consulta_Medicamento
 
 •	GET - ALL: api/Consulta_Medicamento/consulta_medicamento
+
 •	GET - ID: api/Consulta_Medicamento/consulta_medicamento/{id_consulta_medicamento:int}
+
 •	POST: api/Consulta_Medicamento/consulta_medicamento/criar
+
 •	PUT: api/Consulta_Medicamento/consulta_medicamento/atualiza/{id_consulta_medicamento:int}
+
 •	DELETE: api/Consulta_Medicamento/consulta_medicamento/deleta/{id_consulta_medicamento:int}
 
 🧑‍⚕️ Cuidador — tabela Oracle: T_Ajudante_familiar_Cuidador
 
 •	GET - ALL: api/Cuidador/cuidador
+
 •	GET - ID: api/Cuidador/cuidador/{id_cuidador:int}
+
 •	POST: api/Cuidador/cuidador/criar
+
 •	PUT: api/Cuidador/cuidador/atualiza/{id_cuidador:int}
+
 •	DELETE: api/Cuidador/cuidador/deleta/{id_cuidador:int}
 
 🩺 Doenças — tabela Oracle: T_Ajudante_familiar_Doencas
 
 •	GET - ALL: api/Doencas/doencas
+
 •	GET - ID: api/Doencas/doencas/{id_doenca:int}
+
 •	POST: api/Doencas/doencas/criar
+
 •	PUT: api/Doencas/doencas/atualiza/{id_doenca:int}
+
 •	DELETE: api/Doencas/doencas/deleta/{id_doenca:int}
 
 👵 Idoso — tabela Oracle: T_Ajudante_familiar_Idoso
 
 •	GET - ALL: api/Idoso/idoso
+
 •	GET - ID: api/Idoso/idoso/{id_idoso:int}
+
 •	POST: api/Idoso/idoso/criar
+
 •	PUT: api/Idoso/idoso/atualiza/{id_idoso:int}
+
 •	DELETE: api/Idoso/idoso/deleta/{id_idoso:int}
 
 📝 Lembrete_Consulta — tabela Oracle: T_Ajudante_familiar_Lembrete_Consulta
 
 •	GET - ALL: api/Lembrete_Consulta/lembrete_consulta
+
 •	GET - ID: api/Lembrete_Consulta/lembrete_consulta/{id_lembrete_consulta:int}
+
 •	POST: api/Lembrete_Consulta/lembrete_consulta/criar
+
 •	PUT: api/Lembrete_Consulta/lembrete_consulta/atualiza/{id_lembrete_consulta:int}
+
 •	DELETE: api/Lembrete_Consulta/lembrete_consulta/deleta/{id_lembrete_consulta:int}
 
 💊 Medicamentos — tabela Oracle: T_Ajudante_familiar_Medicamentos
 
 •	GET - ALL: api/Medicamentos/medicamentos
+
 •	GET - ID: api/Medicamentos/medicamentos/{id_medicamentos:int}
+
 •	POST: api/Medicamentos/medicamentos/criar
+
 •	PUT: api/Medicamentos/medicamentos/atualiza/{id_medicamentos:int}
+
 •	DELETE: api/Medicamentos/medicamentos/deleta/{id_medicamentos:int}
 
 👨‍👩‍👧 Parente — tabela Oracle: T_Ajudante_familiar_Parente
 
 •	GET - ALL: api/Parente/parente
+
 •	GET - ID: api/Parente/parente/{id_parente:int}
+
 •	POST: api/Parente/parente/criar
+
 •	PUT: api/Parente/parente/atualiza/{id_parente:int}
+
 •	DELETE: api/Parente/parente/deleta/{id_parente:int}
 
 🪪 Perfil — tabela Oracle: T_Ajudante_familiar_Perfil
 
 •	GET - ALL: api/Perfil/perfil
+
 •	GET - ID: api/Perfil/perfil/{id_perfil:int}
+
 •	POST: api/Perfil/perfil/criar
+
 •	PUT: api/Perfil/perfil/atualiza/{id_perfil:int}
+
 •	DELETE: api/Perfil/perfil/deleta/{id_perfil:int}
 
 <h2>🛠️ Tecnologias utilizadas</h2>
