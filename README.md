@@ -239,6 +239,8 @@ Testam se as partes do sistema funcionam juntas.
 
 No projeto, são feitas requisições HTTP para testar os endpoints da API, verificando operações como cadastro, atualização, consulta e exclusão de alimentação.
 
+Uma melhoria em relação ao trabalho anterior foi utilizar uma forma de preparar e reutilizar os dados dos testes, evitando a necessidade de cadastrar novos registros manualmente a cada execução e tornando os testes menos repetitivos.
+
 <h3>Resultado</h3>
 
 <img width="539" height="527" alt="Captura de tela 2026-11-19 191521" src="https://github.com/user-attachments/assets/8f43621a-ec04-42e7-86e3-7cfad77d8765" />
@@ -268,6 +270,9 @@ No projeto, são feitas requisições HTTP para testar os endpoints da API, veri
 <h3> IRepository </h3>
 
 <p> Define os métodos que serão implementados pelos Repositories, organizando a comunicação com o banco de dados.</p>
+
+**Atenção aos campos de data e horário:**  
+Ao cadastrar uma alimentação, informe a data no formato `AAAA-MM-DD` e o horário no formato `HH:MM:SS`. Não inclua o `T` nem a parte do horário no campo de data.
 
 <h2>🛠️ Instalações necessarias: </h2>
 
