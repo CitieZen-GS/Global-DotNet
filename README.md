@@ -239,6 +239,35 @@ Testam se as partes do sistema funcionam juntas.
 
 No projeto, são feitas requisições HTTP para testar os endpoints da API, verificando operações como cadastro, atualização, consulta e exclusão de alimentação.
 
+<h3>Resultado</h3>
+
+<img width="539" height="527" alt="Captura de tela 2026-11-19 191521" src="https://github.com/user-attachments/assets/8f43621a-ec04-42e7-86e3-7cfad77d8765" />
+
+<h2>Organizacao das tabelas</h2>
+
+<img width="295" height="172" alt="Captura de tela 2026-11-19 192302" src="https://github.com/user-attachments/assets/a02d4917-565a-470e-b2fc-a354a66c50e2" />
+
+<h2>🌐 Parte da API </h2>
+
+<h3> Controllers </h3>
+
+<p>Recebem as requisições feitas pelo usuário e encaminham as operações para os Services.</p>
+
+<h3> Service </h3>
+
+<p> Contém as regras e a lógica das operações da aplicação.</p>
+
+<h3> IService </h3>
+
+<p> Define os métodos que serão utilizados pelos Services, permitindo organizar e separar as responsabilidades.</p>
+
+<h3> Repository </h3>
+
+<p> Responsável por realizar as operações no banco de dados, como cadastro, consulta, atualização e exclusão.</p>
+
+<h3> IRepository </h3>
+
+<p> Define os métodos que serão implementados pelos Repositories, organizando a comunicação com o banco de dados.</p>
 
 <h2>🛠️ Instalações necessarias: </h2>
 
