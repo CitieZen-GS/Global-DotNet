@@ -252,15 +252,7 @@ Foram implementados dois endpoints:
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddIdempotentAPI();
 builder.Services.AddIdempotentAPIUsingDistributedCache();
-```
-
-<h3>Mas tambem temos dentro do controllers</h3
-
-```
-[Produces("application/json")]
-
-[Idempotent]
-```                                            
+```                                     
 
 <h2>JWT</h2>
 
