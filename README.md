@@ -213,7 +213,30 @@ builder.Services.AddIdempotentAPIUsingDistributedCache();
 [Idempotent]
 ```                                            
 
-<h4>🛠️ Instalações necessarias: </h4>
+<h2>JWT</h2>
+
+<p>Como sabemos o jwt server como um meio de senha de acesso para acessar o nosso sistema pro causa disso quando iniciar precisa primeiro ir no auth e pegar o token</p>
+
+- usuario: admin
+- senha: 123456
+
+<h2>Parte de testes</h2>
+
+<h3>UnitTests</h3>
+
+Testam cada parte do código separadamente, verificando se os métodos funcionam como esperado.
+
+No projeto, foram utilizados Moq para simular os serviços e um banco de dados em memória para auxiliar nos testes do AlimentacaoController.
+
+<h3>Integração</h3>
+
+Testam se as partes do sistema funcionam juntas.
+
+No projeto, são feitas requisições HTTP para testar os endpoints da API, verificando operações como cadastro, atualização, consulta e exclusão de alimentação.
+
+"C:\Users\Pichau\OneDrive\Imagens\Screenshots\Captura de tela 2026-11-19 191521.png"
+
+<h2>🛠️ Instalações necessarias: </h2>
 
 •	.NET: 10 (net10.0)
 
